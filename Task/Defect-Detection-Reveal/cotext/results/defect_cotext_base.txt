@@ -1,0 +1,9 @@
+[Time: 1m] saved_models/checkpoint-best-acc/pytorch_model.bin
+[best-acc] acc: 0.6164
+
+[Time: 1m] saved_models/checkpoint-best-acc/pytorch_model.bin
+[best-acc] acc: 0.6164
+
+[Time: 0m] saved_models/checkpoint-best-acc/pytorch_model.bin
+[best-acc] acc: 0.9072
+
