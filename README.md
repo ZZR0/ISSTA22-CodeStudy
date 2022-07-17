@@ -48,6 +48,8 @@ We list the program directories and their files which can be used by artifact ev
     - `Defect-Detection`
     - `Defect-Detection-Reveal`
 
+## Adversarial Attack
+The artifact of adversarial attack for pre-trained code models can be found in [CodeAttack](https://github.com/ZZR0/CodeAttack).
 
 ## Acknowledgement
 Our implementation is adapted from: https://github.com/microsoft/CodeXGLUE, https://github.com/wasiahmad/PLBART, https://github.com/microsoft/CodeBERT, https://github.com/parasj/contracode, https://github.com/agemagician/CodeTrans, https://github.com/salesforce/CodeT5, https://github.com/justinphan3110/CoTexT, https://github.com/ryderling/DGMS, https://github.com/shiyy123/FCDetector, https://github.com/zhangj111/rencos, https://github.com/VulDetProject/ReVeal
