@@ -1,0 +1,18 @@
+{
+  "name": "representjs",
+  "private": true,
+  "dependencies": {
+    "@babel/generator": "^7.9.5",
+    "@babel/parser": "^7.9.4",
+    "@babel/traverse": "^7.10.1",
+    "@babel/types": "^7.9.5",
+    "acorn-loose": "^7.0.0",
+    "async": "^3.2.0",
+    "cli-progress": "^3.8.1",
+    "glob": "^7.1.6",
+    "line-reader": "^0.4.0",
+    "prettier": "^2.0.5",
+    "random-words": "^1.1.1",
+    "terser": "^4.6.13"
+  }
+}
