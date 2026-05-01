@@ -1,0 +1,66 @@
+{
+  "name": "drag",
+  "displayName": "drag",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.79.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],  
+  "main": "./out/drag_extension.js",
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "dragDropZone",
+          "name": "Refactoring Drop Zone"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "dragDropZone.addSnippet",
+        "title": "Add to Dropzone"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "dragDropZone.addSnippet",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "dragDropZone.addSnippet",
+        "key": "ctrl+shift+r",
+        "mac": "cmd+shift+r",
+        "when": "editorHasSelection"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.110.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "typescript-eslint": "^8.56.1",
+    "eslint": "^9.39.3",
+    "typescript": "^5.9.3",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}

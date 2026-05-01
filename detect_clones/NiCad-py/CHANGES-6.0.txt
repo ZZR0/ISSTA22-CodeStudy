@@ -1,0 +1,27 @@
+Changes from NiCad 5.2 to 6.0
+
+1. Added literal renaming to blind and consistent renaming transformations.
+   Improves Type 2 and 3 clone recall by 10-20%.
+   (Note: Invalidates all previous evaluations of NiCad vs other tools.)
+
+2. Added automatic filtering of lone "}" scope brackets in clone comparison.
+   Improves Type 2 and 3 clone precision by 5-10%.
+   (Note: Invalidates all previous evaluations of NiCad vs other tools.)
+
+3. Changed to a simpler bubble-based clone pair and clone class representation in 
+   browser-based (html) clone reports. Added interactive clone source exploration 
+   to the interface, making it easier to selecctively see and explore clones.
+
+4. Added support for Latin-1 Extended ASCII identifiers (i.e., European languages) 
+   in all languages.
+
+5. Added validated language support for Swift 5.2.
+
+6. Added support for Latin-1, UTF-8 and UTF-16 identifiers and operators in Swift.
+
+7. Fixed serious bug that overwrote result files when making multiple runs with
+   different configurations on the same system.
+   (Note: Invalidates all previous evaluations of NiCad vs other tools.)
+
+8. Added stack robustness checks to scripts and makefiles.
+

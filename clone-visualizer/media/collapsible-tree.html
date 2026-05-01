@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="chart"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script>
+      // Listen for the message from the VS Code Extension
+      window.addEventListener('message', event => {
+        const message = event.data;
+
+        if (message.command === 'loadData') {
+          const data = message.data; // This is your data.json content!
+
+          // --- ALL YOUR D3 CODE GOES HERE ---
+          const width = 800;
+          const dx = 40;
+          const marginTop = 20;
+          const marginRight = 120;
+          const marginBottom = 20;
+          const marginLeft = 120;
+
+          const root = d3.hierarchy(data);
+          const dy = (width - marginRight - marginLeft) / (1 + root.height);
+          const tree = d3.tree().nodeSize([dx, dy]);
+
+          const diagonal = d3.linkHorizontal().x(d => d.y).y(d => d.x);
+
+          root.x0 = 0;
+          root.y0 = 0;
+
+          let nodeId = 0;
+          root.descendants().forEach(d => {
+            d.id = nodeId++;
+            d._children = d.children;
+            if (d.depth > 0) d.children = null; 
+          });
+
+          const svg = d3.create("svg")
+            .attr("width", width)
+            .attr("height", 400)
+            .attr("viewBox", [-marginLeft, -marginTop, width, 400])
+            .style("max-width", "100%")
+            .style("height", "auto")
+            .style("font", "12px sans-serif")
+            .style("user-select", "none")
+            .style("pointer-events", "none"); 
+
+          const gLink = svg.append("g")
+            .attr("fill", "none")
+            .attr("stroke", "#999")
+            .attr("stroke-opacity", 0.6)
+            .attr("stroke-width", 1.5);
+
+          const gNode = svg.append("g")
+            .attr("cursor", "pointer")
+            .attr("pointer-events", "all");
+
+          function update(source, duration = 500) {
+            tree(root);
+
+            const nodes = root.descendants().reverse();
+            const links = root.links();
+
+            let left = root;
+            let right = root;
+            root.eachBefore(node => {
+              if (node.x < left.x) left = node;
+              if (node.x > right.x) right = node;
+            });
+
+            const height = right.x - left.x + marginTop + marginBottom;
+
+            svg.transition().duration(duration)
+              .attr("height", height)
+              .attr("viewBox", [-marginLeft, left.x - marginTop, width, height]);
+
+            const node = gNode.selectAll("g.node").data(nodes, d => d.id);
+
+            const nodeEnter = node.enter().append("g")
+              .attr("class", "node")
+              .attr("transform", `translate(${source.y0},${source.x0})`)
+              .attr("fill-opacity", 0)
+              .attr("stroke-opacity", 0)
+              .on("click", (event, d) => {
+                d.children = d.children ? null : d._children;
+                update(d, 400);
+              });
+
+            nodeEnter.append("circle")
+              .attr("r", 4)
+              .attr("fill", d => d._children ? (d.children ? "#999" : "#555") : "#999");
+
+            nodeEnter.append("text")
+              .attr("dy", "0.31em")
+              .attr("x", d => (d._children ? -8 : 8))
+              .attr("text-anchor", d => (d._children ? "end" : "start"))
+              .text(d => d.data.name)
+              .attr("stroke", "white")
+              .attr("stroke-width", 3)
+              .attr("stroke-linejoin", "round")
+              .style("paint-order", "stroke fill");
+
+            const nodeUpdate = node.merge(nodeEnter).transition().duration(duration)
+              .attr("transform", d => `translate(${d.y},${d.x})`)
+              .attr("fill-opacity", 1)
+              .attr("stroke-opacity", 1);
+
+            node.merge(nodeEnter).select("circle")
+              .attr("fill", d => d._children ? (d.children ? "#999" : "#555") : "#999");
+
+            const nodeExit = node.exit().transition().duration(duration)
+              .attr("transform", `translate(${source.y},${source.x})`)
+              .attr("fill-opacity", 0)
+              .attr("stroke-opacity", 0)
+              .remove();
+
+            const link = gLink.selectAll("path").data(links, d => d.target.id);
+
+            const linkEnter = link.enter().append("path")
+              .attr("d", () => {
+                const o = { x: source.x0, y: source.y0 };
+                return diagonal({ source: o, target: o });
+              });
+
+            link.merge(linkEnter).transition().duration(duration).attr("d", diagonal);
+
+            link.exit().transition().duration(duration)
+              .attr("d", () => {
+                const o = { x: source.x, y: source.y };
+                return diagonal({ source: o, target: o });
+              })
+              .remove();
+
+            root.eachBefore(d => { d.x0 = d.x; d.y0 = d.y; });
+          }
+
+          function collectNodesToExpand(node, arr = []) {
+            if (node._children) arr.push(node);
+            const kids = node._children || node.children || [];
+            kids.forEach(child => collectNodesToExpand(child, arr));
+            return arr;
+          }
+
+          function autoExpandStepByStep() {
+            const nodesToExpand = collectNodesToExpand(root).filter(d => d.depth >= 0);
+            let i = 0;
+
+            function expandNext() {
+              if (i >= nodesToExpand.length) {
+                svg.style("pointer-events", "all"); 
+                return;
+              }
+              const d = nodesToExpand[i];
+              if (d._children) d.children = d._children;
+              update(d, 500);
+              i += 1;
+              setTimeout(expandNext, 600);
+            }
+            expandNext();
+          }
+
+          update(root, 0);
+          d3.select("#chart").append(() => svg.node());
+          setTimeout(autoExpandStepByStep, 500);
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+
+1/19 run nicad
+
+cat > environment-linux.yml <<'YAML'
+name: nicad6
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - make
+  - gcc_linux-64
+  - gxx_linux-64
+  - perl
+  - wget
+  - git
+  - coreutils
+  - grep
+  - sed
+  - unzip
+YAML
+
+conda env create -f environment-linux.yml
+
+conda env list
+conda info
+
+conda deactivate
+conda activate nicad6
+tar -xzf 18195-NiCad-6.2.tar.gz
+cd NiCad-6.2
+./InstallTxl
+txl -V
+tar -xzf 20473-txl10.8b.linux64.tar.gz
+./InstallTxl
+
+which txl
+which txlc
+txl -V
+
+Compile the TXL programs
+make -C txl clean && make -C txl
+
+There is error when using symbolically link. Copy actual project to systems.
+Then run: ./nicad6 functions py systems/bottle default-report
+
+
+chmod +x run_nicad_all_python.sh
+./run_nicad_all_python.sh
+
+nohup ./run_nicad_all_python.sh > run_nicad_all_python.log 2>&1 &

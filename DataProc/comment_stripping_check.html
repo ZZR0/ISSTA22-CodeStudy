@@ -1,0 +1,649 @@
+<html><head><style>
+body { font-family: sans-serif; margin: 20px; }
+h2 { color: #333; }
+table { border-collapse: collapse; width: 100%; table-layout: fixed; }
+th, td { border: 1px solid #ccc; padding: 10px; vertical-align: top; word-wrap: break-word; }
+th { background-color: #f4f4f4; }
+pre { white-space: pre-wrap; margin: 0; font-size: 0.85em; font-family: Consolas, monospace; }
+.col-id { width: 80px; }
+.col-comments { width: 15%; color: #d9534f; font-size: 0.8em; }
+.col-code { width: 40%; background-color: #fff0f0; }
+.col-stripped { width: 40%; background-color: #f0fff0; }
+</style></head><body>
+<h2>Comment Stripping Verification (Top 10 Samples)</h2>
+<table>
+<tr>
+<th class='col-id'>ID</th>
+<th class='col-comments'>Detected Comments</th>
+<th class='col-code'>Original Code (Before)</th>
+<th class='col-stripped'>Processed Code (After)</th>
+</tr>
+<tr>
+<td>13536693</td>
+<td><code>//System.out.println(je.isDirectory() + je.getName());</code></td>
+<td><pre>	public static void decompress(File apps,File f) throws IOException{
+		String filename=f.getName();
+		filename=filename.substring(0,filename.length()-PACK_FILE_SUFFIX.length());
+		File dir=new File(apps,filename);
+		if(!dir.exists()){
+			dir.mkdirs();
+		}
+		if(dir.isDirectory()){
+			JarFile jar=new JarFile(f);
+			Enumeration&lt;JarEntry&gt; files=jar.entries();
+			while(files.hasMoreElements()){
+				JarEntry je=files.nextElement();
+				if(je.isDirectory()){
+					File item=new File(dir,je.getName());
+					item.mkdirs();
+				}else{
+					File item=new File(dir,je.getName());
+					item.getParentFile().mkdirs();
+					InputStream input=jar.getInputStream(je);
+					FileOutputStream out=new FileOutputStream(item);
+					IOUtils.copy(input, out);
+					input.close();
+					out.close();
+				}
+				//System.out.println(je.isDirectory() + je.getName());
+			}
+		}
+	}
+</pre></td>
+<td><pre>	public static void decompress(File apps,File f) throws IOException{
+		String filename=f.getName();
+		filename=filename.substring(0,filename.length()-PACK_FILE_SUFFIX.length());
+		File dir=new File(apps,filename);
+		if(!dir.exists()){
+			dir.mkdirs();
+		}
+		if(dir.isDirectory()){
+			JarFile jar=new JarFile(f);
+			Enumeration&lt;JarEntry&gt; files=jar.entries();
+			while(files.hasMoreElements()){
+				JarEntry je=files.nextElement();
+				if(je.isDirectory()){
+					File item=new File(dir,je.getName());
+					item.mkdirs();
+				}else{
+					File item=new File(dir,je.getName());
+					item.getParentFile().mkdirs();
+					InputStream input=jar.getInputStream(je);
+					FileOutputStream out=new FileOutputStream(item);
+					IOUtils.copy(input, out);
+					input.close();
+					out.close();
+				}
+				 
+			}
+		}
+	}
+</pre></td>
+</tr>
+<tr>
+<td>16094377</td>
+<td><code>/**
+				 * @param  e  Description of the Parameter
+				 * @see       javax.swing.event.ListSelectionListener#valueChanged(javax.swing.event.ListSelectionEvent)
+				 */</code></td>
+<td><pre>    protected void xInitGUI() {
+        this.jlHead.setText(formater.getText(&quot;select_marc21_title&quot;));
+        this.jlResId.setText(formater.getText(&quot;select_marc21_label_text&quot;));
+        this.jlResId.setToolTipText(formater.getText(&quot;select_marc21_label_description&quot;));
+        ElvisListModel model = new ElvisListModel();
+        this.jlResourceList.setModel(model);
+        try {
+            URL urlListResources = new URL(ElvisRegistry.getInstance().getProperty(&quot;elvis.server&quot;) + &quot;/servlet/listResources?xpath=document()//Book&quot;);
+            InputStream streamResources = urlListResources.openStream();
+            XmlPullParser xpp = XmlPullParserFactory.newInstance().newPullParser();
+            xpp.setInput(new InputStreamReader(streamResources));
+            int type = xpp.getEventType();
+            while (type != XmlPullParser.END_DOCUMENT) {
+                if (type == XmlPullParser.START_TAG &amp;&amp; &quot;Resource&quot;.equals(xpp.getName())) {
+                    model.add(xpp.getAttributeValue(&quot;&quot;, &quot;resId&quot;), xpp.getAttributeValue(&quot;&quot;, &quot;author&quot;), xpp.getAttributeValue(&quot;&quot;, &quot;title&quot;));
+                }
+                type = xpp.next();
+            }
+            streamResources.close();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        } catch (XmlPullParserException xppe) {
+            xppe.printStackTrace();
+        }
+        ListSelectionModel selectionModel = this.jlResourceList.getSelectionModel();
+        selectionModel.addListSelectionListener(new ListSelectionListener() {
+
+            /**
+				 * @param  e  Description of the Parameter
+				 * @see       javax.swing.event.ListSelectionListener#valueChanged(javax.swing.event.ListSelectionEvent)
+				 */
+            public void valueChanged(ListSelectionEvent e) {
+                int index = e.getFirstIndex();
+                boolean isAdjusting = e.getValueIsAdjusting();
+                if (!isAdjusting) {
+                    ElvisListModel _model = (ElvisListModel) jlResourceList.getModel();
+                    jtfResId.setText(_model.get(index).getId());
+                }
+            }
+        });
+    }
+</pre></td>
+<td><pre>    protected void xInitGUI() {
+        this.jlHead.setText(formater.getText(&quot;select_marc21_title&quot;));
+        this.jlResId.setText(formater.getText(&quot;select_marc21_label_text&quot;));
+        this.jlResId.setToolTipText(formater.getText(&quot;select_marc21_label_description&quot;));
+        ElvisListModel model = new ElvisListModel();
+        this.jlResourceList.setModel(model);
+        try {
+            URL urlListResources = new URL(ElvisRegistry.getInstance().getProperty(&quot;elvis.server&quot;) + &quot;/servlet/listResources?xpath=document()//Book&quot;);
+            InputStream streamResources = urlListResources.openStream();
+            XmlPullParser xpp = XmlPullParserFactory.newInstance().newPullParser();
+            xpp.setInput(new InputStreamReader(streamResources));
+            int type = xpp.getEventType();
+            while (type != XmlPullParser.END_DOCUMENT) {
+                if (type == XmlPullParser.START_TAG &amp;&amp; &quot;Resource&quot;.equals(xpp.getName())) {
+                    model.add(xpp.getAttributeValue(&quot;&quot;, &quot;resId&quot;), xpp.getAttributeValue(&quot;&quot;, &quot;author&quot;), xpp.getAttributeValue(&quot;&quot;, &quot;title&quot;));
+                }
+                type = xpp.next();
+            }
+            streamResources.close();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        } catch (XmlPullParserException xppe) {
+            xppe.printStackTrace();
+        }
+        ListSelectionModel selectionModel = this.jlResourceList.getSelectionModel();
+        selectionModel.addListSelectionListener(new ListSelectionListener() {
+
+             
+            public void valueChanged(ListSelectionEvent e) {
+                int index = e.getFirstIndex();
+                boolean isAdjusting = e.getValueIsAdjusting();
+                if (!isAdjusting) {
+                    ElvisListModel _model = (ElvisListModel) jlResourceList.getModel();
+                    jtfResId.setText(_model.get(index).getId());
+                }
+            }
+        });
+    }
+</pre></td>
+</tr>
+<tr>
+<td>21571495</td>
+<td><code>/** Creates a new instance of Acr2Dcm */</code></td>
+<td><pre>
+    private boolean undefSeqLen = true;
+
+    private boolean undefItemLen = true;
+
+    private boolean fmi = true;
+
+    /** Creates a new instance of Acr2Dcm */
+    public Acr2Dcm() {
+    }
+
+    public void setStudyUID(String uid) {
+        this.studyUID = uid;
+    }
+
+    public void setSeriesUID(String uid) {
+        this.seriesUID = uid;
+    }
+
+    public void setInstUID(String uid) {
+        this.instUID = uid;
+    }
+
+    public void setClassUID(String uid) {
+        this.classUID = uid;
+    }
+
+    public void setSkipGroupLen(boolean skipGroupLen) {
+</pre></td>
+<td><pre>
+    private boolean undefSeqLen = true;
+
+    private boolean undefItemLen = true;
+
+    private boolean fmi = true;
+
+     
+    public Acr2Dcm() {
+    }
+
+    public void setStudyUID(String uid) {
+        this.studyUID = uid;
+    }
+
+    public void setSeriesUID(String uid) {
+        this.seriesUID = uid;
+    }
+
+    public void setInstUID(String uid) {
+        this.instUID = uid;
+    }
+
+    public void setClassUID(String uid) {
+        this.classUID = uid;
+    }
+
+    public void setSkipGroupLen(boolean skipGroupLen) {
+</pre></td>
+</tr>
+<tr>
+<td>23277837</td>
+<td><code>// BufferedInputStream bis = new</code><br><hr><br><code>// BufferedInputStream(url.openStream());</code></td>
+<td><pre>	private File download(String filename, URL url) {
+		int size = -1;
+		int received = 0;
+		try {
+			fireDownloadStarted(filename);
+			File file = createFile(filename);
+			BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
+			System.out.println(&quot;下载资源：&quot; + filename + &quot;, url=&quot; + url);
+			// BufferedInputStream bis = new
+			// BufferedInputStream(url.openStream());
+			InputStream bis = url.openStream();
+			byte[] buf = new byte[1024];
+			int count = 0;
+			long lastUpdate = 0;
+			size = bis.available();
+			while ((count = bis.read(buf)) != -1) {
+				bos.write(buf, 0, count);
+				received += count;
+				long now = System.currentTimeMillis();
+				if (now - lastUpdate &gt; 500) {
+					fireDownloadUpdate(filename, size, received);
+					lastUpdate = now;
+				}
+			}
+			bos.close();
+			System.out.println(&quot;资源下载完毕：&quot; + filename);
+			fireDownloadCompleted(filename);
+			return file;
+		} catch (IOException e) {
+			System.out.println(&quot;下载资源失败：&quot; + filename + &quot;, error=&quot; + e.getMessage());
+			fireDownloadInterrupted(filename);
+			if (!(e instanceof FileNotFoundException)) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+</pre></td>
+<td><pre>	private File download(String filename, URL url) {
+		int size = -1;
+		int received = 0;
+		try {
+			fireDownloadStarted(filename);
+			File file = createFile(filename);
+			BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
+			System.out.println(&quot;下载资源：&quot; + filename + &quot;, url=&quot; + url);
+			 
+			 
+			InputStream bis = url.openStream();
+			byte[] buf = new byte[1024];
+			int count = 0;
+			long lastUpdate = 0;
+			size = bis.available();
+			while ((count = bis.read(buf)) != -1) {
+				bos.write(buf, 0, count);
+				received += count;
+				long now = System.currentTimeMillis();
+				if (now - lastUpdate &gt; 500) {
+					fireDownloadUpdate(filename, size, received);
+					lastUpdate = now;
+				}
+			}
+			bos.close();
+			System.out.println(&quot;资源下载完毕：&quot; + filename);
+			fireDownloadCompleted(filename);
+			return file;
+		} catch (IOException e) {
+			System.out.println(&quot;下载资源失败：&quot; + filename + &quot;, error=&quot; + e.getMessage());
+			fireDownloadInterrupted(filename);
+			if (!(e instanceof FileNotFoundException)) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+</pre></td>
+</tr>
+<tr>
+<td>23677120</td>
+<td><code>//Buffer for copying the files out of the zip input stream</code><br><hr><br><code>//Create parent output directory if it doesn&#x27;t exist</code><br><hr><br><code>//Create the zip input stream</code><br><hr><br><code>//OR ArchiveInputStream zis = new ArchiveStreamFactory().createArchiveInputStream(ArchiveStreamFactory.ZIP, new FileInputStream(zipfile));</code><br><hr><br><code>//Iterate through the entries of the zip file, and extract them to the output directory</code><br>... (7 more)</td>
+<td><pre>	public static void unzip1(File zipfile, File outputdir) throws IOException {
+		//Buffer for copying the files out of the zip input stream
+		byte[] buffer = new byte[1024];
+				
+		//Create parent output directory if it doesn&#x27;t exist
+		if(!outputdir.exists()) {
+			outputdir.mkdirs();
+		}
+				
+		//Create the zip input stream
+		//OR ArchiveInputStream zis = new ArchiveStreamFactory().createArchiveInputStream(ArchiveStreamFactory.ZIP, new FileInputStream(zipfile));
+		ArchiveInputStream zis = new ZipArchiveInputStream(new FileInputStream(zipfile));
+		
+		//Iterate through the entries of the zip file, and extract them to the output directory
+		ArchiveEntry ae = zis.getNextEntry(); // OR zis.getNextZipEntry()
+		while(ae != null) {
+			//Resolve new file
+			File newFile = new File(outputdir + File.separator + ae.getName());
+			
+			//Create parent directories if not exists
+			if(!newFile.getParentFile().exists())
+				newFile.getParentFile().mkdirs();
+			
+			if(ae.isDirectory()) { //If directory, create if not exists
+				if(!newFile.exists())
+					newFile.mkdir();
+			} else { //If file, write file
+				FileOutputStream fos = new FileOutputStream(newFile);
+				int len;
+				while((len = zis.read(buffer)) &gt; 0) {
+					fos.write(buffer, 0, len);
+				}
+				fos.close();
+			}
+			
+			//Proceed to the next entry in the zip file
+			ae = zis.getNextEntry();
+		}
+		
+		//Cleanup
+		zis.close();
+	}
+</pre></td>
+<td><pre>	public static void unzip1(File zipfile, File outputdir) throws IOException {
+		 
+		byte[] buffer = new byte[1024];
+				
+		 
+		if(!outputdir.exists()) {
+			outputdir.mkdirs();
+		}
+				
+		 
+		 
+		ArchiveInputStream zis = new ZipArchiveInputStream(new FileInputStream(zipfile));
+		
+		 
+		ArchiveEntry ae = zis.getNextEntry();  
+		while(ae != null) {
+			 
+			File newFile = new File(outputdir + File.separator + ae.getName());
+			
+			 
+			if(!newFile.getParentFile().exists())
+				newFile.getParentFile().mkdirs();
+			
+			if(ae.isDirectory()) {  
+				if(!newFile.exists())
+					newFile.mkdir();
+			} else {  
+				FileOutputStream fos = new FileOutputStream(newFile);
+				int len;
+				while((len = zis.read(buffer)) &gt; 0) {
+					fos.write(buffer, 0, len);
+				}
+				fos.close();
+			}
+			
+			 
+			ae = zis.getNextEntry();
+		}
+		
+		 
+		zis.close();
+	}
+</pre></td>
+</tr>
+<tr>
+<td>23677121</td>
+<td><code>//Buffer for extracting files</code><br><hr><br><code>//Zip file</code><br><hr><br><code>//Get entries</code><br><hr><br><code>//Iterate through the entries</code><br><hr><br><code>//Get entry</code><br>... (5 more)</td>
+<td><pre>	public static void unzip2(File zipfile, File outputdir) throws IOException {
+		//Buffer for extracting files
+		byte[] buffer = new byte[1024];
+				
+		//Zip file
+		ZipFile zip = new ZipFile(zipfile);
+				
+		//Get entries
+		Enumeration&lt;ZipArchiveEntry&gt; files = zip.getEntries();
+				
+		//Iterate through the entries
+		while(files.hasMoreElements()) {
+			//Get entry
+			ZipArchiveEntry ze = files.nextElement();
+					
+			//Resolve entry file
+			File newFile = new File(outputdir + File.separator + ze.getName());
+					
+			//Make parent directories
+			newFile.getParentFile().mkdirs();
+					
+			if(ze.isDirectory()) { //If directory, create it
+				newFile.mkdir();
+			} else { //If file, extract it
+				InputStream is = zip.getInputStream(ze);
+				FileOutputStream fos = new FileOutputStream(newFile);
+				int len;
+				while((len = is.read(buffer)) &gt; 0) {
+					fos.write(buffer, 0, len);
+				}
+				fos.close();
+				is.close();
+			}	
+		}
+				
+		//Cleanup
+		zip.close();
+	}
+</pre></td>
+<td><pre>	public static void unzip2(File zipfile, File outputdir) throws IOException {
+		 
+		byte[] buffer = new byte[1024];
+				
+		 
+		ZipFile zip = new ZipFile(zipfile);
+				
+		 
+		Enumeration&lt;ZipArchiveEntry&gt; files = zip.getEntries();
+				
+		 
+		while(files.hasMoreElements()) {
+			 
+			ZipArchiveEntry ze = files.nextElement();
+					
+			 
+			File newFile = new File(outputdir + File.separator + ze.getName());
+					
+			 
+			newFile.getParentFile().mkdirs();
+					
+			if(ze.isDirectory()) {  
+				newFile.mkdir();
+			} else {  
+				InputStream is = zip.getInputStream(ze);
+				FileOutputStream fos = new FileOutputStream(newFile);
+				int len;
+				while((len = is.read(buffer)) &gt; 0) {
+					fos.write(buffer, 0, len);
+				}
+				fos.close();
+				is.close();
+			}	
+		}
+				
+		 
+		zip.close();
+	}
+</pre></td>
+</tr>
+<tr>
+<td>23677133</td>
+<td><code>// set flag to true to begin first pass</code><br><hr><br><code>// holding variable</code><br><hr><br><code>// set flag to false awaiting a possible swap</code><br><hr><br><code>// change to &gt; for ascending sort</code><br><hr><br><code>// swap elements</code><br>... (1 more)</td>
+<td><pre>	public static void BubbleSortInt1(int[] num) {
+		boolean flag = true; // set flag to true to begin first pass
+		int temp; // holding variable
+
+		while (flag) {
+			flag = false; // set flag to false awaiting a possible swap
+			for (int j = 0; j &lt; num.length - 1; j++) {
+				if (num[j] &gt; num[j + 1]) // change to &gt; for ascending sort
+				{
+					temp = num[j]; // swap elements
+					num[j] = num[j + 1];
+					num[j + 1] = temp;
+					flag = true; // shows a swap occurred
+				}
+			}
+		}
+	}
+</pre></td>
+<td><pre>	public static void BubbleSortInt1(int[] num) {
+		boolean flag = true;  
+		int temp;  
+
+		while (flag) {
+			flag = false;  
+			for (int j = 0; j &lt; num.length - 1; j++) {
+				if (num[j] &gt; num[j + 1])  
+				{
+					temp = num[j];  
+					num[j] = num[j + 1];
+					num[j + 1] = temp;
+					flag = true;  
+				}
+			}
+		}
+	}
+</pre></td>
+</tr>
+<tr>
+<td>23677135</td>
+<td><code>// set flag to true to begin first pass</code><br><hr><br><code>// holding variable</code><br><hr><br><code>// set flag to false awaiting a possible swap</code><br><hr><br><code>// change to &gt; for ascending sort</code><br><hr><br><code>// swap elements</code><br>... (1 more)</td>
+<td><pre>	public static void BubbleSortFloat1(float[] num) {
+		boolean flag = true; // set flag to true to begin first pass
+		float temp; // holding variable
+
+		while (flag) {
+			flag = false; // set flag to false awaiting a possible swap
+			for (int j = 0; j &lt; num.length - 1; j++) {
+				if (num[j] &gt; num[j + 1]) // change to &gt; for ascending sort
+				{
+					temp = num[j]; // swap elements
+					num[j] = num[j + 1];
+					num[j + 1] = temp;
+					flag = true; // shows a swap occurred
+				}
+			}
+		}
+	}
+</pre></td>
+<td><pre>	public static void BubbleSortFloat1(float[] num) {
+		boolean flag = true;  
+		float temp;  
+
+		while (flag) {
+			flag = false;  
+			for (int j = 0; j &lt; num.length - 1; j++) {
+				if (num[j] &gt; num[j + 1])  
+				{
+					temp = num[j];  
+					num[j] = num[j + 1];
+					num[j + 1] = temp;
+					flag = true;  
+				}
+			}
+		}
+	}
+</pre></td>
+</tr>
+<tr>
+<td>23677137</td>
+<td><code>// set flag to true to begin first pass</code><br><hr><br><code>// holding variable</code><br><hr><br><code>// set flag to false awaiting a possible swap</code><br><hr><br><code>// change to &gt; for ascending sort</code><br><hr><br><code>// swap elements</code><br>... (1 more)</td>
+<td><pre>	public static void BubbleSortDouble1(double[] num) {
+		boolean flag = true; // set flag to true to begin first pass
+		double temp; // holding variable
+
+		while (flag) {
+			flag = false; // set flag to false awaiting a possible swap
+			for (int j = 0; j &lt; num.length - 1; j++) {
+				if (num[j] &gt; num[j + 1]) // change to &gt; for ascending sort
+				{
+					temp = num[j]; // swap elements
+					num[j] = num[j + 1];
+					num[j + 1] = temp;
+					flag = true; // shows a swap occurred
+				}
+			}
+		}
+	}
+</pre></td>
+<td><pre>	public static void BubbleSortDouble1(double[] num) {
+		boolean flag = true;  
+		double temp;  
+
+		while (flag) {
+			flag = false;  
+			for (int j = 0; j &lt; num.length - 1; j++) {
+				if (num[j] &gt; num[j + 1])  
+				{
+					temp = num[j];  
+					num[j] = num[j + 1];
+					num[j + 1] = temp;
+					flag = true;  
+				}
+			}
+		}
+	}
+</pre></td>
+</tr>
+<tr>
+<td>23677139</td>
+<td><code>// set flag to true to begin first pass</code><br><hr><br><code>// holding variable</code><br><hr><br><code>// set flag to false awaiting a possible swap</code><br><hr><br><code>// change to &gt; for ascending sort</code><br><hr><br><code>// swap elements</code><br>... (1 more)</td>
+<td><pre>	public static void BubbleSortLong1(long[] num) {
+		boolean flag = true; // set flag to true to begin first pass
+		long temp; // holding variable
+
+		while (flag) {
+			flag = false; // set flag to false awaiting a possible swap
+			for (int j = 0; j &lt; num.length - 1; j++) {
+				if (num[j] &gt; num[j + 1]) // change to &gt; for ascending sort
+				{
+					temp = num[j]; // swap elements
+					num[j] = num[j + 1];
+					num[j + 1] = temp;
+					flag = true; // shows a swap occurred
+				}
+			}
+		}
+	}
+</pre></td>
+<td><pre>	public static void BubbleSortLong1(long[] num) {
+		boolean flag = true;  
+		long temp;  
+
+		while (flag) {
+			flag = false;  
+			for (int j = 0; j &lt; num.length - 1; j++) {
+				if (num[j] &gt; num[j + 1])  
+				{
+					temp = num[j];  
+					num[j] = num[j + 1];
+					num[j + 1] = temp;
+					flag = true;  
+				}
+			}
+		}
+	}
+</pre></td>
+</tr>
+</table></body></html>

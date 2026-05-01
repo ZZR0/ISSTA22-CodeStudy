@@ -1,0 +1,40 @@
+SRC_BASE="/home/user1-system11/research_dream/llm-clone/detect_clones/NiCad/systems"
+DST="/home/user1-system11/research_dream/llm-clone/detect_clones/NiCad/post_process/input-block"
+
+mkdir -p "$DST"
+
+find "$SRC_BASE" \
+  -type f \
+  -path "*_blocks-blind-clones/*-classes-withsource.xml" \
+  -exec cp -v -t "$DST" {} +
+
+
+python 1_nicad_xml_to_jsonl.py \
+    --xml /home/user1-system11/research_dream/clone_research/postprocess-clone-results/java/Nicad/input/activemq-java_functions-blind-clones-0.30-classes-withsource.xml \
+    --out /home/user1-system11/research_dream/clone_research/postprocess-clone-results/java/Nicad/output/activemq/step1_nicad_activemq_sim0.7_classes.jsonl \
+    --mode class \
+    > /home/user1-system11/research_dream/clone_research/postprocess-clone-results/java/Nicad/output/activemq/step1_nicad_activemq_sim0.7_classes.log 2>&1
+
+python 2_java_qmethod_ts.py \
+  --in /home/user1-system11/research_dream/clone_research/postprocess-clone-results/java/Nicad/output/activemq/step1_nicad_activemq_sim0.7_classes.jsonl \
+  --out /home/user1-system11/research_dream/clone_research/postprocess-clone-results/java/Nicad/output/activemq/step2_nicad_activemq_sim0.7_classes_fqn.jsonl \
+  --projects-root /home/user1-system11/research_dream/clone_research/clone_detectors/NiCad \
+  > /home/user1-system11/research_dream/clone_research/postprocess-clone-results/java/Nicad/output/activemq/step2_nicad_activemq_sim0.7_classes_fqn.log 2>&1
+
+
+
+chmod +x run_nicad_xml_to_jsonl.sh
+
+LOG_DIR="/home/user1-system11/research_dream/clone_research/postprocess-clone-results/java/Nicad/output"
+
+echo "project,classes_parsed,nclones_total,nclones_avg" > nicad_stats.csv
+
+for log in "$LOG_DIR"/nicad_*_sim0.7_classes.log; do
+    project=$(basename "$log" | sed 's/^nicad_//' | sed 's/_sim0.7_classes.log$//')
+
+    classes=$(grep "classes parsed" "$log" | awk -F= '{gsub(/ /,"",$2); print $2}')
+    total=$(grep "nclones total" "$log" | awk -F= '{gsub(/ /,"",$2); print $2}')
+    avg=$(grep "nclones avg (all classes)" "$log" | awk -F= '{gsub(/ /,"",$2); print $2}')
+
+    echo "$project,$classes,$total,$avg" >> nicad_stats.csv
+done

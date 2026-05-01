@@ -1,0 +1,19 @@
+{
+  "name": "Root",
+  "children": [
+    {
+      "name": "Group A",
+      "children": [
+        { "name": "A1" }, 
+        { "name": "A2" }
+      ]
+    },
+    {
+      "name": "Group B",
+      "children": [
+        { "name": "B1" }, 
+        { "name": "B2" }
+      ]
+    }
+  ]
+}

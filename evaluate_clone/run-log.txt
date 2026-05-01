@@ -1,0 +1,582 @@
+-----------------------------
+Processing Directory: ./data/pred_before_adapt_refactorability/codegpt/
+-----------------------------
+
+=== Evaluation Results for: pred_hbase_with_refactorability.csv ===
+Dataset Size: 830 pairs evaluated
+TP: 103 | FP: 16 | TN: 399 | FN: 312
+Total Penalty: -429 (Average per true clone: -1.03)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_hbase_with_refactorability.html
+
+=== Evaluation Results for: pred_hive_with_refactorability.csv ===
+Dataset Size: 2548 pairs evaluated
+TP: 625 | FP: 194 | TN: 1080 | FN: 649
+Total Penalty: -1541 (Average per true clone: -1.21)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_hive_with_refactorability.html
+
+=== Evaluation Results for: pred_ignite_with_refactorability.csv ===
+Dataset Size: 1288 pairs evaluated
+TP: 312 | FP: 83 | TN: 561 | FN: 332
+Total Penalty: -661 (Average per true clone: -1.03)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_ignite_with_refactorability.html
+
+=== Evaluation Results for: pred_netty_with_refactorability.csv ===
+Dataset Size: 862 pairs evaluated
+TP: 77 | FP: 16 | TN: 415 | FN: 354
+Total Penalty: -421 (Average per true clone: -0.98)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_netty_with_refactorability.html
+
+=== Evaluation Results for: pred_hadoop_with_refactorability.csv ===
+Dataset Size: 2104 pairs evaluated
+TP: 244 | FP: 43 | TN: 1009 | FN: 808
+Total Penalty: -1141 (Average per true clone: -1.08)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_hadoop_with_refactorability.html
+
+=== Evaluation Results for: pred_closure-compiler_with_refactorability.csv ===
+Dataset Size: 18 pairs evaluated
+TP: 2 | FP: 0 | TN: 9 | FN: 7
+Total Penalty: -8 (Average per true clone: -0.89)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_closure-compiler_with_refactorability.html
+
+=== Evaluation Results for: pred_tomcat_with_refactorability.csv ===
+Dataset Size: 480 pairs evaluated
+TP: 118 | FP: 23 | TN: 217 | FN: 122
+Total Penalty: -236 (Average per true clone: -0.98)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_tomcat_with_refactorability.html
+
+=== Evaluation Results for: pred_activemq_with_refactorability.csv ===
+Dataset Size: 1446 pairs evaluated
+TP: 307 | FP: 60 | TN: 663 | FN: 416
+Total Penalty: -661 (Average per true clone: -0.91)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_activemq_with_refactorability.html
+
+=== Evaluation Results for: pred_poi_with_refactorability.csv ===
+Dataset Size: 1102 pairs evaluated
+TP: 151 | FP: 45 | TN: 506 | FN: 400
+Total Penalty: -540 (Average per true clone: -0.98)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_poi_with_refactorability.html
+
+=== Evaluation Results for: pred_pig_with_refactorability.csv ===
+Dataset Size: 712 pairs evaluated
+TP: 157 | FP: 50 | TN: 306 | FN: 199
+Total Penalty: -357 (Average per true clone: -1.00)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_pig_with_refactorability.html
+
+=== Evaluation Results for: pred_elasticsearch_with_refactorability.csv ===
+Dataset Size: 2506 pairs evaluated
+TP: 516 | FP: 129 | TN: 1124 | FN: 737
+Total Penalty: -1222 (Average per true clone: -0.98)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_elasticsearch_with_refactorability.html
+
+=== Evaluation Results for: pred_joda-time_with_refactorability.csv ===
+Dataset Size: 102 pairs evaluated
+TP: 15 | FP: 3 | TN: 48 | FN: 36
+Total Penalty: -45 (Average per true clone: -0.88)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_joda-time_with_refactorability.html
+
+=== Evaluation Results for: pred_jEdit_with_refactorability.csv ===
+Dataset Size: 262 pairs evaluated
+TP: 79 | FP: 33 | TN: 98 | FN: 52
+Total Penalty: -185 (Average per true clone: -1.41)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_jEdit_with_refactorability.html
+
+=== Evaluation Results for: pred_openjpa_with_refactorability.csv ===
+Dataset Size: 716 pairs evaluated
+TP: 161 | FP: 89 | TN: 269 | FN: 197
+Total Penalty: -543 (Average per true clone: -1.52)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_openjpa_with_refactorability.html
+
+=== Evaluation Results for: pred_cayenne_with_refactorability.csv ===
+Dataset Size: 774 pairs evaluated
+TP: 202 | FP: 90 | TN: 297 | FN: 185
+Total Penalty: -510 (Average per true clone: -1.32)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_cayenne_with_refactorability.html
+
+=== Evaluation Results for: pred_kafka_with_refactorability.csv ===
+Dataset Size: 476 pairs evaluated
+TP: 23 | FP: 4 | TN: 234 | FN: 215
+Total Penalty: -226 (Average per true clone: -0.95)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_kafka_with_refactorability.html
+
+=== Evaluation Results for: pred_libgdx_with_refactorability.csv ===
+Dataset Size: 798 pairs evaluated
+TP: 246 | FP: 132 | TN: 267 | FN: 153
+Total Penalty: -625 (Average per true clone: -1.57)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_libgdx_with_refactorability.html
+
+=== Evaluation Results for: pred_jackrabbit_with_refactorability.csv ===
+Dataset Size: 690 pairs evaluated
+TP: 186 | FP: 33 | TN: 312 | FN: 159
+Total Penalty: -310 (Average per true clone: -0.90)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_jackrabbit_with_refactorability.html
+
+=== Evaluation Results for: pred_commons-lang_with_refactorability.csv ===
+Dataset Size: 402 pairs evaluated
+TP: 193 | FP: 152 | TN: 49 | FN: 8
+Total Penalty: -381 (Average per true clone: -1.90)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_commons-lang_with_refactorability.html
+
+=== Evaluation Results for: pred_maven_with_refactorability.csv ===
+Dataset Size: 264 pairs evaluated
+TP: 17 | FP: 2 | TN: 130 | FN: 115
+Total Penalty: -126 (Average per true clone: -0.95)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_maven_with_refactorability.html
+
+=== Evaluation Results for: pred_commons-math_with_refactorability.csv ===
+Dataset Size: 330 pairs evaluated
+TP: 162 | FP: 140 | TN: 25 | FN: 3
+Total Penalty: -411 (Average per true clone: -2.49)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_commons-math_with_refactorability.html
+
+=== Evaluation Results for: pred_pdfbox_with_refactorability.csv ===
+Dataset Size: 172 pairs evaluated
+TP: 18 | FP: 8 | TN: 78 | FN: 68
+Total Penalty: -91 (Average per true clone: -1.06)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_pdfbox_with_refactorability.html
+
+=== Evaluation Results for: pred_synapse_with_refactorability.csv ===
+Dataset Size: 354 pairs evaluated
+TP: 52 | FP: 5 | TN: 172 | FN: 125
+Total Penalty: -157 (Average per true clone: -0.89)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_synapse_with_refactorability.html
+
+=== Evaluation Results for: pred_mockito_with_refactorability.csv ===
+Dataset Size: 50 pairs evaluated
+TP: 12 | FP: 0 | TN: 25 | FN: 13
+Total Penalty: -21 (Average per true clone: -0.84)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_mockito_with_refactorability.html
+
+=== Evaluation Results for: pred_derby_with_refactorability.csv ===
+Dataset Size: 1018 pairs evaluated
+TP: 372 | FP: 210 | TN: 299 | FN: 137
+Total Penalty: -858 (Average per true clone: -1.69)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_derby_with_refactorability.html
+
+=== Evaluation Results for: pred_cxf_with_refactorability.csv ===
+Dataset Size: 892 pairs evaluated
+TP: 45 | FP: 4 | TN: 442 | FN: 401
+Total Penalty: -441 (Average per true clone: -0.99)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_cxf_with_refactorability.html
+
+=== Evaluation Results for: pred_logging-log4j2_with_refactorability.csv ===
+Dataset Size: 340 pairs evaluated
+TP: 62 | FP: 12 | TN: 158 | FN: 108
+Total Penalty: -170 (Average per true clone: -1.00)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_logging-log4j2_with_refactorability.html
+
+=== Evaluation Results for: pred_jruby_with_refactorability.csv ===
+Dataset Size: 294 pairs evaluated
+TP: 38 | FP: 23 | TN: 124 | FN: 109
+Total Penalty: -178 (Average per true clone: -1.21)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_jruby_with_refactorability.html
+
+=== Evaluation Results for: pred_jmeter_with_refactorability.csv ===
+Dataset Size: 128 pairs evaluated
+TP: 4 | FP: 0 | TN: 64 | FN: 60
+Total Penalty: -60 (Average per true clone: -0.94)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_jmeter_with_refactorability.html
+
+=== Evaluation Results for: pred_RxJava_with_refactorability.csv ===
+Dataset Size: 646 pairs evaluated
+TP: 95 | FP: 72 | TN: 251 | FN: 228
+Total Penalty: -439 (Average per true clone: -1.36)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_RxJava_with_refactorability.html
+
+=== Evaluation Results for: pred_gson_with_refactorability.csv ===
+Dataset Size: 24 pairs evaluated
+TP: 3 | FP: 1 | TN: 11 | FN: 9
+Total Penalty: -10 (Average per true clone: -0.83)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_gson_with_refactorability.html
+
+=== Evaluation Results for: pred_jfreechart_with_refactorability.csv ===
+Dataset Size: 554 pairs evaluated
+TP: 75 | FP: 39 | TN: 238 | FN: 202
+Total Penalty: -329 (Average per true clone: -1.19)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_jfreechart_with_refactorability.html
+
+=== Evaluation Results for: pred_camel_with_refactorability.csv ===
+Dataset Size: 2034 pairs evaluated
+TP: 90 | FP: 8 | TN: 1009 | FN: 927
+Total Penalty: -973 (Average per true clone: -0.96)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_camel_with_refactorability.html
+
+=== Evaluation Results for: pred_groovy_with_refactorability.csv ===
+Dataset Size: 220 pairs evaluated
+TP: 68 | FP: 23 | TN: 87 | FN: 42
+Total Penalty: -119 (Average per true clone: -1.08)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_groovy_with_refactorability.html
+
+=== Evaluation Results for: pred_tika_with_refactorability.csv ===
+Dataset Size: 140 pairs evaluated
+TP: 33 | FP: 1 | TN: 69 | FN: 37
+Total Penalty: -54 (Average per true clone: -0.77)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_tika_with_refactorability.html
+
+=== Evaluation Results for: pred_ant-ivy_with_refactorability.csv ===
+Dataset Size: 114 pairs evaluated
+TP: 7 | FP: 0 | TN: 57 | FN: 50
+Total Penalty: -50 (Average per true clone: -0.88)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_ant-ivy_with_refactorability.html
+
+=== Evaluation Results for: pred_cassandra_with_refactorability.csv ===
+Dataset Size: 272 pairs evaluated
+TP: 32 | FP: 12 | TN: 124 | FN: 104
+Total Penalty: -156 (Average per true clone: -1.15)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_cassandra_with_refactorability.html
+
+=== Evaluation Results for: pred_xerces-j_with_refactorability.csv ===
+Dataset Size: 720 pairs evaluated
+TP: 124 | FP: 38 | TN: 322 | FN: 236
+Total Penalty: -364 (Average per true clone: -1.01)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_xerces-j_with_refactorability.html
+
+=== Evaluation Results for: pred_wicket_with_refactorability.csv ===
+Dataset Size: 160 pairs evaluated
+TP: 11 | FP: 2 | TN: 78 | FN: 69
+Total Penalty: -73 (Average per true clone: -0.91)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_wicket_with_refactorability.html
+
+=== Evaluation Results for: pred_argouml_with_refactorability.csv ===
+Dataset Size: 944 pairs evaluated
+TP: 110 | FP: 34 | TN: 438 | FN: 362
+Total Penalty: -465 (Average per true clone: -0.99)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_argouml_with_refactorability.html
+
+=== Evaluation Results for: pred_lucene_with_refactorability.csv ===
+Dataset Size: 2502 pairs evaluated
+TP: 830 | FP: 410 | TN: 841 | FN: 421
+Total Penalty: -1779 (Average per true clone: -1.42)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_lucene_with_refactorability.html
+
+=== Evaluation Results for: pred_commons-codec_with_refactorability.csv ===
+Dataset Size: 8 pairs evaluated
+TP: 2 | FP: 0 | TN: 4 | FN: 2
+Total Penalty: -4 (Average per true clone: -1.00)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_commons-codec_with_refactorability.html
+
+=== Evaluation Results for: pred_storm_with_refactorability.csv ===
+Dataset Size: 606 pairs evaluated
+TP: 20 | FP: 6 | TN: 297 | FN: 283
+Total Penalty: -313 (Average per true clone: -1.03)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_storm_with_refactorability.html
+
+=== Evaluation Results for: pred_flink_with_refactorability.csv ===
+Dataset Size: 1478 pairs evaluated
+TP: 275 | FP: 51 | TN: 688 | FN: 464
+Total Penalty: -706 (Average per true clone: -0.96)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_flink_with_refactorability.html
+
+=== Evaluation Results for: pred_zookeeper_with_refactorability.csv ===
+Dataset Size: 192 pairs evaluated
+TP: 10 | FP: 1 | TN: 95 | FN: 86
+Total Penalty: -89 (Average per true clone: -0.93)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_zookeeper_with_refactorability.html
+
+=== Evaluation Results for: pred_jhotdraw7_with_refactorability.csv ===
+Dataset Size: 502 pairs evaluated
+TP: 32 | FP: 4 | TN: 247 | FN: 219
+Total Penalty: -255 (Average per true clone: -1.02)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_jhotdraw7_with_refactorability.html
+
+=== Evaluation Results for: pred_presto_with_refactorability.csv ===
+Dataset Size: 1760 pairs evaluated
+TP: 333 | FP: 71 | TN: 809 | FN: 547
+Total Penalty: -933 (Average per true clone: -1.06)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_presto_with_refactorability.html
+
+=== Evaluation Results for: pred_dubbo_with_refactorability.csv ===
+Dataset Size: 480 pairs evaluated
+TP: 21 | FP: 2 | TN: 238 | FN: 219
+Total Penalty: -246 (Average per true clone: -1.02)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_before_codegpt_dubbo_with_refactorability.html
+
+--> Appended 48 RCP scores to: output/codegpt/rcp_scores.jsonl
+ 
+-----------------------------
+Processing Directory: ./data/pred_after_adapt_refactorability/codegpt/
+-----------------------------
+
+=== Evaluation Results for: pred_hbase_with_refactorability.csv ===
+Dataset Size: 830 pairs evaluated
+TP: 406 | FP: 14 | TN: 401 | FN: 9
+Total Penalty: -425 (Average per true clone: -1.02)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_hbase_with_refactorability.html
+
+=== Evaluation Results for: pred_hive_with_refactorability.csv ===
+Dataset Size: 2548 pairs evaluated
+TP: 1266 | FP: 38 | TN: 1236 | FN: 8
+Total Penalty: -879 (Average per true clone: -0.69)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_hive_with_refactorability.html
+
+=== Evaluation Results for: pred_ignite_with_refactorability.csv ===
+Dataset Size: 1288 pairs evaluated
+TP: 638 | FP: 16 | TN: 628 | FN: 6
+Total Penalty: -410 (Average per true clone: -0.64)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_ignite_with_refactorability.html
+
+=== Evaluation Results for: pred_netty_with_refactorability.csv ===
+Dataset Size: 862 pairs evaluated
+TP: 426 | FP: 16 | TN: 415 | FN: 5
+Total Penalty: -218 (Average per true clone: -0.51)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_netty_with_refactorability.html
+
+=== Evaluation Results for: pred_hadoop_with_refactorability.csv ===
+Dataset Size: 2104 pairs evaluated
+TP: 1039 | FP: 36 | TN: 1016 | FN: 13
+Total Penalty: -890 (Average per true clone: -0.85)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_hadoop_with_refactorability.html
+
+=== Evaluation Results for: pred_closure-compiler_with_refactorability.csv ===
+Dataset Size: 18 pairs evaluated
+TP: 8 | FP: 1 | TN: 8 | FN: 1
+Total Penalty: -6 (Average per true clone: -0.67)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_closure-compiler_with_refactorability.html
+
+=== Evaluation Results for: pred_tomcat_with_refactorability.csv ===
+Dataset Size: 480 pairs evaluated
+TP: 237 | FP: 9 | TN: 231 | FN: 3
+Total Penalty: -125 (Average per true clone: -0.52)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_tomcat_with_refactorability.html
+
+=== Evaluation Results for: pred_activemq_with_refactorability.csv ===
+Dataset Size: 1446 pairs evaluated
+TP: 718 | FP: 27 | TN: 696 | FN: 5
+Total Penalty: -258 (Average per true clone: -0.36)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_activemq_with_refactorability.html
+
+=== Evaluation Results for: pred_poi_with_refactorability.csv ===
+Dataset Size: 1102 pairs evaluated
+TP: 544 | FP: 21 | TN: 530 | FN: 7
+Total Penalty: -200 (Average per true clone: -0.36)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_poi_with_refactorability.html
+
+=== Evaluation Results for: pred_pig_with_refactorability.csv ===
+Dataset Size: 712 pairs evaluated
+TP: 352 | FP: 24 | TN: 332 | FN: 4
+Total Penalty: -112 (Average per true clone: -0.31)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_pig_with_refactorability.html
+
+=== Evaluation Results for: pred_elasticsearch_with_refactorability.csv ===
+Dataset Size: 2506 pairs evaluated
+TP: 1231 | FP: 37 | TN: 1216 | FN: 22
+Total Penalty: -512 (Average per true clone: -0.41)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_elasticsearch_with_refactorability.html
+
+=== Evaluation Results for: pred_joda-time_with_refactorability.csv ===
+Dataset Size: 102 pairs evaluated
+TP: 48 | FP: 2 | TN: 49 | FN: 3
+Total Penalty: -23 (Average per true clone: -0.45)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_joda-time_with_refactorability.html
+
+=== Evaluation Results for: pred_jEdit_with_refactorability.csv ===
+Dataset Size: 262 pairs evaluated
+TP: 129 | FP: 7 | TN: 124 | FN: 2
+Total Penalty: -76 (Average per true clone: -0.58)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_jEdit_with_refactorability.html
+
+=== Evaluation Results for: pred_openjpa_with_refactorability.csv ===
+Dataset Size: 716 pairs evaluated
+TP: 353 | FP: 12 | TN: 346 | FN: 5
+Total Penalty: -206 (Average per true clone: -0.58)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_openjpa_with_refactorability.html
+
+=== Evaluation Results for: pred_cayenne_with_refactorability.csv ===
+Dataset Size: 774 pairs evaluated
+TP: 386 | FP: 12 | TN: 375 | FN: 1
+Total Penalty: -188 (Average per true clone: -0.49)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_cayenne_with_refactorability.html
+
+=== Evaluation Results for: pred_kafka_with_refactorability.csv ===
+Dataset Size: 476 pairs evaluated
+TP: 235 | FP: 5 | TN: 233 | FN: 3
+Total Penalty: -113 (Average per true clone: -0.47)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_kafka_with_refactorability.html
+
+=== Evaluation Results for: pred_libgdx_with_refactorability.csv ===
+Dataset Size: 798 pairs evaluated
+TP: 396 | FP: 11 | TN: 388 | FN: 3
+Total Penalty: -237 (Average per true clone: -0.59)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_libgdx_with_refactorability.html
+
+=== Evaluation Results for: pred_jackrabbit_with_refactorability.csv ===
+Dataset Size: 690 pairs evaluated
+TP: 339 | FP: 13 | TN: 332 | FN: 6
+Total Penalty: -215 (Average per true clone: -0.62)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_jackrabbit_with_refactorability.html
+
+=== Evaluation Results for: pred_commons-lang_with_refactorability.csv ===
+Dataset Size: 402 pairs evaluated
+TP: 201 | FP: 9 | TN: 192 | FN: 0
+Total Penalty: -89 (Average per true clone: -0.44)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_commons-lang_with_refactorability.html
+
+=== Evaluation Results for: pred_maven_with_refactorability.csv ===
+Dataset Size: 264 pairs evaluated
+TP: 132 | FP: 5 | TN: 127 | FN: 0
+Total Penalty: -108 (Average per true clone: -0.82)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_maven_with_refactorability.html
+
+=== Evaluation Results for: pred_commons-math_with_refactorability.csv ===
+Dataset Size: 330 pairs evaluated
+TP: 165 | FP: 7 | TN: 158 | FN: 0
+Total Penalty: -66 (Average per true clone: -0.40)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_commons-math_with_refactorability.html
+
+=== Evaluation Results for: pred_pdfbox_with_refactorability.csv ===
+Dataset Size: 172 pairs evaluated
+TP: 85 | FP: 5 | TN: 81 | FN: 1
+Total Penalty: -31 (Average per true clone: -0.36)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_pdfbox_with_refactorability.html
+
+=== Evaluation Results for: pred_synapse_with_refactorability.csv ===
+Dataset Size: 354 pairs evaluated
+TP: 174 | FP: 11 | TN: 166 | FN: 3
+Total Penalty: -84 (Average per true clone: -0.47)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_synapse_with_refactorability.html
+
+=== Evaluation Results for: pred_mockito_with_refactorability.csv ===
+Dataset Size: 50 pairs evaluated
+TP: 25 | FP: 2 | TN: 23 | FN: 0
+Total Penalty: -21 (Average per true clone: -0.84)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_mockito_with_refactorability.html
+
+=== Evaluation Results for: pred_derby_with_refactorability.csv ===
+Dataset Size: 1018 pairs evaluated
+TP: 497 | FP: 23 | TN: 486 | FN: 12
+Total Penalty: -303 (Average per true clone: -0.60)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_derby_with_refactorability.html
+
+=== Evaluation Results for: pred_cxf_with_refactorability.csv ===
+Dataset Size: 892 pairs evaluated
+TP: 439 | FP: 18 | TN: 428 | FN: 7
+Total Penalty: -189 (Average per true clone: -0.42)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_cxf_with_refactorability.html
+
+=== Evaluation Results for: pred_logging-log4j2_with_refactorability.csv ===
+Dataset Size: 340 pairs evaluated
+TP: 169 | FP: 5 | TN: 165 | FN: 1
+Total Penalty: -89 (Average per true clone: -0.52)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_logging-log4j2_with_refactorability.html
+
+=== Evaluation Results for: pred_jmeter_with_refactorability.csv ===
+Dataset Size: 128 pairs evaluated
+TP: 61 | FP: 7 | TN: 57 | FN: 3
+Total Penalty: -28 (Average per true clone: -0.44)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_jmeter_with_refactorability.html
+
+=== Evaluation Results for: pred_RxJava_with_refactorability.csv ===
+Dataset Size: 646 pairs evaluated
+TP: 316 | FP: 19 | TN: 304 | FN: 7
+Total Penalty: -186 (Average per true clone: -0.58)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_RxJava_with_refactorability.html
+
+=== Evaluation Results for: pred_gson_with_refactorability.csv ===
+Dataset Size: 24 pairs evaluated
+TP: 11 | FP: 0 | TN: 12 | FN: 1
+Total Penalty: -2 (Average per true clone: -0.17)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_gson_with_refactorability.html
+
+=== Evaluation Results for: pred_jfreechart_with_refactorability.csv ===
+Dataset Size: 554 pairs evaluated
+TP: 271 | FP: 15 | TN: 262 | FN: 6
+Total Penalty: -148 (Average per true clone: -0.53)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_jfreechart_with_refactorability.html
+
+=== Evaluation Results for: pred_camel_with_refactorability.csv ===
+Dataset Size: 2034 pairs evaluated
+TP: 1002 | FP: 28 | TN: 989 | FN: 15
+Total Penalty: -353 (Average per true clone: -0.35)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_camel_with_refactorability.html
+
+=== Evaluation Results for: pred_groovy_with_refactorability.csv ===
+Dataset Size: 220 pairs evaluated
+TP: 109 | FP: 5 | TN: 105 | FN: 1
+Total Penalty: -63 (Average per true clone: -0.57)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_groovy_with_refactorability.html
+
+=== Evaluation Results for: pred_tika_with_refactorability.csv ===
+Dataset Size: 140 pairs evaluated
+TP: 66 | FP: 4 | TN: 66 | FN: 4
+Total Penalty: -44 (Average per true clone: -0.63)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_tika_with_refactorability.html
+
+=== Evaluation Results for: pred_ant-ivy_with_refactorability.csv ===
+Dataset Size: 114 pairs evaluated
+TP: 56 | FP: 2 | TN: 55 | FN: 1
+Total Penalty: -46 (Average per true clone: -0.81)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_ant-ivy_with_refactorability.html
+
+=== Evaluation Results for: pred_cassandra_with_refactorability.csv ===
+Dataset Size: 272 pairs evaluated
+TP: 132 | FP: 4 | TN: 132 | FN: 4
+Total Penalty: -93 (Average per true clone: -0.68)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_cassandra_with_refactorability.html
+
+=== Evaluation Results for: pred_xerces-j_with_refactorability.csv ===
+Dataset Size: 720 pairs evaluated
+TP: 359 | FP: 10 | TN: 350 | FN: 1
+Total Penalty: -196 (Average per true clone: -0.54)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_xerces-j_with_refactorability.html
+
+=== Evaluation Results for: pred_wicket_with_refactorability.csv ===
+Dataset Size: 160 pairs evaluated
+TP: 80 | FP: 4 | TN: 76 | FN: 0
+Total Penalty: -36 (Average per true clone: -0.45)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_wicket_with_refactorability.html
+
+=== Evaluation Results for: pred_argouml_with_refactorability.csv ===
+Dataset Size: 944 pairs evaluated
+TP: 468 | FP: 16 | TN: 456 | FN: 4
+Total Penalty: -131 (Average per true clone: -0.28)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_argouml_with_refactorability.html
+
+=== Evaluation Results for: pred_lucene_with_refactorability.csv ===
+Dataset Size: 2502 pairs evaluated
+TP: 1245 | FP: 42 | TN: 1209 | FN: 6
+Total Penalty: -535 (Average per true clone: -0.43)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_lucene_with_refactorability.html
+
+=== Evaluation Results for: pred_commons-codec_with_refactorability.csv ===
+Dataset Size: 8 pairs evaluated
+TP: 4 | FP: 0 | TN: 4 | FN: 0
+Total Penalty: -2 (Average per true clone: -0.50)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_commons-codec_with_refactorability.html
+
+=== Evaluation Results for: pred_storm_with_refactorability.csv ===
+Dataset Size: 606 pairs evaluated
+TP: 302 | FP: 11 | TN: 292 | FN: 1
+Total Penalty: -291 (Average per true clone: -0.96)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_storm_with_refactorability.html
+
+=== Evaluation Results for: pred_flink_with_refactorability.csv ===
+Dataset Size: 1478 pairs evaluated
+TP: 729 | FP: 17 | TN: 722 | FN: 10
+Total Penalty: -446 (Average per true clone: -0.60)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_flink_with_refactorability.html
+
+=== Evaluation Results for: pred_zookeeper_with_refactorability.csv ===
+Dataset Size: 192 pairs evaluated
+TP: 95 | FP: 4 | TN: 92 | FN: 1
+Total Penalty: -33 (Average per true clone: -0.34)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_zookeeper_with_refactorability.html
+
+=== Evaluation Results for: pred_jhotdraw7_with_refactorability.csv ===
+Dataset Size: 502 pairs evaluated
+TP: 248 | FP: 10 | TN: 241 | FN: 3
+Total Penalty: -87 (Average per true clone: -0.35)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_jhotdraw7_with_refactorability.html
+
+=== Evaluation Results for: pred_presto_with_refactorability.csv ===
+Dataset Size: 1760 pairs evaluated
+TP: 875 | FP: 30 | TN: 850 | FN: 5
+Total Penalty: -547 (Average per true clone: -0.62)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_presto_with_refactorability.html
+
+=== Evaluation Results for: pred_dubbo_with_refactorability.csv ===
+Dataset Size: 480 pairs evaluated
+TP: 239 | FP: 2 | TN: 238 | FN: 1
+Total Penalty: -128 (Average per true clone: -0.53)
+--> Saved Refactoring Compatibility Penalty (RCP) Report to: output/codegpt/report_after_codegpt_dubbo_with_refactorability.html
+
+--> Appended 47 RCP scores to: output/codegpt/rcp_scores.jsonl
+ 

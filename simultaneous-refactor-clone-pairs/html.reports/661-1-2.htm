@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="template.files/style.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="template.files/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="template.files/script.js"></script>
+		<title>661-1-2</title>
+	</head>
+	<body>
+		<div id="invisible">
+		</div>
+		<div id="sourcecode">
+			<div><textarea></textarea></div>
+			<div><button id="closecode">Close</button></div>
+		</div>
+		<div id="centeralize">
+			<div id="firstCode">if (!obj.respondsTo(convertMethod)) {
+            return handleUncoercibleObject(raise, obj, target);
+        }
+        
+        return obj.callMethod(obj.getRuntime().getCurrentContext(), convertMethod);</div>
+			<div id="secondCode">if (!obj.respondsTo(convertMethod)) {
+            return handleUncoercibleObject(raise, obj, target);
+        }
+        
+        return obj.callMethod(obj.getRuntime().getCurrentContext(), convertMethod);</div>
+			<div id="textualdiff">
+				<table>
+					<caption>Clone fragments detected by clone detection tool</caption>
+					<tbody>	
+						<tr>
+							<td colspan="2">
+								<span class="bold">File path:</span> <!-- a href="file:////jruby-1.4.0/src/org/jruby/util/TypeConverter.java" target="_blank" -->/jruby-1.4.0/src/org/jruby/util/TypeConverter.java<!-- /a-->
+							</td>
+							<td></td>
+							<td colspan="2">
+								<span class="bold">File path:</span> <!--  a href="file:////jruby-1.4.0/src/org/jruby/util/TypeConverter.java" target="_blank" -->/jruby-1.4.0/src/org/jruby/util/TypeConverter.java<!--  /a -->
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<span class="bold">Method name:</span> <code>IRubyObject convertToType(IRubyObject, RubyClass, String, boolean)</code>
+							</td>
+							<td></td>
+							<td colspan="2">
+								<span class="bold">Method name:</span> <code>IRubyObject convertToType(IRubyObject, RubyClass, int, String, boolean)</code>
+							</td>
+						</tr>	
+						<tr>
+							<td colspan="2">
+								<span class="bold">Number of AST nodes:</span> 3
+							</td>
+							<td></td>
+							<td colspan="2">
+								<span class="bold">Number of AST nodes:</span> 3
+							</td>
+						</tr>
+						<tr class="sectionsdivider"><td colspan="5"></td></tr>
+						<!-- tr>
+							<td colspan="5">
+								<span class="caption">Textual Diff</span>
+							</td>
+						</tr-->
+					</tbody>
+					<tbody class="code">		
+						<tr class="coderow"><td class="lines ">1</td><td class=""><pre><span class="normal">if (!obj.respondsTo(convertMethod)) {</span><span class="carr">&crarr;</span></pre></td><td class="separator"></td><td class="lines ">1</td><td class=""><pre><pre><span class="normal">if (!obj.respondsTo(convertMethod)) {</span><span class="carr">&crarr;</span></pre></pre></td></tr>
+<tr class="coderow"><td class="lines ">2</td><td class=""><pre><span class="normal">            return handleUncoercibleObject(raise, obj, target);</span><span class="carr">&crarr;</span></pre></td><td class="separator"></td><td class="lines ">2</td><td class=""><pre><pre><span class="normal">            return handleUncoercibleObject(raise, obj, target);</span><span class="carr">&crarr;</span></pre></pre></td></tr>
+<tr class="coderow"><td class="lines ">3</td><td class=""><pre><span class="normal">        }</span><span class="carr">&crarr;</span></pre></td><td class="separator"></td><td class="lines ">3</td><td class=""><pre><pre><span class="normal">        }</span><span class="carr">&crarr;</span></pre></pre></td></tr>
+<tr class="coderow"><td class="lines ">4</td><td class=""><pre><span class="normal">        </span><span class="carr">&crarr;</span></pre></td><td class="separator"></td><td class="lines ">4</td><td class=""><pre><pre><span class="normal">        </span><span class="carr">&crarr;</span></pre></pre></td></tr>
+<tr class="coderow"><td class="lines ">5</td><td class=""><pre><span class="normal">        return obj.callMethod(obj.getRuntime().getCurrentContext(), convertMethod);</span></pre></td><td class="separator"></td><td class="lines ">5</td><td class=""><pre><pre><span class="normal">        return obj.callMethod(obj.getRuntime().getCurrentContext(), convertMethod);</span></pre></pre></td></tr>
+
+					</tbody>
+					<tbody>
+						<tr class="copylinks">
+							<td colspan="2"><a id="firstCodeShow" class="codeShow" href="#">See real code fragment</a></td>
+							<td></td>
+							<td colspan="2"><a id="secondCodeShow" class="codeShow" href="#">See real code fragment</a></td>
+						</tr>					
+					</tbody>
+				</table>
+			</div>
+			<div></div>
+			<div id="summary">
+				<table>
+					<caption>Summary</caption>
+					<tbody>
+
+						<tr>
+							<td>Number of common nesting structure subtrees</td><td class="right"><span class="bold">1</span></td>
+						</tr>
+						<tr>
+							<td>Number of <a href="#refactorablelist">refactorable cases</a></td><td class="right"><span class="bold">1</span></td>
+						</tr>
+						<tr>
+							<td>Number of <a href="#notrefactorablelist">non-refactorable cases</a></td><td class="right"><span class="bold">0</span></td>
+						</tr>
+						<tr>
+							<td>Time elapsed for finding largest common nesting structure subtrees (ms)</td><td class="right"><span class="bold">0.1</span></td> 
+						</tr>
+						<tr>
+							<td>Clones location</td><td class="right"><span class="bold">Clones are declared in the same class</span></td> 
+						</tr>
+						<tr>
+							<td>Number of node comparisons</td><td class="right"><span class="bold">5</span></td> 
+						</tr>
+					</tbody>
+				</table>	
+			</div>
+			<div></div>
+			<ol id="refactorablelist">
+			
+			<li class="listnumber">
+				<div class="refactorabletitle">
+					<span class="refactorable">{Refactorable}</span>
+				</div>
+				<div id="mappingsummarycenterer">
+					<div id="mappingsummary">
+						<table>
+							<caption>Mapping Summary</caption>
+							<tbody>
+								<tr>
+									<td>Number of mapped statements</td><td class="right"><span class="bold">3</span></td>
+								</tr>
+								<tr>
+									<td>Number of unmapped statements in the first code fragment</td><td class="right"><span class="bold">0</span></td>
+								</tr>
+								<tr>
+									<td>Number of unmapped statements in the second code fragment</td><td class="right"><span class="bold">0</span></td>
+								</tr>
+								<tr>
+									<td>Time elapsed for statement mapping (ms)</td><td class="right"><span class="bold">0.4</span></td>
+								</tr>
+							<tr>
+								<td>Clone type</td><td class="right"><span class="bold">Type 1</span></td>
+							</tr>
+						</tbody>			
+						</table>
+					</table>
+				</div>
+			</div>
+			<table id="mappedstatements">
+				<caption class="small">Mapped Statements</caption>
+				<tbody>
+					<tr>
+						<th class="id">ID</th>
+						<th>Statement</th>
+						<th></th>
+						<th>ID</th>
+						<th>Statement</th>
+					</tr>
+					<tr class="child ID-1"><td class="id ">1</td><td class="codeline LEFT "><pre class="codeview"><div class="expand ID0"></div><span style="color: rgb(127, 0, 85);font-family: 'consolas'">if</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">(</span><span style="font-family: 'consolas'">!</span><span style="font-family: 'consolas'">obj</span><span style="font-family: 'consolas'">.</span><span style="font-family: 'consolas'">respondsTo</span><span style="font-family: 'consolas'">(</span><span style="font-family: 'consolas'">convertMethod</span><span style="font-family: 'consolas'">)</span><span style="font-family: 'consolas'">)</span></pre></td><td class="mappedimage"></td><td class="id ">1</td><td class="codeline RIGHT "><pre class="codeview"><div class="expand ID0"></div><span style="color: rgb(127, 0, 85);font-family: 'consolas'">if</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">(</span><span style="font-family: 'consolas'">!</span><span style="font-family: 'consolas'">obj</span><span style="font-family: 'consolas'">.</span><span style="font-family: 'consolas'">respondsTo</span><span style="font-family: 'consolas'">(</span><span style="font-family: 'consolas'">convertMethod</span><span style="font-family: 'consolas'">)</span><span style="font-family: 'consolas'">)</span></pre></td></tr><tr class="child ID0"><td class="id ">2</td><td class="codeline LEFT "><div class="tree"><pre class="codeview"><span style="color: rgb(127, 0, 85);font-family: 'consolas'">return</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">handleUncoercibleObject</span><span style="font-family: 'consolas'">(</span><span style="font-family: 'consolas'">raise</span><span style="font-family: 'consolas'">, </span><span style="font-family: 'consolas'">obj</span><span style="font-family: 'consolas'">, </span><span style="font-family: 'consolas'">target</span><span style="font-family: 'consolas'">)</span><span style="font-family: 'consolas'">;</span></pre></div></td><td class="mappedimage"></td><td class="id ">2</td><td class="codeline RIGHT "><div class="tree"><pre class="codeview"><span style="color: rgb(127, 0, 85);font-family: 'consolas'">return</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">handleUncoercibleObject</span><span style="font-family: 'consolas'">(</span><span style="font-family: 'consolas'">raise</span><span style="font-family: 'consolas'">, </span><span style="font-family: 'consolas'">obj</span><span style="font-family: 'consolas'">, </span><span style="font-family: 'consolas'">target</span><span style="font-family: 'consolas'">)</span><span style="font-family: 'consolas'">;</span></pre></div></td></tr><tr class="child ID-1"><td class="id ">3</td><td class="codeline LEFT "><pre class="codeview"><span style="color: rgb(127, 0, 85);font-family: 'consolas'">return</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">obj</span><span style="font-family: 'consolas'">.</span><span style="font-family: 'consolas'">callMethod</span><span style="font-family: 'consolas'">(</span><span style="font-family: 'consolas'">obj</span><span style="font-family: 'consolas'">.</span><span style="font-family: 'consolas'">getRuntime</span><span style="font-family: 'consolas'">(</span><span style="font-family: 'consolas'">)</span><span style="font-family: 'consolas'">.</span><span style="font-family: 'consolas'">getCurrentContext</span><span style="font-family: 'consolas'">(</span><span style="font-family: 'consolas'">)</span><span style="font-family: 'consolas'">, </span><span style="font-family: 'consolas'">convertMethod</span><span style="font-family: 'consolas'">)</span><span style="font-family: 'consolas'">;</span></pre></td><td class="mappedimage"></td><td class="id ">3</td><td class="codeline RIGHT "><pre class="codeview"><span style="color: rgb(127, 0, 85);font-family: 'consolas'">return</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">obj</span><span style="font-family: 'consolas'">.</span><span style="font-family: 'consolas'">callMethod</span><span style="font-family: 'consolas'">(</span><span style="font-family: 'consolas'">obj</span><span style="font-family: 'consolas'">.</span><span style="font-family: 'consolas'">getRuntime</span><span style="font-family: 'consolas'">(</span><span style="font-family: 'consolas'">)</span><span style="font-family: 'consolas'">.</span><span style="font-family: 'consolas'">getCurrentContext</span><span style="font-family: 'consolas'">(</span><span style="font-family: 'consolas'">)</span><span style="font-family: 'consolas'">, </span><span style="font-family: 'consolas'">convertMethod</span><span style="font-family: 'consolas'">)</span><span style="font-family: 'consolas'">;</span></pre></td></tr>
+				</tbody>
+			</table>
+			<table id="preconditionviolations">
+				<caption class="small">Precondition Violations (0)</caption>
+				<tbody>
+					<tr>
+						<th>Row</th>
+						<th>Violation</th>
+					</tr>
+					
+				</tbody>
+			</table>
+			</li>
+			
+			</ol>
+			<ol id="notrefactorablelist">
+			
+			</ol>
+			
+		</div>
+	</body>
+</html>

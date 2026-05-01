@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Refactoring Compatibility Penalty (RCP) Analysis</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; color: #333; }
+        .summary-box { background-color: #f8f9fa; padding: 15px; border: 1px solid #ddd; border-radius: 5px; width: 600px; margin-bottom: 20px; }
+        .matrix-table { width: 100%; text-align: left; margin-bottom: 15px; background: #fff; padding: 10px; border: 1px solid #eee; }
+        .matrix-table th { font-weight: bold; color: #555; }
+        .data-table { border-collapse: collapse; width: 100%; margin-bottom: 30px; font-size: 0.9em; }
+        .data-table th, .data-table td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        .data-table th { background-color: #e9ecef; }
+        .fp-section h2 { color: #d32f2f; border-bottom: 2px solid #d32f2f; padding-bottom: 5px; }
+        .fn-section h2 { color: #ed6c02; border-bottom: 2px solid #ed6c02; padding-bottom: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Refactoring Compatibility Penalty (RCP) Analysis ($stage Adaptation)</h1>
+    <p><strong>Model:</strong> $model | <strong>Input:</strong> $input_filename | <strong>Dataset Size:</strong> $total_pairs pairs</p>
+
+    <div class="summary-box">
+        <h3>Metrics Summary</h3>
+        
+        <table class="matrix-table">
+            <tr>
+                <th>True Positives (TP):</th> <td>$tp</td>
+                <th>False Positives (FP):</th> <td>$fp</td>
+            </tr>
+            <tr>
+                <th>True Negatives (TN):</th> <td>$tn</td>
+                <th>False Negatives (FN):</th> <td>$fn</td>
+            </tr>
+        </table>
+
+        <strong>Calculations:</strong>
+        <ul style="margin-top: 5px; line-height: 1.8;">
+            <li><strong>Precision:</strong> TP / (TP + FP) = $tp / ($tp + $fp) = <strong>$precision</strong></li>
+            <li><strong>Recall:</strong> TP / (TP + FN) = $tp / ($tp + $fn) = <strong>$recall</strong></li>
+            <li><strong>F1-Score:</strong> 2 &times; (P &times; R) / (P + R) = <strong>$f1_score</strong></li>
+            <li><strong>Refactoring Compatibility Penalty (RCP) Score:</strong> Total Penalty = <strong>$total_penalty</strong> (Average: $avg_penalty per pair)</li>
+        </ul>
+    </div>
+
+    <div class="fp-section">
+        <h2>False Positives (Predicted Clone, Actual Not Clone)</h2>
+        <p>The model incorrectly identified these pairs as clones.</p>
+        $fp_html
+    </div>
+
+    <div class="fn-section">
+        <h2>False Negatives (Predicted Not Clone, Actual Clone)</h2>
+        <p>The model completely missed these actual clones.</p>
+        $fn_html
+    </div>
+</body>
+</html>

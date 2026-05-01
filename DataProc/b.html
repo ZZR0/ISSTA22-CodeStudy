@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Clone Group Inspector</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 16px; }
+    .group { border: 1px solid #ddd; border-radius: 10px; padding: 12px; margin-bottom: 14px; }
+    .meta { color: #444; margin-bottom: 8px; }
+    details { border: 1px solid #eee; border-radius: 10px; padding: 10px; margin: 10px 0; background: #fafafa; }
+    summary { cursor: pointer; font-weight: 600; }
+    pre { white-space: pre-wrap; background: #111; color: #f1f1f1; padding: 10px; border-radius: 10px; overflow-x: auto; }
+    table { border-collapse: collapse; margin-top: 8px; font-size: 14px; }
+    td, th { border: 1px solid #ddd; padding: 6px 8px; text-align: center; }
+    th { background: #f3f3f3; }
+    .small { font-size: 13px; color: #555; }
+  </style>
+</head>
+<body>
+<h2>Clone Group Inspector</h2>
+<p class="small">Each group shows snippets and a pairwise similarity matrix (token Jaccard / trigram Jaccard).</p>
+
+<div class="group">
+<div class="meta"><b>CLASSID</b>: 1689 &nbsp; | &nbsp; <b>nclones</b>: 5 &nbsp; | &nbsp; <b>dataset_similarity</b>: 92.0</div>
+<details>
+<summary>[1] org.apache.camel.spring.xml.handler.CamelNamespaceHandler.doParse(Element element, ParserContext parserContext, BeanDefinitionBuilder builder)</summary>
+<div class="small">file: systems/camel-java/components/camel-spring-parent/camel-spring-xml/src/main/java/org/apache/camel/spring/xml/handler/CamelNamespaceHandler.java:262-282 | nlines: 21 | pcid: 67356</div>
+<pre>        protected void doParse(Element element, ParserContext parserContext, BeanDefinitionBuilder builder) {
+            doBeforeParse(element);
+            super.doParse(element, parserContext, builder);
+
+             
+            Binder&lt;Node&gt; binder;
+            try {
+                binder = getJaxbContext().createBinder();
+            } catch (JAXBException e) {
+                throw new BeanDefinitionStoreException(&quot;Failed to create the JAXB binder&quot;, e);
+            }
+            Object value = parseUsingJaxb(element, parserContext, binder);
+
+            if (value instanceof CamelRouteContextFactoryBean) {
+                CamelRouteContextFactoryBean factoryBean = (CamelRouteContextFactoryBean) value;
+                builder.addPropertyValue(&quot;routes&quot;, factoryBean.getRoutes());
+            }
+
+             
+            injectNamespaces(element, binder);
+        }</pre>
+</details>
+<details>
+<summary>[2] org.apache.camel.spring.xml.handler.CamelNamespaceHandler.doParse(Element element, ParserContext parserContext, BeanDefinitionBuilder builder)</summary>
+<div class="small">file: systems/camel-java/components/camel-spring-parent/camel-spring-xml/src/main/java/org/apache/camel/spring/xml/handler/CamelNamespaceHandler.java:379-399 | nlines: 21 | pcid: 67364</div>
+<pre>        protected void doParse(Element element, ParserContext parserContext, BeanDefinitionBuilder builder) {
+            doBeforeParse(element);
+            super.doParse(element, parserContext, builder);
+
+             
+            Binder&lt;Node&gt; binder;
+            try {
+                binder = getJaxbContext().createBinder();
+            } catch (JAXBException e) {
+                throw new BeanDefinitionStoreException(&quot;Failed to create the JAXB binder&quot;, e);
+            }
+            Object value = parseUsingJaxb(element, parserContext, binder);
+
+            if (value instanceof CamelRestContextFactoryBean) {
+                CamelRestContextFactoryBean factoryBean = (CamelRestContextFactoryBean) value;
+                builder.addPropertyValue(&quot;rests&quot;, factoryBean.getRests());
+            }
+
+             
+            injectNamespaces(element, binder);
+        }</pre>
+</details>
+<details>
+<summary>[3] org.apache.camel.spring.xml.handler.CamelNamespaceHandler.doParse(Element element, ParserContext parserContext, BeanDefinitionBuilder builder)</summary>
+<div class="small">file: systems/camel-java/components/camel-spring-parent/camel-spring-xml/src/main/java/org/apache/camel/spring/xml/handler/CamelNamespaceHandler.java:352-369 | nlines: 18 | pcid: 67362</div>
+<pre>        protected void doParse(Element element, ParserContext parserContext, BeanDefinitionBuilder builder) {
+            doBeforeParse(element);
+            super.doParse(element, parserContext, builder);
+
+             
+            Binder&lt;Node&gt; binder;
+            try {
+                binder = getJaxbContext().createBinder();
+            } catch (JAXBException e) {
+                throw new BeanDefinitionStoreException(&quot;Failed to create the JAXB binder&quot;, e);
+            }
+            Object value = parseUsingJaxb(element, parserContext, binder);
+
+            if (value instanceof CamelEndpointFactoryBean) {
+                CamelEndpointFactoryBean factoryBean = (CamelEndpointFactoryBean) value;
+                builder.addPropertyValue(&quot;properties&quot;, factoryBean.getProperties());
+            }
+        }</pre>
+</details>
+<details>
+<summary>[4] org.apache.camel.spring.xml.handler.CamelNamespaceHandler.doParse(Element element, ParserContext parserContext, BeanDefinitionBuilder builder)</summary>
+<div class="small">file: systems/camel-java/components/camel-spring-parent/camel-spring-xml/src/main/java/org/apache/camel/spring/xml/handler/CamelNamespaceHandler.java:292-312 | nlines: 21 | pcid: 67358</div>
+<pre>        protected void doParse(Element element, ParserContext parserContext, BeanDefinitionBuilder builder) {
+            doBeforeParse(element);
+            super.doParse(element, parserContext, builder);
+
+             
+            Binder&lt;Node&gt; binder;
+            try {
+                binder = getJaxbContext().createBinder();
+            } catch (JAXBException e) {
+                throw new BeanDefinitionStoreException(&quot;Failed to create the JAXB binder&quot;, e);
+            }
+            Object value = parseUsingJaxb(element, parserContext, binder);
+
+            if (value instanceof CamelRouteConfigurationContextFactoryBean) {
+                CamelRouteConfigurationContextFactoryBean factoryBean = (CamelRouteConfigurationContextFactoryBean) value;
+                builder.addPropertyValue(&quot;routeConfigurations&quot;, factoryBean.getRouteConfigurations());
+            }
+
+             
+            injectNamespaces(element, binder);
+        }</pre>
+</details>
+<details>
+<summary>[5] org.apache.camel.spring.xml.handler.CamelNamespaceHandler.doParse(Element element, ParserContext parserContext, BeanDefinitionBuilder builder)</summary>
+<div class="small">file: systems/camel-java/components/camel-spring-parent/camel-spring-xml/src/main/java/org/apache/camel/spring/xml/handler/CamelNamespaceHandler.java:322-342 | nlines: 21 | pcid: 67360</div>
+<pre>        protected void doParse(Element element, ParserContext parserContext, BeanDefinitionBuilder builder) {
+            doBeforeParse(element);
+            super.doParse(element, parserContext, builder);
+
+             
+            Binder&lt;Node&gt; binder;
+            try {
+                binder = getJaxbContext().createBinder();
+            } catch (JAXBException e) {
+                throw new BeanDefinitionStoreException(&quot;Failed to create the JAXB binder&quot;, e);
+            }
+            Object value = parseUsingJaxb(element, parserContext, binder);
+
+            if (value instanceof CamelRouteTemplateContextFactoryBean) {
+                CamelRouteTemplateContextFactoryBean factoryBean = (CamelRouteTemplateContextFactoryBean) value;
+                builder.addPropertyValue(&quot;routeTemplates&quot;, factoryBean.getRouteTemplates());
+            }
+
+             
+            injectNamespaces(element, binder);
+        }</pre>
+</details>
+<div class='small'><b>Pairwise similarity</b> (token Jaccard / trigram Jaccard)</div>
+<table>
+<tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
+<tr><th>1</th>
+<td>(self)</td>
+<td>100.0%<br/>100.0%</td>
+<td>100.0%<br/> 97.1%</td>
+<td>100.0%<br/>100.0%</td>
+<td>100.0%<br/>100.0%</td>
+</tr>
+<tr><th>2</th>
+<td>100.0%<br/>100.0%</td>
+<td>(self)</td>
+<td>100.0%<br/> 97.1%</td>
+<td>100.0%<br/>100.0%</td>
+<td>100.0%<br/>100.0%</td>
+</tr>
+<tr><th>3</th>
+<td>100.0%<br/> 97.1%</td>
+<td>100.0%<br/> 97.1%</td>
+<td>(self)</td>
+<td>100.0%<br/> 97.1%</td>
+<td>100.0%<br/> 97.1%</td>
+</tr>
+<tr><th>4</th>
+<td>100.0%<br/>100.0%</td>
+<td>100.0%<br/>100.0%</td>
+<td>100.0%<br/> 97.1%</td>
+<td>(self)</td>
+<td>100.0%<br/>100.0%</td>
+</tr>
+<tr><th>5</th>
+<td>100.0%<br/>100.0%</td>
+<td>100.0%<br/>100.0%</td>
+<td>100.0%<br/> 97.1%</td>
+<td>100.0%<br/>100.0%</td>
+<td>(self)</td>
+</tr>
+</table>
+</div>
+</body></html>

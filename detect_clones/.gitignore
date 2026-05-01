@@ -1,0 +1,46 @@
+# ---- Editor / temp files ----
+*~
+*.swp
+*.swo
+*.tmp
+.vscode/
+.idea/
+
+# ---- Logs ----
+*.log
+NiCad*/nicad_logs/
+
+# ---- NiCad* generated outputs (under NiCad*/systems/) ----
+# Result directories
+NiCad*/systems/*--*clones*/
+NiCad*/systems/*--*crossclones*/
+NiCad*/systems/*--*blind-clones*/
+
+# Result files (reports / run outputs)
+NiCad*/systems/**/*.xml
+NiCad*/systems/**/*.html
+NiCad*/systems/**/*.log
+NiCad*/systems/*/
+
+# ---- Conda / Python ----
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# ---- Large artifacts ----
+*.tar.gz
+NiCad*/txl10.8b.linux64/
+NiCad*/systems-bck
+
+# ---- Optional: generated datasets ----
+*.jsonl
+
+# ---- Post-processing workspace / outputs ----
+NiCad/post_process/data/**
+NiCad*/post_process/**/output/**
+NiCad*/post_process/**/input/**
+NiCad*/post_process/**/*.log
+NiCad*/post_process/**/*.jsonl
+NiCad*/post_process/**/__pycache__/
+NiCad*/post_process/**/*.pyc

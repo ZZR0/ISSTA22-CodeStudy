@@ -1,0 +1,16 @@
+name: nicad6
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - make
+  - gcc_linux-64
+  - gxx_linux-64
+  - perl
+  - wget
+  - git
+  - coreutils
+  - grep
+  - sed
+  - unzip

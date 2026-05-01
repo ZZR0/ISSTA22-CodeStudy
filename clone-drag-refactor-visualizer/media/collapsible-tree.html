@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body { margin: 0; padding: 8px; }
+
+      #hint {
+        font: 11px sans-serif;
+        color: #888;
+        margin-bottom: 6px;
+      }
+      #hint span { display: inline-block; margin-right: 14px; }
+      .dot {
+        display: inline-block; width: 9px; height: 9px;
+        border-radius: 50%; margin-right: 4px; vertical-align: middle;
+      }
+
+      /* Drop-zone overlay: shown only while external drag is active */
+      #drop-overlay {
+        display: none;
+        position: absolute;
+        inset: 0;
+        z-index: 10;             /* above the SVG but invisible */
+        pointer-events: none;    /* re-enabled by JS when drag enters */
+      }
+      #drop-overlay.active { pointer-events: all; }
+
+      #chart { position: relative; }
+
+      /* Badge that floats over the hovered leaf during external drag */
+      #drop-badge {
+        position: fixed;
+        pointer-events: none;
+        z-index: 999;
+        display: none;
+        background: #44cc88;
+        color: #fff;
+        font: bold 11px sans-serif;
+        padding: 3px 10px;
+        border-radius: 12px;
+        white-space: nowrap;
+        box-shadow: 0 2px 8px rgba(0,0,0,.3);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="hint">
+      <span><span class="dot" style="background:#f5a623"></span>Clone group — click to apply extract method</span>
+      <span><span class="dot" style="background:#4a9eff"></span>Source clone — click to open file</span>
+      <span><span class="dot" style="background:#44cc88"></span>Drag highlighted code here → wraps both clones</span>
+    </div>
+
+    <div id="chart">
+      <div id="drop-overlay"></div>
+    </div>
+    <div id="drop-badge"></div>
+
+    <script src="{{D3_URI}}"></script>
+    <script>
+      const vscode     = acquireVsCodeApi();
+      const dropBadge  = document.getElementById('drop-badge');
+      const dropOverlay = document.getElementById('drop-overlay');
+
+      window.addEventListener('message', event => {
+        const message = event.data;
+        if (message.command !== 'loadData') { return; }
+        const data = message.data;
+
+        // ── D3 setup ─────────────────────────────────────────────────────────
+        const width = 800, dx = 40;
+        const marginTop = 20, marginRight = 120, marginBottom = 20, marginLeft = 120;
+
+        const root = d3.hierarchy(data);
+        const dy   = (width - marginRight - marginLeft) / (1 + root.height);
+        const tree = d3.tree().nodeSize([dx, dy]);
+        const diagonal = d3.linkHorizontal().x(d => d.y).y(d => d.x);
+
+        root.x0 = 0; root.y0 = 0;
+        let nodeId = 0;
+        root.descendants().forEach(d => {
+          d.id = nodeId++;
+          d._children = d.children;
+          if (d.depth > 0) { d.children = null; }
+        });
+
+        // ── Node colour / size helpers ────────────────────────────────────────
+        function nodeColor(d) {
+          if (d.data.file)    { return '#4a9eff'; }
+          if (d.data.classid) { return '#f5a623'; }
+          return d._children ? (d.children ? '#999' : '#555') : '#999';
+        }
+        function nodeRadius(d) {
+          return (d.data.file || d.data.classid) ? 5 : 4;
+        }
+
+        // ── SVG ───────────────────────────────────────────────────────────────
+        const svg = d3.create('svg')
+          .attr('width', width).attr('height', 400)
+          .attr('viewBox', [-marginLeft, -marginTop, width, 400])
+          .style('max-width', '100%').style('height', 'auto')
+          .style('font', '12px sans-serif').style('user-select', 'none')
+          .style('pointer-events', 'none');
+
+        const gLink = svg.append('g')
+          .attr('fill', 'none').attr('stroke', '#999')
+          .attr('stroke-opacity', 0.6).attr('stroke-width', 1.5);
+
+        const gNode = svg.append('g')
+          .attr('cursor', 'pointer').attr('pointer-events', 'all');
+
+        // ── update() ─────────────────────────────────────────────────────────
+        function update(source, duration = 500) {
+          tree(root);
+          const nodes = root.descendants().reverse();
+          const links = root.links();
+
+          let left = root, right = root;
+          root.eachBefore(node => {
+            if (node.x < left.x) { left = node; }
+            if (node.x > right.x) { right = node; }
+          });
+          const height = right.x - left.x + marginTop + marginBottom;
+
+          svg.transition().duration(duration)
+            .attr('height', height)
+            .attr('viewBox', [-marginLeft, left.x - marginTop, width, height]);
+
+          const node = gNode.selectAll('g.node').data(nodes, d => d.id);
+
+          const nodeEnter = node.enter().append('g')
+            .attr('class', 'node')
+            .attr('transform', `translate(${source.y0},${source.x0})`)
+            .attr('fill-opacity', 0).attr('stroke-opacity', 0)
+            .on('click', (event, d) => {
+              if (d.data.file) {
+                vscode.postMessage({ command: 'openFile', file: d.data.file, range: d.data.range, parentClassid: d.data.parentClassid });
+              } else if (d.data.classid) {
+                vscode.postMessage({ command: 'applyExtractMethod', classid: d.data.classid });
+              } else {
+                d.children = d.children ? null : d._children;
+                update(d, 400);
+              }
+            });
+
+          nodeEnter.append('circle')
+            .attr('r', nodeRadius)
+            .attr('fill', nodeColor)
+            .style('cursor', d => (d.data.file || d.data.classid) ? 'pointer' : 'default');
+
+          nodeEnter.append('text')
+            .attr('dy', '0.31em')
+            .attr('x', d => d._children ? -8 : 8)
+            .attr('text-anchor', d => d._children ? 'end' : 'start')
+            .text(d => d.data.name)
+            .attr('stroke', 'white').attr('stroke-width', 3)
+            .attr('stroke-linejoin', 'round')
+            .style('paint-order', 'stroke fill');
+
+          node.merge(nodeEnter).transition().duration(duration)
+            .attr('transform', d => `translate(${d.y},${d.x})`)
+            .attr('fill-opacity', 1).attr('stroke-opacity', 1);
+
+          node.merge(nodeEnter).select('circle')
+            .attr('fill', nodeColor).attr('r', nodeRadius);
+
+          node.exit().transition().duration(duration)
+            .attr('transform', `translate(${source.y},${source.x})`)
+            .attr('fill-opacity', 0).attr('stroke-opacity', 0).remove();
+
+          const link = gLink.selectAll('path').data(links, d => d.target.id);
+          const linkEnter = link.enter().append('path')
+            .attr('d', () => {
+              const o = { x: source.x0, y: source.y0 };
+              return diagonal({ source: o, target: o });
+            });
+          link.merge(linkEnter).transition().duration(duration).attr('d', diagonal);
+          link.exit().transition().duration(duration)
+            .attr('d', () => {
+              const o = { x: source.x, y: source.y };
+              return diagonal({ source: o, target: o });
+            }).remove();
+
+          root.eachBefore(d => { d.x0 = d.x; d.y0 = d.y; });
+        }
+
+        // ── Auto-expand ───────────────────────────────────────────────────────
+        function collectNodesToExpand(node, arr = []) {
+          if (node._children) { arr.push(node); }
+          (node._children || node.children || []).forEach(c => collectNodesToExpand(c, arr));
+          return arr;
+        }
+        function autoExpandStepByStep() {
+          const toExpand = collectNodesToExpand(root).filter(d => d.depth >= 0);
+          let i = 0;
+          function expandNext() {
+            if (i >= toExpand.length) { svg.style('pointer-events', 'all'); return; }
+            const d = toExpand[i];
+            if (d._children) { d.children = d._children; }
+            update(d, 500);
+            i++;
+            setTimeout(expandNext, 600);
+          }
+          expandNext();
+        }
+
+        update(root, 0);
+        d3.select('#chart').append(() => svg.node());
+        setTimeout(autoExpandStepByStep, 500);
+
+        // ── External drag-and-drop: editor code → leaf node ───────────────────
+        //
+        // Workflow:
+        //   1. User selects / highlights clone code in the VS Code editor
+        //   2. Drags the selection
+        //   3. Drops it on a blue leaf node in this panel
+        //   4. Extension applies the extract-method refactoring for both clones
+        //
+        // Implementation notes:
+        //   • The #drop-overlay div sits above the SVG in z-order.
+        //     During an active drag it receives pointer-events so the SVG
+        //     pointer-events:none (animation guard) doesn't block us.
+        //   • document.elementFromPoint is temporarily suspended and we use
+        //     a stored hovered-node reference instead for reliability.
+
+        let externalHoverNode = null;   // D3 node <g> currently highlighted
+
+        function leafNodeAt(clientX, clientY) {
+          // Temporarily hide overlay so elementFromPoint hits the SVG
+          dropOverlay.style.display = 'none';
+          const el = document.elementFromPoint(clientX, clientY);
+          dropOverlay.style.display = 'block';
+          if (!el) { return null; }
+          const gEl = el.closest('g.node');
+          if (!gEl) { return null; }
+          const d = d3.select(gEl).datum();
+          return (d && d.data.file) ? { gEl, d } : null;
+        }
+
+        function highlightExternalTarget(gEl, d) {
+          if (externalHoverNode && externalHoverNode !== gEl) {
+            clearExternalHighlight();
+          }
+          if (!externalHoverNode) {
+            externalHoverNode = gEl;
+            d3.select(gEl).select('circle').attr('fill', '#44cc88').attr('r', 9);
+            d3.select(gEl).select('text').style('font-weight', 'bold').attr('fill', '#22aa66');
+          }
+          // Show floating badge near cursor
+          dropBadge.textContent = '⬇ Drop to wrap both clones';
+          dropBadge.style.display = 'block';
+        }
+
+        function clearExternalHighlight() {
+          if (externalHoverNode) {
+            const d = d3.select(externalHoverNode).datum();
+            d3.select(externalHoverNode).select('circle').attr('fill', nodeColor(d)).attr('r', nodeRadius(d));
+            d3.select(externalHoverNode).select('text').style('font-weight', null).attr('fill', null);
+            externalHoverNode = null;
+          }
+          dropBadge.style.display = 'none';
+        }
+
+        // Activate overlay as soon as any drag enters the document
+        document.addEventListener('dragenter', () => {
+          dropOverlay.style.display = 'block';
+          dropOverlay.classList.add('active');
+        });
+
+        dropOverlay.addEventListener('dragover', (event) => {
+          event.preventDefault();
+          const hit = leafNodeAt(event.clientX, event.clientY);
+          if (hit) {
+            event.dataTransfer.dropEffect = 'copy';
+            highlightExternalTarget(hit.gEl, hit.d);
+            dropBadge.style.left = (event.clientX + 14) + 'px';
+            dropBadge.style.top  = (event.clientY - 10) + 'px';
+          } else {
+            event.dataTransfer.dropEffect = 'none';
+            clearExternalHighlight();
+          }
+        });
+
+        dropOverlay.addEventListener('dragleave', (event) => {
+          // Only clear when leaving the overlay entirely (not just moving between children)
+          if (!dropOverlay.contains(event.relatedTarget)) {
+            clearExternalHighlight();
+            dropOverlay.style.display = 'none';
+            dropOverlay.classList.remove('active');
+          }
+        });
+
+        dropOverlay.addEventListener('drop', (event) => {
+          event.preventDefault();
+          const targetNode = externalHoverNode;
+          clearExternalHighlight();
+          dropOverlay.style.display = 'none';
+          dropOverlay.classList.remove('active');
+
+          if (!targetNode) { return; }
+          const d = d3.select(targetNode).datum();
+          if (!d || !d.data.file || !d.parent || !d.parent.data.classid) { return; }
+
+          const droppedCode = event.dataTransfer.getData('text/plain');
+          if (!droppedCode.trim()) { return; }
+
+          // Trigger extract-method for both clones in this group
+          vscode.postMessage({
+            command: 'applyExtractMethod',
+            classid: d.parent.data.classid,
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

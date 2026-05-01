@@ -1,0 +1,54 @@
+
+python 1_nicad_xml_to_jsonl.py \
+    --xml ../input/camel-java_functions-blind-clones-0.30-classes-withsource.xml \
+    --out ../data/java/step1_nicad_camel_sim0.7_raw.jsonl 
+
+python 2_java_qmethod_ts.py \
+  --in ../data/java/step1_nicad_camel_sim0.7_raw.jsonl \
+  --out ../data/java/step2_nicad_camel_sim0.7_fqn.jsonl \
+  --projects-root /home/user1-system11/research_dream/clone_research/clone_detectors/NiCad
+
+python 3_filter_out_data.py \
+  --input ../data/java/step2_nicad_camel_sim0.7_fqn.jsonl \
+  --output ../data/java/step3_nicad_camel_sim0.7_fqn_filtered.jsonl \
+  --max_clones 20
+
+python 4_gen_init_train_sample.py \
+  --input ../data/java/step3_nicad_camel_sim0.7_fqn_filtered.jsonl \
+  --output ../data/java/step4_nicad_camel_sim0.7_fqn_filtered_with_func_id.jsonl
+
+python 5_gen_neg_clone_sample.py \
+  --input ../data/java/step4_nicad_camel_sim0.7_fqn_filtered_with_func_id.jsonl \
+  --out_txt ../data/java/step5_nicad_camel_sim0.7_neg_pairs.txt \
+  --out_jsonl ../data/java/step5_nicad_camel_sim0.7_neg_pairs.jsonl \
+  --out_html ../data/java/step5_display_nicad_camel_sim0.7_neg_pairs.html \
+  --out_md ../data/java/step5_display_nicad_camel_sim0.7_neg_pairs.md \
+  --seed 42 \
+  --verify \
+  --cleanup
+
+python 6_gen_pos_clone_sample.py \
+  --input ../data/java/step4_nicad_camel_sim0.7_fqn_filtered_with_func_id.jsonl \
+  --out_txt ../data/java/step6_nicad_camel_sim0.7_pos_pairs.txt \
+  --out_jsonl ../data/java/step6_nicad_camel_sim0.7_pos_pairs.jsonl \
+  --out_html ../data/java/step6_display_nicad_camel_sim0.7_pos_pairs.html \
+  --out_md ../data/java/step6_display_nicad_camel_sim0.7_pos_pairs.md \
+  --seed 42 \
+  --verify \
+  --cleanup
+
+
+python 7_gen_clone_bench.py \
+  --input ../data/java/step4_nicad_camel_sim0.7_fqn_filtered_with_func_id.jsonl \
+  --output ../data/java/camel/step7_nicad_camel_sim0.7_clone_bench.jsonl \
+  --dedup
+
+python 8_split_combine_neg_pos_pairs.py \
+  --neg ../data/java/step5_nicad_camel_sim0.7_neg_pairs.txt \
+  --pos ../data/java/step6_nicad_camel_sim0.7_pos_pairs.txt \
+  --out_dir ../data/java/camel \
+  --seed 42 
+
+./run_nicad_pipeline.sh > nicad_pipeline.log 2>&1
+
+

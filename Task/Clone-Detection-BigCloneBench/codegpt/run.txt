@@ -1,0 +1,19 @@
+python 1_sample_data.py \
+  --dataset_dir /home/user1-system11/research_dream/llm-clone/Task/Clone-Detection-BigCloneBench/dataset/org \
+  --ratio 0.1 \
+  --mode balanced \
+  --seed 3
+
+BASE=/home/user1-system11/research_dream/llm-clone/Task/Clone-Detection-BigCloneBench/dataset
+OUT=$BASE/combined_org10_plus_repos
+python combine_org10_plus_repos.py \
+  --base_dir "$BASE" \
+  --out_dir  "$OUT" \
+  --seed 3
+  
+[OK] Combined + shuffled dataset created
+  train_mix.txt lines  : 160386
+  valid_mix.txt lines  : 76688
+  data_mix.jsonl lines : 54269
+  shuffle seed     : 3
+  repos included   : 49 (org + 48 others)

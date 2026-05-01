@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="template.files/style.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="template.files/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="template.files/script.js"></script>
+		<title>364-1-2</title>
+	</head>
+	<body>
+		<div id="invisible">
+		</div>
+		<div id="sourcecode">
+			<div><textarea></textarea></div>
+			<div><button id="closecode">Close</button></div>
+		</div>
+		<div id="centeralize">
+			<div id="firstCode">if (scope.getNumberOfVariables() &gt; 0) {
+            // if we don't have opt args, start after args (they will be assigned later)
+            // this is for crap like def foo(a = (b = true; 1)) which numbers b before a
+            // FIXME: only starting after required args, since opt args may access others
+            // and rest args conflicts with compileRoot using "0" to indicate [] signature.
+            int start = scope.getRequiredArgs();
+            for (int i = start; i &lt; scope.getNumberOfVariables(); i++) {
+                methodCompiler.loadNil();
+                assignLocalVariable(i, false);
+            }
+
+            // temp locals must start after last real local
+            tempVariableIndex += scope.getNumberOfVariables();
+        }</div>
+			<div id="secondCode">if (scope.getNumberOfVariables() &gt; 0) {
+            // if we don't have opt args, start after args (they will be assigned later)
+            // this is for crap like def foo(a = (b = true; 1)) which numbers b before a
+            // FIXME: only starting after required args, since opt args may access others
+            // and rest args conflicts with compileRoot using "0" to indicate [] signature.
+            int start = scope.getRequiredArgs();
+            for (int i = start; i &lt; scope.getNumberOfVariables(); i++) {
+                methodCompiler.loadNil();
+                assignLocalVariable(i, false);
+            }
+
+            // temp locals must start after last real local
+            tempVariableIndex += scope.getNumberOfVariables();
+        }</div>
+			<div id="textualdiff">
+				<table>
+					<caption>Clone fragments detected by clone detection tool</caption>
+					<tbody>	
+						<tr>
+							<td colspan="2">
+								<span class="bold">File path:</span> <!-- a href="file:////jruby-1.4.0/src/org/jruby/compiler/impl/StackBasedVariableCompiler.java" target="_blank" -->/jruby-1.4.0/src/org/jruby/compiler/impl/StackBasedVariableCompiler.java<!-- /a-->
+							</td>
+							<td></td>
+							<td colspan="2">
+								<span class="bold">File path:</span> <!--  a href="file:////jruby-1.4.0/src/org/jruby/compiler/impl/StackBasedVariableCompiler.java" target="_blank" -->/jruby-1.4.0/src/org/jruby/compiler/impl/StackBasedVariableCompiler.java<!--  /a -->
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<span class="bold">Method name:</span> <code>void beginClass(CompilerCallback, StaticScope)</code>
+							</td>
+							<td></td>
+							<td colspan="2">
+								<span class="bold">Method name:</span> <code>void beginMethod(CompilerCallback, StaticScope)</code>
+							</td>
+						</tr>	
+						<tr>
+							<td colspan="2">
+								<span class="bold">Number of AST nodes:</span> 6
+							</td>
+							<td></td>
+							<td colspan="2">
+								<span class="bold">Number of AST nodes:</span> 6
+							</td>
+						</tr>
+						<tr class="sectionsdivider"><td colspan="5"></td></tr>
+						<!-- tr>
+							<td colspan="5">
+								<span class="caption">Textual Diff</span>
+							</td>
+						</tr-->
+					</tbody>
+					<tbody class="code">		
+						<tr class="coderow"><td class="lines ">1</td><td class=""><pre><span class="normal">if (scope.getNumberOfVariables() &gt; 0) {</span><span class="carr">&crarr;</span></pre></td><td class="separator"></td><td class="lines ">1</td><td class=""><pre><pre><span class="normal">if (scope.getNumberOfVariables() &gt; 0) {</span><span class="carr">&crarr;</span></pre></pre></td></tr>
+<tr class="coderow"><td class="lines ">2</td><td class=""><pre><span class="normal">            // if we don't have opt args, start after args (they will be assigned later)</span><span class="carr">&crarr;</span></pre></td><td class="separator"></td><td class="lines ">2</td><td class=""><pre><pre><span class="normal">            // if we don't have opt args, start after args (they will be assigned later)</span><span class="carr">&crarr;</span></pre></pre></td></tr>
+<tr class="coderow"><td class="lines ">3</td><td class=""><pre><span class="normal">            // this is for crap like def foo(a = (b = true; 1)) which numbers b before a</span><span class="carr">&crarr;</span></pre></td><td class="separator"></td><td class="lines ">3</td><td class=""><pre><pre><span class="normal">            // this is for crap like def foo(a = (b = true; 1)) which numbers b before a</span><span class="carr">&crarr;</span></pre></pre></td></tr>
+<tr class="coderow"><td class="lines ">4</td><td class=""><pre><span class="normal">            // FIXME: only starting after required args, since opt args may access others</span><span class="carr">&crarr;</span></pre></td><td class="separator"></td><td class="lines ">4</td><td class=""><pre><pre><span class="normal">            // FIXME: only starting after required args, since opt args may access others</span><span class="carr">&crarr;</span></pre></pre></td></tr>
+<tr class="coderow"><td class="lines ">5</td><td class=""><pre><span class="normal">            // and rest args conflicts with compileRoot using "0" to indicate [] signature.</span><span class="carr">&crarr;</span></pre></td><td class="separator"></td><td class="lines ">5</td><td class=""><pre><pre><span class="normal">            // and rest args conflicts with compileRoot using "0" to indicate [] signature.</span><span class="carr">&crarr;</span></pre></pre></td></tr>
+<tr class="coderow"><td class="lines ">6</td><td class=""><pre><span class="normal">            int start = scope.getRequiredArgs();</span><span class="carr">&crarr;</span></pre></td><td class="separator"></td><td class="lines ">6</td><td class=""><pre><pre><span class="normal">            int start = scope.getRequiredArgs();</span><span class="carr">&crarr;</span></pre></pre></td></tr>
+<tr class="coderow"><td class="lines ">7</td><td class=""><pre><span class="normal">            for (int i = start; i &lt; scope.getNumberOfVariables(); i++) {</span><span class="carr">&crarr;</span></pre></td><td class="separator"></td><td class="lines ">7</td><td class=""><pre><pre><span class="normal">            for (int i = start; i &lt; scope.getNumberOfVariables(); i++) {</span><span class="carr">&crarr;</span></pre></pre></td></tr>
+<tr class="coderow"><td class="lines ">8</td><td class=""><pre><span class="normal">                methodCompiler.loadNil();</span><span class="carr">&crarr;</span></pre></td><td class="separator"></td><td class="lines ">8</td><td class=""><pre><pre><span class="normal">                methodCompiler.loadNil();</span><span class="carr">&crarr;</span></pre></pre></td></tr>
+<tr class="coderow"><td class="lines ">9</td><td class=""><pre><span class="normal">                assignLocalVariable(i, false);</span><span class="carr">&crarr;</span></pre></td><td class="separator"></td><td class="lines ">9</td><td class=""><pre><pre><span class="normal">                assignLocalVariable(i, false);</span><span class="carr">&crarr;</span></pre></pre></td></tr>
+<tr class="coderow"><td class="lines ">10</td><td class=""><pre><span class="normal">            }</span><span class="carr">&crarr;</span></pre></td><td class="separator"></td><td class="lines ">10</td><td class=""><pre><pre><span class="normal">            }</span><span class="carr">&crarr;</span></pre></pre></td></tr>
+<tr class="coderow"><tr class="coderow"><td class="lines ">11</td><td class=""><pre><span class="normal">            // temp locals must start after last real local</span><span class="carr">&crarr;</span></pre></td><td class="separator"></td><td class="lines ">11</td><td class=""><pre><pre><span class="normal">            // temp locals must start after last real local</span><span class="carr">&crarr;</span></pre></pre></td></tr>
+<tr class="coderow"><td class="lines ">12</td><td class=""><pre><span class="normal">            tempVariableIndex += scope.getNumberOfVariables();</span><span class="carr">&crarr;</span></pre></td><td class="separator"></td><td class="lines ">12</td><td class=""><pre><pre><span class="normal">            tempVariableIndex += scope.getNumberOfVariables();</span><span class="carr">&crarr;</span></pre></pre></td></tr>
+<tr class="coderow"><td class="lines ">13</td><td class=""><pre><span class="normal">        }</span></pre></td><td class="separator"></td><td class="lines ">13</td><td class=""><pre><pre><span class="normal">        }</span></pre></pre></td></tr>
+
+					</tbody>
+					<tbody>
+						<tr class="copylinks">
+							<td colspan="2"><a id="firstCodeShow" class="codeShow" href="#">See real code fragment</a></td>
+							<td></td>
+							<td colspan="2"><a id="secondCodeShow" class="codeShow" href="#">See real code fragment</a></td>
+						</tr>					
+					</tbody>
+				</table>
+			</div>
+			<div></div>
+			<div id="summary">
+				<table>
+					<caption>Summary</caption>
+					<tbody>
+
+						<tr>
+							<td>Number of common nesting structure subtrees</td><td class="right"><span class="bold">1</span></td>
+						</tr>
+						<tr>
+							<td>Number of <a href="#refactorablelist">refactorable cases</a></td><td class="right"><span class="bold">1</span></td>
+						</tr>
+						<tr>
+							<td>Number of <a href="#notrefactorablelist">non-refactorable cases</a></td><td class="right"><span class="bold">0</span></td>
+						</tr>
+						<tr>
+							<td>Time elapsed for finding largest common nesting structure subtrees (ms)</td><td class="right"><span class="bold">0.2</span></td> 
+						</tr>
+						<tr>
+							<td>Clones location</td><td class="right"><span class="bold">Clones are declared in the same class</span></td> 
+						</tr>
+						<tr>
+							<td>Number of node comparisons</td><td class="right"><span class="bold">18</span></td> 
+						</tr>
+					</tbody>
+				</table>	
+			</div>
+			<div></div>
+			<ol id="refactorablelist">
+			
+			<li class="listnumber">
+				<div class="refactorabletitle">
+					<span class="refactorable">{Refactorable}</span>
+				</div>
+				<div id="mappingsummarycenterer">
+					<div id="mappingsummary">
+						<table>
+							<caption>Mapping Summary</caption>
+							<tbody>
+								<tr>
+									<td>Number of mapped statements</td><td class="right"><span class="bold">6</span></td>
+								</tr>
+								<tr>
+									<td>Number of unmapped statements in the first code fragment</td><td class="right"><span class="bold">0</span></td>
+								</tr>
+								<tr>
+									<td>Number of unmapped statements in the second code fragment</td><td class="right"><span class="bold">0</span></td>
+								</tr>
+								<tr>
+									<td>Time elapsed for statement mapping (ms)</td><td class="right"><span class="bold">0.7</span></td>
+								</tr>
+							<tr>
+								<td>Clone type</td><td class="right"><span class="bold">Type 1</span></td>
+							</tr>
+						</tbody>			
+						</table>
+					</table>
+				</div>
+			</div>
+			<table id="mappedstatements">
+				<caption class="small">Mapped Statements</caption>
+				<tbody>
+					<tr>
+						<th class="id">ID</th>
+						<th>Statement</th>
+						<th></th>
+						<th>ID</th>
+						<th>Statement</th>
+					</tr>
+					<tr class="child ID-1"><td class="id ">2</td><td class="codeline LEFT "><pre class="codeview"><div class="expand ID0"></div><span style="color: rgb(127, 0, 85);font-family: 'consolas'">if</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">(</span><span style="font-family: 'consolas'">scope</span><span style="font-family: 'consolas'">.</span><span style="font-family: 'consolas'">getNumberOfVariables</span><span style="font-family: 'consolas'">(</span><span style="font-family: 'consolas'">)</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">&gt;</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">0</span><span style="font-family: 'consolas'">)</span></pre></td><td class="mappedimage"></td><td class="id ">1</td><td class="codeline RIGHT "><pre class="codeview"><div class="expand ID0"></div><span style="color: rgb(127, 0, 85);font-family: 'consolas'">if</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">(</span><span style="font-family: 'consolas'">scope</span><span style="font-family: 'consolas'">.</span><span style="font-family: 'consolas'">getNumberOfVariables</span><span style="font-family: 'consolas'">(</span><span style="font-family: 'consolas'">)</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">&gt;</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">0</span><span style="font-family: 'consolas'">)</span></pre></td></tr><tr class="child ID0"><td class="id ">3</td><td class="codeline LEFT "><div class="tree"><pre class="codeview"><span style="color: rgb(127, 0, 85);font-family: 'consolas'">int</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">start</span><span style="font-family: 'consolas'"> = </span><span style="font-family: 'consolas'">scope</span><span style="font-family: 'consolas'">.</span><span style="font-family: 'consolas'">getRequiredArgs</span><span style="font-family: 'consolas'">(</span><span style="font-family: 'consolas'">)</span><span style="font-family: 'consolas'">;</span></pre></div></td><td class="mappedimage"></td><td class="id ">2</td><td class="codeline RIGHT "><div class="tree"><pre class="codeview"><span style="color: rgb(127, 0, 85);font-family: 'consolas'">int</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">start</span><span style="font-family: 'consolas'"> = </span><span style="font-family: 'consolas'">scope</span><span style="font-family: 'consolas'">.</span><span style="font-family: 'consolas'">getRequiredArgs</span><span style="font-family: 'consolas'">(</span><span style="font-family: 'consolas'">)</span><span style="font-family: 'consolas'">;</span></pre></div></td></tr><tr class="child ID0"><td class="id ">4</td><td class="codeline LEFT "><div class="tree"><pre class="codeview"><div class="expand ID2"></div><span style="color: rgb(127, 0, 85);font-family: 'consolas'">for</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">(</span><span style="color: rgb(127, 0, 85);font-family: 'consolas'">int</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">i</span><span style="font-family: 'consolas'"> = </span><span style="font-family: 'consolas'">start</span><span style="font-family: 'consolas'">;</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">i</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">&lt;</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">scope</span><span style="font-family: 'consolas'">.</span><span style="font-family: 'consolas'">getNumberOfVariables</span><span style="font-family: 'consolas'">(</span><span style="font-family: 'consolas'">)</span><span style="font-family: 'consolas'">;</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">i</span><span style="font-family: 'consolas'">++</span><span style="font-family: 'consolas'">)</span></pre></div></td><td class="mappedimage"></td><td class="id ">3</td><td class="codeline RIGHT "><div class="tree"><pre class="codeview"><div class="expand ID2"></div><span style="color: rgb(127, 0, 85);font-family: 'consolas'">for</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">(</span><span style="color: rgb(127, 0, 85);font-family: 'consolas'">int</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">i</span><span style="font-family: 'consolas'"> = </span><span style="font-family: 'consolas'">start</span><span style="font-family: 'consolas'">;</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">i</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">&lt;</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">scope</span><span style="font-family: 'consolas'">.</span><span style="font-family: 'consolas'">getNumberOfVariables</span><span style="font-family: 'consolas'">(</span><span style="font-family: 'consolas'">)</span><span style="font-family: 'consolas'">;</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">i</span><span style="font-family: 'consolas'">++</span><span style="font-family: 'consolas'">)</span></pre></div></td></tr><tr class="child ID2"><td class="id ">5</td><td class="codeline LEFT "><div class="tree"><div class="tree"><pre class="codeview"><span style="color: rgb(0, 0, 192);font-family: 'consolas'">methodCompiler</span><span style="font-family: 'consolas'">.</span><span style="font-family: 'consolas'">loadNil</span><span style="font-family: 'consolas'">(</span><span style="font-family: 'consolas'">)</span><span style="font-family: 'consolas'">;</span></pre></div></div></td><td class="mappedimage"></td><td class="id ">4</td><td class="codeline RIGHT "><div class="tree"><div class="tree"><pre class="codeview"><span style="color: rgb(0, 0, 192);font-family: 'consolas'">methodCompiler</span><span style="font-family: 'consolas'">.</span><span style="font-family: 'consolas'">loadNil</span><span style="font-family: 'consolas'">(</span><span style="font-family: 'consolas'">)</span><span style="font-family: 'consolas'">;</span></pre></div></div></td></tr><tr class="child ID2"><td class="id ">6</td><td class="codeline LEFT "><div class="tree"><div class="tree"><pre class="codeview"><span style="font-family: 'consolas'">assignLocalVariable</span><span style="font-family: 'consolas'">(</span><span style="font-family: 'consolas'">i</span><span style="font-family: 'consolas'">, </span><span style="color: rgb(127, 0, 85);font-family: 'consolas'">false</span><span style="font-family: 'consolas'">)</span><span style="font-family: 'consolas'">;</span></pre></div></div></td><td class="mappedimage"></td><td class="id ">5</td><td class="codeline RIGHT "><div class="tree"><div class="tree"><pre class="codeview"><span style="font-family: 'consolas'">assignLocalVariable</span><span style="font-family: 'consolas'">(</span><span style="font-family: 'consolas'">i</span><span style="font-family: 'consolas'">, </span><span style="color: rgb(127, 0, 85);font-family: 'consolas'">false</span><span style="font-family: 'consolas'">)</span><span style="font-family: 'consolas'">;</span></pre></div></div></td></tr><tr class="child ID0"><td class="id ">7</td><td class="codeline LEFT "><div class="tree"><pre class="codeview"><span style="color: rgb(0, 0, 192);font-family: 'consolas'">tempVariableIndex</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">+=</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">scope</span><span style="font-family: 'consolas'">.</span><span style="font-family: 'consolas'">getNumberOfVariables</span><span style="font-family: 'consolas'">(</span><span style="font-family: 'consolas'">)</span><span style="font-family: 'consolas'">;</span></pre></div></td><td class="mappedimage"></td><td class="id ">6</td><td class="codeline RIGHT "><div class="tree"><pre class="codeview"><span style="color: rgb(0, 0, 192);font-family: 'consolas'">tempVariableIndex</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">+=</span><span style="font-family: 'consolas'"> </span><span style="font-family: 'consolas'">scope</span><span style="font-family: 'consolas'">.</span><span style="font-family: 'consolas'">getNumberOfVariables</span><span style="font-family: 'consolas'">(</span><span style="font-family: 'consolas'">)</span><span style="font-family: 'consolas'">;</span></pre></div></td></tr>
+				</tbody>
+			</table>
+			<table id="preconditionviolations">
+				<caption class="small">Precondition Violations (0)</caption>
+				<tbody>
+					<tr>
+						<th>Row</th>
+						<th>Violation</th>
+					</tr>
+					
+				</tbody>
+			</table>
+			</li>
+			
+			</ol>
+			<ol id="notrefactorablelist">
+			
+			</ol>
+			
+		</div>
+	</body>
+</html>

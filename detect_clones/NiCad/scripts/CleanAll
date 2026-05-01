@@ -1,0 +1,60 @@
+#!/bin/bash 
+# Usage:  CleanAll systems-directory
+
+# Revised 13.7.20
+
+if [ ! -d "$1" ]
+then
+    dir=.
+else
+    dir="$1"
+fi
+
+echo "Warning, this will remove all previous NiCad extraction and clone analysis results from ${1}"
+echo -n "Are you certain you want to do this (y/n)? "
+read yesno
+if [ "${yesno}" != "y" ]
+then
+    exit
+fi
+
+echo "Removing intermediate parsing files ..."
+find "${dir}" | grep '\.pyindent$' | tr '\n' '\0' | xargs -0 /bin/rm -f
+find "${dir}" | grep '\.ifdefed$' | tr '\n' '\0' | xargs -0 /bin/rm -f
+
+echo "Removing extracted potential clone files ..."
+find "${dir}" | grep '_functions.*.xml$' | tr '\n' '\0' | xargs -0 /bin/rm -f
+find "${dir}" | grep '_blocks.*.xml$' | tr '\n' '\0' | xargs -0 /bin/rm -f
+find "${dir}" | grep '_files.*.xml$' | tr '\n' '\0' | xargs -0 /bin/rm -f
+find "${dir}" | grep '_classes.*.xml$' | tr '\n' '\0' | xargs -0 /bin/rm -f
+find "${dir}" | grep '_systems.*.xml$' | tr '\n' '\0' | xargs -0 /bin/rm -f
+find "${dir}" | grep '_models.*.xml$' | tr '\n' '\0' | xargs -0 /bin/rm -f
+find "${dir}" | grep '_functions$' | tr '\n' '\0' | xargs -0 /bin/rm -rf
+find "${dir}" | grep '_blocks$' | tr '\n' '\0' | xargs -0 /bin/rm -rf
+find "${dir}" | grep '_files$' | tr '\n' '\0' | xargs -0 /bin/rm -rf
+find "${dir}" | grep '_classes$' | tr '\n' '\0' | xargs -0 /bin/rm -rf
+find "${dir}" | grep '_systems$' | tr '\n' '\0' | xargs -0 /bin/rm -rf
+find "${dir}" | grep '_models$' | tr '\n' '\0' | xargs -0 /bin/rm -rf
+
+echo "Removing previous clone detection results ..."
+find "${dir}" | grep '_functions.*-clones$' | tr '\n' '\0' | xargs -0 /bin/rm -rf
+find "${dir}" | grep '_blocks.*-clones$' | tr '\n' '\0' | xargs -0 /bin/rm -rf
+find "${dir}" | grep '_files.*-clones$' | tr '\n' '\0' | xargs -0 /bin/rm -rf
+find "${dir}" | grep '_classes.*-clones$' | tr '\n' '\0' | xargs -0 /bin/rm -rf
+find "${dir}" | grep '_systems.*-clones$' | tr '\n' '\0' | xargs -0 /bin/rm -rf
+find "${dir}" | grep '_models.*-clones$' | tr '\n' '\0' | xargs -0 /bin/rm -rf
+find "${dir}" | grep '_functions.*-crossclones$' | tr '\n' '\0' | xargs -0 /bin/rm -rf
+find "${dir}" | grep '_blocks.*-crossclones$' | tr '\n' '\0' | xargs -0 /bin/rm -rf
+find "${dir}" | grep '_files.*-crossclones$' | tr '\n' '\0' | xargs -0 /bin/rm -rf
+find "${dir}" | grep '_classes.*-crossclones$' | tr '\n' '\0' | xargs -0 /bin/rm -rf
+find "${dir}" | grep '_systems.*-crossclones$' | tr '\n' '\0' | xargs -0 /bin/rm -rf
+find "${dir}" | grep '_models.*-crossclones$' | tr '\n' '\0' | xargs -0 /bin/rm -rf
+find "${dir}" | grep '_functions.*-clonepairs$' | tr '\n' '\0' | xargs -0 /bin/rm -rf
+find "${dir}" | grep '_blocks.*-clonepairs$' | tr '\n' '\0' | xargs -0 /bin/rm -rf
+find "${dir}" | grep '_files.*-clonepairs$' | tr '\n' '\0' | xargs -0 /bin/rm -rf
+find "${dir}" | grep '_classes.*-clonepairs$' | tr '\n' '\0' | xargs -0 /bin/rm -rf
+find "${dir}" | grep '_systems.*-clonepairs$' | tr '\n' '\0' | xargs -0 /bin/rm -rf
+find "${dir}" | grep '_models.*-clonepairs$' | tr '\n' '\0' | xargs -0 /bin/rm -rf
+find "${dir}" | grep '\.log$' | tr '\n' '\0' | xargs -0 /bin/rm -f
+
+echo "Done."

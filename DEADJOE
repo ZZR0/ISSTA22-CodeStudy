@@ -1,0 +1,26 @@
+
+*** These modified files were found in JOE when it aborted on Sun Mar 15 16:49:19 2026
+*** JOE was aborted by UNIX signal 1
+
+*** File '/home/user1-system11/research_dream/llm-clone/.git/MERGE_MSG'
+Merge branch 'master' of https://github.com/unoselab/ISSTA22-CodeStudy into branch_01
+# Please enter a commit message to explain why this merge is necessary,
+# especially if it merges an updated upstream into a topic branch.
+#
+# Lines starting with '#' will be ignored, and an empty message aborts
+# the commit.
+
+*** File '(Unnamed)'
+/home/user1-system11/research_dream/clone_research/ISSTA22-CodeStudy-Dream/ISSTA22-CodeStudy/.git/COMMIT_EDITMSG
+/home/user1-system11/research_dream/clone_research/ISSTA22-CodeStudy-Dream/ISSTA22-CodeStudy/.git/MERGE_MSG
+Merge remote-tracking branch 'upstream/master'
+/home/user1-system11/research_dream/llm-clone/.git/COMMIT_EDITMSG
+/home/user1-system11/research_dream/llm-clone/.git/COMMIT_EDITMSG
+/home/user1-system11/research_dream/llm-clone/.git/MERGE_MSG
+/home/user1-system11/research_dream/llm-clone/.git/MERGE_MSG
+
+*** File '* Startup Log *'
+Processing '/etc/joe/editorrc'...
+Processing '/etc/joe/ftyperc'...
+Finished processing /etc/joe/ftyperc
+Finished processing /etc/joe/editorrc

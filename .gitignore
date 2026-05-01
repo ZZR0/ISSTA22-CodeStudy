@@ -1,0 +1,79 @@
+# --- Python & Runtime ---
+__pycache__/
+*.py[cod]
+*$py.class
+.DS_Store
+
+# --- Training Logs ---
+*.log
+log*.txt
+runs/
+*.out
+**/note.txt
+
+
+# --- Heavy Model Checkpoints ---
+# We ignore these to prevent the repo from becoming huge (GBs of data)
+saved_models*/
+*.bin
+*.pt
+*.pth
+checkpoint-*/
+
+# --- Datasets ---
+dataset/
+data/
+DataProc/nicad-*
+FCDetector/target/
+bck/
+*.zip
+*.tar.gz
+*.gz
+*.jsonl
+detect_clones/NiCad-py/post_process/input-bck/
+detect_clones/NiCad-py/post_process/data/
+detect_clones/NiCad-py/post_process/data-bck/
+detect_clones/NiCad-py/post_process/data/*.log
+systems/
+detect_clones/NiCad/post_process/data/java-blocks
+detect_clones/NiCad/post_process/input-blocks
+input/
+output/
+NiCad-py-block/
+
+# --- IDE Settings ---
+.vscode/
+.idea/
+.classpath
+.project
+
+
+/Examples
+/evaluate_clone/data-sample
+/evaluate_clone/data
+/evaluate_clone/data-py
+/evaluate_clone/data-sample-py
+/evaluate_clone/output-py
+/evaluate_clone/output-java
+
+# --- IDE Settings ---
+node_modules
+/drag_refactor/out
+.metadata
+
+# macOS app bundle / embedded Eclipse installation
+Eclipse.app/
+**/Eclipse.app/
+
+# Eclipse IDE project-local files
+.project
+.classpath
+.settings/
+
+# Optional macOS noise
+.DS_Store
+
+# Build output
+bin/
+out/
+target/

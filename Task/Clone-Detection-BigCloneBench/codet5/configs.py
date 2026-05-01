@@ -99,6 +99,11 @@ def add_args(parser):
     parser.add_argument('--seed', type=int, default=1234,
                         help="random seed for initialization")
     parser.add_argument("--test_type", default="", type=str,)
+    parser.add_argument(
+    "--predictions_file",
+    default="predictions.txt",
+    help="Filename for prediction output (written under --output_dir)")
+
     
     args = parser.parse_args()
 

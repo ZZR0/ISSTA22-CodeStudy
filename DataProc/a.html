@@ -1,0 +1,420 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Clone Group Inspector</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 16px; }
+    .group { border: 1px solid #ddd; border-radius: 10px; padding: 12px; margin-bottom: 14px; }
+    .meta { color: #444; margin-bottom: 8px; }
+    details { border: 1px solid #eee; border-radius: 10px; padding: 10px; margin: 10px 0; background: #fafafa; }
+    summary { cursor: pointer; font-weight: 600; }
+    pre { white-space: pre-wrap; background: #111; color: #f1f1f1; padding: 10px; border-radius: 10px; overflow-x: auto; }
+    table { border-collapse: collapse; margin-top: 8px; font-size: 14px; }
+    td, th { border: 1px solid #ddd; padding: 6px 8px; text-align: center; }
+    th { background: #f3f3f3; }
+    .small { font-size: 13px; color: #555; }
+  </style>
+</head>
+<body>
+<h2>Clone Group Inspector</h2>
+<p class="small">Each group shows snippets and a pairwise similarity matrix (token Jaccard / trigram Jaccard).</p>
+
+<div class="group">
+<div class="meta"><b>CLASSID</b>: 2028 &nbsp; | &nbsp; <b>nclones</b>: 2 &nbsp; | &nbsp; <b>dataset_similarity</b>: 75.0</div>
+<details>
+<summary>[1] org.apache.camel.component.telegram.TelegramConsumerPreCheckoutQueryTest.testReceptionOfPreCheckoutQuery()</summary>
+<div class="small">file: systems/camel-java/components/camel-telegram/src/test/java/org/apache/camel/component/telegram/TelegramConsumerPreCheckoutQueryTest.java:42-56 | nlines: 15 | pcid: 84978</div>
+<pre>    public void testReceptionOfPreCheckoutQuery() throws Exception {
+        endpoint.expectedMinimumMessageCount(1);
+        endpoint.assertIsSatisfied(5000);
+
+        Exchange exchange = endpoint.getExchanges().get(0);
+        PreCheckoutQuery query = exchange.getIn().getBody(PreCheckoutQuery.class);
+
+        assertNotNull(query);
+        assertEquals(&quot;pre_checkout_query_123&quot;, query.getId());
+        assertEquals(&quot;USD&quot;, query.getCurrency());
+        assertEquals(Integer.valueOf(1000), query.getTotalAmount());
+        assertEquals(&quot;test_payload&quot;, query.getInvoicePayload());
+        assertEquals(&quot;Doe&quot;, query.getFrom().getLastName());
+        assertEquals(&quot;John&quot;, query.getFrom().getFirstName());
+    }</pre>
+</details>
+<details>
+<summary>[2] org.apache.camel.component.telegram.TelegramConsumerIncomingInlineQueryTest.testReceptionOfMessageWithAnInlineQueryMessage()</summary>
+<div class="small">file: systems/camel-java/components/camel-telegram/src/test/java/org/apache/camel/component/telegram/TelegramConsumerIncomingInlineQueryTest.java:44-57 | nlines: 14 | pcid: 84995</div>
+<pre>    public void testReceptionOfMessageWithAnInlineQueryMessage() throws Exception {
+        endpoint.expectedMinimumMessageCount(1);
+        endpoint.assertIsSatisfied(5000);
+
+        Exchange mediaExchange = endpoint.getExchanges().get(0);
+        IncomingInlineQuery msg = mediaExchange.getIn().getBody(IncomingInlineQuery.class);
+
+        //checking body
+        assertNotNull(msg);
+        assertEquals(&quot;test&quot;, msg.getQuery());
+        assertEquals(&quot;Doe&quot;, msg.getFrom().getLastName());
+        assertEquals(&quot;John&quot;, msg.getFrom().getFirstName());
+
+    }</pre>
+</details>
+<div class='small'><b>Pairwise similarity</b> (token Jaccard / trigram Jaccard)</div>
+<table>
+<tr><th></th><th>1</th><th>2</th></tr>
+<tr><th>1</th>
+<td>(self)</td>
+<td> 93.3%<br/> 81.4%</td>
+</tr>
+<tr><th>2</th>
+<td> 93.3%<br/> 81.4%</td>
+<td>(self)</td>
+</tr>
+</table>
+</div>
+<div class="group">
+<div class="meta"><b>CLASSID</b>: 2975 &nbsp; | &nbsp; <b>nclones</b>: 2 &nbsp; | &nbsp; <b>dataset_similarity</b>: 73.0</div>
+<details>
+<summary>[1] org.apache.camel.processor.StreamCachingCustomShouldSpoolRuleTest.createRouteBuilder()</summary>
+<div class="small">file: systems/camel-java/core/camel-core/src/test/java/org/apache/camel/processor/StreamCachingCustomShouldSpoolRuleTest.java:63-87 | nlines: 25 | pcid: 164291</div>
+<pre>    protected RouteBuilder createRouteBuilder() {
+        return new RouteBuilder() {
+            @Override
+            public void configure() {
+                context.getStreamCachingStrategy().setSpoolDirectory(testDirectory().toFile());
+                context.getStreamCachingStrategy().addSpoolRule(spoolRule);
+                context.getStreamCachingStrategy().setAnySpoolRules(true);
+                context.setStreamCaching(true);
+
+                from(&quot;direct:a&quot;).choice().when(xpath(&quot;//hello&quot;)).to(&quot;mock:english&quot;).when(xpath(&quot;//hallo&quot;))
+                        .to(&quot;mock:dutch&quot;, &quot;mock:german&quot;).otherwise().to(&quot;mock:french&quot;).end()
+                        .process(new Processor() {
+                            @Override
+                            public void process(Exchange exchange) {
+                                // check if spool file exists
+                                if (spoolRule.isSpool()) {
+                                    String[] names = testDirectory().toFile().list();
+                                    assertEquals(1, names.length, &quot;There should be a cached spool file&quot;);
+                                }
+                            }
+                        });
+
+            }
+        };
+    }</pre>
+</details>
+<details>
+<summary>[2] org.apache.camel.processor.StreamCachingSpoolDirectoryQuarkusTest.createRouteBuilder()</summary>
+<div class="small">file: systems/camel-java/core/camel-core/src/test/java/org/apache/camel/processor/StreamCachingSpoolDirectoryQuarkusTest.java:89-116 | nlines: 28 | pcid: 164388</div>
+<pre>    protected RouteBuilder createRouteBuilder() {
+        return new RouteBuilder() {
+            @Override
+            public void configure() {
+                final Path path = testDirectory();
+                context.getStreamCachingStrategy().setSpoolDirectory(path.toFile());
+                context.getStreamCachingStrategy().setSpoolEnabled(true);
+                context.getStreamCachingStrategy().addSpoolRule(spoolRule);
+                context.getStreamCachingStrategy().setAnySpoolRules(true);
+                context.setStreamCaching(true);
+
+                from(&quot;direct:a&quot;).choice().when(xpath(&quot;//hello&quot;)).to(&quot;mock:english&quot;).when(xpath(&quot;//hallo&quot;))
+                        .to(&quot;mock:dutch&quot;, &quot;mock:german&quot;).otherwise().to(&quot;mock:french&quot;).end()
+                        .process(new Processor() {
+                            @Override
+                            public void process(Exchange exchange) {
+                                // check if spool file exists
+                                if (spoolRule.isSpool()) {
+                                    String[] names = path.toFile().list();
+                                    assertNotNull(names, &quot;Should be able to list files in &quot; + path);
+                                    assertEquals(1, names.length, &quot;There should be a cached spool file&quot;);
+                                }
+                            }
+                        });
+
+            }
+        };
+    }</pre>
+</details>
+<div class='small'><b>Pairwise similarity</b> (token Jaccard / trigram Jaccard)</div>
+<table>
+<tr><th></th><th>1</th><th>2</th></tr>
+<tr><th>1</th>
+<td>(self)</td>
+<td> 90.9%<br/> 88.5%</td>
+</tr>
+<tr><th>2</th>
+<td> 90.9%<br/> 88.5%</td>
+<td>(self)</td>
+</tr>
+</table>
+</div>
+<div class="group">
+<div class="meta"><b>CLASSID</b>: 1841 &nbsp; | &nbsp; <b>nclones</b>: 3 &nbsp; | &nbsp; <b>dataset_similarity</b>: 71.0</div>
+<details>
+<summary>[1] org.apache.camel.component.plc4x.Plc4XPollingConsumer.doStart()</summary>
+<div class="small">file: systems/camel-java/components/camel-plc4x/src/main/java/org/apache/camel/component/plc4x/Plc4XPollingConsumer.java:56-68 | nlines: 13 | pcid: 74378</div>
+<pre>    protected void doStart() throws Exception {
+        super.doStart();
+        try {
+            plc4XEndpoint.setupConnection();
+        } catch (PlcConnectionException e) {
+            if (LOGGER.isTraceEnabled()) {
+                LOGGER.error(&quot;Connection setup failed, stopping PollingConsumer&quot;, e);
+            } else {
+                LOGGER.error(&quot;Connection setup failed, stopping PollingConsumer&quot;);
+            }
+            doStop();
+        }
+    }</pre>
+</details>
+<details>
+<summary>[2] org.apache.camel.component.plc4x.Plc4XConsumer.doStart()</summary>
+<div class="small">file: systems/camel-java/components/camel-plc4x/src/main/java/org/apache/camel/component/plc4x/Plc4XConsumer.java:72-89 | nlines: 18 | pcid: 74416</div>
+<pre>    protected void doStart() throws Exception {
+        super.doStart();
+        try {
+            plc4XEndpoint.setupConnection();
+        } catch (PlcConnectionException e) {
+            if (LOGGER.isTraceEnabled()) {
+                LOGGER.error(&quot;Connection setup failed, stopping Consumer&quot;, e);
+            } else {
+                LOGGER.error(&quot;Connection setup failed, stopping Consumer&quot;);
+            }
+            doStop();
+        }
+        if (trigger == null) {
+            startUnTriggered();
+        } else {
+            startTriggered();
+        }
+    }</pre>
+</details>
+<details>
+<summary>[3] org.apache.camel.component.plc4x.Plc4XProducer.doStart()</summary>
+<div class="small">file: systems/camel-java/components/camel-plc4x/src/main/java/org/apache/camel/component/plc4x/Plc4XProducer.java:48-63 | nlines: 16 | pcid: 74422</div>
+<pre>    protected void doStart() throws Exception {
+        super.doStart();
+        try {
+            plc4XEndpoint.setupConnection();
+            if (plc4XEndpoint.isConnected() &amp;&amp; !plc4XEndpoint.canWrite()) {
+                throw new PlcException(&quot;This connection (&quot; + plc4XEndpoint.getUri() + &quot;) doesn&#39;t support writing.&quot;);
+            }
+        } catch (PlcConnectionException e) {
+            if (log.isTraceEnabled()) {
+                log.error(&quot;Connection setup failed, stopping producer&quot;, e);
+            } else {
+                log.error(&quot;Connection setup failed, stopping producer&quot;);
+            }
+            doStop();
+        }
+    }</pre>
+</details>
+<div class='small'><b>Pairwise similarity</b> (token Jaccard / trigram Jaccard)</div>
+<table>
+<tr><th></th><th>1</th><th>2</th><th>3</th></tr>
+<tr><th>1</th>
+<td>(self)</td>
+<td> 94.1%<br/> 88.2%</td>
+<td> 76.2%<br/> 65.7%</td>
+</tr>
+<tr><th>2</th>
+<td> 94.1%<br/> 88.2%</td>
+<td>(self)</td>
+<td> 72.7%<br/> 60.3%</td>
+</tr>
+<tr><th>3</th>
+<td> 76.2%<br/> 65.7%</td>
+<td> 72.7%<br/> 60.3%</td>
+<td>(self)</td>
+</tr>
+</table>
+</div>
+<div class="group">
+<div class="meta"><b>CLASSID</b>: 2753 &nbsp; | &nbsp; <b>nclones</b>: 2 &nbsp; | &nbsp; <b>dataset_similarity</b>: 82.0</div>
+<details>
+<summary>[1] org.apache.camel.impl.ScheduledPollConsumerBackoffTest.testBackoffIdle()</summary>
+<div class="small">file: systems/camel-java/core/camel-core/src/test/java/org/apache/camel/impl/ScheduledPollConsumerBackoffTest.java:35-63 | nlines: 29 | pcid: 156679</div>
+<pre>    public void testBackoffIdle() {
+
+        final Endpoint endpoint = getMockEndpoint(&quot;mock:foo&quot;);
+        final MockScheduledPollConsumer consumer = createMockScheduledPollConsumer(endpoint);
+
+        consumer.run();
+        consumer.run();
+        assertEquals(2, commits);
+        // now it should backoff 4 times
+        consumer.run();
+        consumer.run();
+        consumer.run();
+        consumer.run();
+        assertEquals(3, commits);
+        // and now we poll again
+        consumer.run();
+        consumer.run();
+        assertEquals(4, commits);
+        // now it should backoff 4 times
+        consumer.run();
+        consumer.run();
+        consumer.run();
+        consumer.run();
+        assertEquals(6, commits);
+        consumer.run();
+        assertEquals(6, commits);
+
+        consumer.stop();
+    }</pre>
+</details>
+<details>
+<summary>[2] org.apache.camel.impl.ScheduledPollConsumerBackoffTest.testBackoffError()</summary>
+<div class="small">file: systems/camel-java/core/camel-core/src/test/java/org/apache/camel/impl/ScheduledPollConsumerBackoffTest.java:66-95 | nlines: 30 | pcid: 156680</div>
+<pre>    public void testBackoffError() {
+
+        final Endpoint endpoint = getMockEndpoint(&quot;mock:foo&quot;);
+        final Exception expectedException = new Exception(&quot;Hello, I should be thrown on shutdown only!&quot;);
+        final MockScheduledPollConsumer consumer = createMockScheduledPollConsumer(endpoint, expectedException);
+
+        consumer.run();
+        consumer.run();
+        consumer.run();
+        assertEquals(3, errors);
+        // now it should backoff 4 times
+        consumer.run();
+        consumer.run();
+        consumer.run();
+        consumer.run();
+        assertEquals(4, errors);
+        // and now we poll again
+        consumer.run();
+        consumer.run();
+        consumer.run();
+        assertEquals(6, errors);
+        // now it should backoff 4 times
+        consumer.run();
+        consumer.run();
+        consumer.run();
+        consumer.run();
+        assertEquals(8, errors);
+
+        consumer.stop();
+    }</pre>
+</details>
+<div class='small'><b>Pairwise similarity</b> (token Jaccard / trigram Jaccard)</div>
+<table>
+<tr><th></th><th>1</th><th>2</th></tr>
+<tr><th>1</th>
+<td>(self)</td>
+<td> 88.2%<br/> 78.7%</td>
+</tr>
+<tr><th>2</th>
+<td> 88.2%<br/> 78.7%</td>
+<td>(self)</td>
+</tr>
+</table>
+</div>
+<div class="group">
+<div class="meta"><b>CLASSID</b>: 856 &nbsp; | &nbsp; <b>nclones</b>: 4 &nbsp; | &nbsp; <b>dataset_similarity</b>: 100.0</div>
+<details>
+<summary>[1] org.apache.camel.dataformat.bindy.csv.BindySimpleCsvAutospanLineTest.testUnmarshalNoNeedToSpanLine()</summary>
+<div class="small">file: systems/camel-java/components/camel-bindy/src/test/java/org/apache/camel/dataformat/bindy/csv/BindySimpleCsvAutospanLineTest.java:30-46 | nlines: 17 | pcid: 29870</div>
+<pre>    public void testUnmarshalNoNeedToSpanLine() throws Exception {
+        final MockEndpoint mock = getMockEndpoint(&quot;mock:unmarshal&quot;);
+        mock.expectedMessageCount(1);
+
+        template.sendBody(&quot;direct:unmarshal&quot;, &quot;1,hei,kommentar&quot;);
+
+        MockEndpoint.assertIsSatisfied(context);
+
+        //final List&lt;Map&lt;?, SpanLastRecord&gt;&gt; rows = CastUtils.cast(mock.getReceivedExchanges().get(0).getIn().getBody(List.class));
+        //final SpanLastRecord order = rows.get(0).get(SpanLastRecord.class.getName());
+
+        final SpanLastRecord order = mock.getReceivedExchanges().get(0).getIn().getBody(SpanLastRecord.class);
+
+        assertEquals(1, order.getRecordId());
+        assertEquals(&quot;hei&quot;, order.getName());
+        assertEquals(&quot;kommentar&quot;, order.getComment());
+    }</pre>
+</details>
+<details>
+<summary>[2] org.apache.camel.dataformat.bindy.csv.BindySimpleCsvRegexAutospanLineTest.testUnmarshalSpanningLine()</summary>
+<div class="small">file: systems/camel-java/components/camel-bindy/src/test/java/org/apache/camel/dataformat/bindy/csv/BindySimpleCsvRegexAutospanLineTest.java:46-59 | nlines: 14 | pcid: 29980</div>
+<pre>    public void testUnmarshalSpanningLine() throws Exception {
+        final MockEndpoint mock = getMockEndpoint(&quot;mock:unmarshal&quot;);
+        mock.expectedMessageCount(1);
+
+        template.sendBody(&quot;direct:unmarshal&quot;, &quot;1 hei kommentar test noe hei&quot;);
+
+        MockEndpoint.assertIsSatisfied(context);
+
+        final RegexSpanLastRecord order = mock.getReceivedExchanges().get(0).getIn().getBody(RegexSpanLastRecord.class);
+
+        assertEquals(1, order.getRecordId());
+        assertEquals(&quot;hei&quot;, order.getName());
+        assertEquals(&quot;kommentar test noe hei&quot;, order.getComment());
+    }</pre>
+</details>
+<details>
+<summary>[3] org.apache.camel.dataformat.bindy.csv.BindySimpleCsvRegexAutospanLineTest.testUnmarshalNoNeedToSpanLine()</summary>
+<div class="small">file: systems/camel-java/components/camel-bindy/src/test/java/org/apache/camel/dataformat/bindy/csv/BindySimpleCsvRegexAutospanLineTest.java:30-43 | nlines: 14 | pcid: 29979</div>
+<pre>    public void testUnmarshalNoNeedToSpanLine() throws Exception {
+        final MockEndpoint mock = getMockEndpoint(&quot;mock:unmarshal&quot;);
+        mock.expectedMessageCount(1);
+
+        template.sendBody(&quot;direct:unmarshal&quot;, &quot;1 hei kommentar&quot;);
+
+        MockEndpoint.assertIsSatisfied(context);
+
+        final RegexSpanLastRecord order = mock.getReceivedExchanges().get(0).getIn().getBody(RegexSpanLastRecord.class);
+
+        assertEquals(1, order.getRecordId());
+        assertEquals(&quot;hei&quot;, order.getName());
+        assertEquals(&quot;kommentar&quot;, order.getComment());
+    }</pre>
+</details>
+<details>
+<summary>[4] org.apache.camel.dataformat.bindy.csv.BindySimpleCsvAutospanLineTest.testUnmarshalSpanningLine()</summary>
+<div class="small">file: systems/camel-java/components/camel-bindy/src/test/java/org/apache/camel/dataformat/bindy/csv/BindySimpleCsvAutospanLineTest.java:49-62 | nlines: 14 | pcid: 29871</div>
+<pre>    public void testUnmarshalSpanningLine() throws Exception {
+        final MockEndpoint mock = getMockEndpoint(&quot;mock:unmarshal&quot;);
+        mock.expectedMessageCount(1);
+
+        template.sendBody(&quot;direct:unmarshal&quot;, &quot;1,hei,kommentar,test,noe,hei&quot;);
+
+        MockEndpoint.assertIsSatisfied(context);
+
+        final SpanLastRecord order = mock.getReceivedExchanges().get(0).getIn().getBody(SpanLastRecord.class);
+
+        assertEquals(1, order.getRecordId());
+        assertEquals(&quot;hei&quot;, order.getName());
+        assertEquals(&quot;kommentar,test,noe,hei&quot;, order.getComment());
+    }</pre>
+</details>
+<div class='small'><b>Pairwise similarity</b> (token Jaccard / trigram Jaccard)</div>
+<table>
+<tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th></tr>
+<tr><th>1</th>
+<td>(self)</td>
+<td> 80.0%<br/> 63.9%</td>
+<td> 80.0%<br/> 66.7%</td>
+<td> 80.0%<br/> 74.2%</td>
+</tr>
+<tr><th>2</th>
+<td> 80.0%<br/> 63.9%</td>
+<td>(self)</td>
+<td>100.0%<br/> 94.2%</td>
+<td>100.0%<br/> 83.6%</td>
+</tr>
+<tr><th>3</th>
+<td> 80.0%<br/> 66.7%</td>
+<td>100.0%<br/> 94.2%</td>
+<td>(self)</td>
+<td>100.0%<br/> 88.5%</td>
+</tr>
+<tr><th>4</th>
+<td> 80.0%<br/> 74.2%</td>
+<td>100.0%<br/> 83.6%</td>
+<td>100.0%<br/> 88.5%</td>
+<td>(self)</td>
+</tr>
+</table>
+</div>
+</body></html>

@@ -1,0 +1,169 @@
+<html><body>
+<h3>Top 10 Functions with Minimum Tokens (Standard Counter)</h3>
+<p><i>* This count ignores whitespace and comments. It represents logical code size.</i></p>
+<table border='1' style='border-collapse: collapse; width: 100%; text-align: left; font-family: Arial, sans-serif;'>
+<tr style='background-color: #e0f7fa;'>
+<th style='padding: 8px;'>Rank</th>
+<th style='padding: 8px;'>Standard Tokens</th>
+<th style='padding: 8px;'>Function Name / File</th>
+<th style='padding: 8px;'>Code Snippet</th>
+</tr>
+<tr>
+<td style='padding: 8px;'>1</td>
+<td style='padding: 8px; font-weight: bold;'>24</td>
+<td style='padding: 8px; font-size: 0.9em;'>org.apache.camel.maven.config.ConnectorConfigGenerator.generateJavaClass()</td>
+<td style='padding: 8px;'><pre style='background-color: #f8f8f8; padding: 5px; margin: 0; white-space: pre-wrap; font-size: 0.85em;'>    private void generateJavaClass() {
+        setPackage();
+        setImports();
+        setClassNameAndType();
+        setClassFields();
+        setSettersAndGettersMethods();
+        setCreateConnectorConfigurationMethod();
+        setConfigureConnectorClassMethod();
+        setValidateConnectorConfiguration();
+        setGetConnectorDatabaseType();
+    }</pre></td>
+</tr>
+<tr>
+<td style='padding: 8px;'>2</td>
+<td style='padding: 8px; font-weight: bold;'>32</td>
+<td style='padding: 8px; font-size: 0.9em;'>org.apache.camel.processor.aggregate.AggregateProcessor.purge()</td>
+<td style='padding: 8px;'><pre style='background-color: #f8f8f8; padding: 5px; margin: 0; white-space: pre-wrap; font-size: 0.85em;'>        protected void purge() {
+             
+            if (lock != null) {
+                 
+                lock.lock();
+                try {
+                    super.purge();
+                } finally {
+                    lock.unlock();
+                }
+            }
+        }</pre></td>
+</tr>
+<tr>
+<td style='padding: 8px;'>3</td>
+<td style='padding: 8px; font-weight: bold;'>33</td>
+<td style='padding: 8px; font-size: 0.9em;'>org.apache.camel.component.salesforce.SalesforceProducer.isCompositeOperation(OperationName operationName)</td>
+<td style='padding: 8px;'><pre style='background-color: #f8f8f8; padding: 5px; margin: 0; white-space: pre-wrap; font-size: 0.85em;'>    private static boolean isCompositeOperation(OperationName operationName) {
+        switch (operationName) {
+            case COMPOSITE:
+            case COMPOSITE_BATCH:
+            case COMPOSITE_TREE:
+                return true;
+            default:
+                return false;
+        }
+    }</pre></td>
+</tr>
+<tr>
+<td style='padding: 8px;'>4</td>
+<td style='padding: 8px; font-weight: bold;'>33</td>
+<td style='padding: 8px; font-size: 0.9em;'>org.apache.camel.component.as2.api.entity.AS2DispositionType.parseDispositionType(String dispositionTypeString)</td>
+<td style='padding: 8px;'><pre style='background-color: #f8f8f8; padding: 5px; margin: 0; white-space: pre-wrap; font-size: 0.85em;'>    public static AS2DispositionType parseDispositionType(String dispositionTypeString) {
+        switch (dispositionTypeString) {
+            case &quot;processed&quot;:
+                return PROCESSED;
+            case &quot;failed&quot;:
+                return FAILED;
+            default:
+                return null;
+        }
+    }</pre></td>
+</tr>
+<tr>
+<td style='padding: 8px;'>5</td>
+<td style='padding: 8px; font-weight: bold;'>34</td>
+<td style='padding: 8px; font-size: 0.9em;'>org.apache.camel.processor.OnCompletionProcessor.toString()</td>
+<td style='padding: 8px;'><pre style='background-color: #f8f8f8; padding: 5px; margin: 0; white-space: pre-wrap; font-size: 0.85em;'>        public String toString() {
+            if (!onCompleteOnly &amp;&amp; !onFailureOnly) {
+                return &quot;onCompleteOrFailure&quot;;
+            } else if (onCompleteOnly) {
+                return &quot;onCompleteOnly&quot;;
+            } else {
+                return &quot;onFailureOnly&quot;;
+            }
+        }</pre></td>
+</tr>
+<tr>
+<td style='padding: 8px;'>6</td>
+<td style='padding: 8px; font-weight: bold;'>35</td>
+<td style='padding: 8px; font-size: 0.9em;'>org.apache.camel.core.xml.util.jsse.AbstractTrustManagersParametersFactoryBean.getObject()</td>
+<td style='padding: 8px;'><pre style='background-color: #f8f8f8; padding: 5px; margin: 0; white-space: pre-wrap; font-size: 0.85em;'>    public TrustManagersParameters getObject() throws Exception {
+        if (isSingleton()) {
+            if (instance == null) {
+                instance = createInstance();
+            }
+            return instance;
+        } else {
+            return createInstance();
+        }
+    }</pre></td>
+</tr>
+<tr>
+<td style='padding: 8px;'>7</td>
+<td style='padding: 8px; font-weight: bold;'>36</td>
+<td style='padding: 8px; font-size: 0.9em;'>org.apache.camel.component.zeebe.ZeebeProducer.isJobOperation(OperationName operationName)</td>
+<td style='padding: 8px;'><pre style='background-color: #f8f8f8; padding: 5px; margin: 0; white-space: pre-wrap; font-size: 0.85em;'>    private static boolean isJobOperation(OperationName operationName) {
+        switch (operationName) {
+            case COMPLETE_JOB:
+            case FAIL_JOB:
+            case UPDATE_JOB_RETRIES:
+            case THROW_ERROR:
+                return true;
+            default:
+                return false;
+        }
+    }</pre></td>
+</tr>
+<tr>
+<td style='padding: 8px;'>8</td>
+<td style='padding: 8px; font-weight: bold;'>36</td>
+<td style='padding: 8px; font-size: 0.9em;'>org.apache.camel.language.simple.SimpleExpressionBuilder.nullExpression()</td>
+<td style='padding: 8px;'><pre style='background-color: #f8f8f8; padding: 5px; margin: 0; white-space: pre-wrap; font-size: 0.85em;'>    public static Expression nullExpression() {
+        return new ExpressionAdapter() {
+            @Override
+            public Object evaluate(Exchange exchange) {
+                return null;
+            }
+
+            @Override
+            public String toString() {
+                return &quot;null&quot;;
+            }
+        };
+    }</pre></td>
+</tr>
+<tr>
+<td style='padding: 8px;'>9</td>
+<td style='padding: 8px; font-weight: bold;'>37</td>
+<td style='padding: 8px; font-size: 0.9em;'>org.apache.camel.component.quartz.QuartzComponent.getSchedulerFactory()</td>
+<td style='padding: 8px;'><pre style='background-color: #f8f8f8; padding: 5px; margin: 0; white-space: pre-wrap; font-size: 0.85em;'>    public SchedulerFactory getSchedulerFactory() {
+        if (schedulerFactory == null) {
+            try {
+                schedulerFactory = createSchedulerFactory();
+            } catch (SchedulerException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return schedulerFactory;
+    }</pre></td>
+</tr>
+<tr>
+<td style='padding: 8px;'>10</td>
+<td style='padding: 8px; font-weight: bold;'>37</td>
+<td style='padding: 8px; font-size: 0.9em;'>org.apache.camel.core.xml.util.jsse.AbstractSecureRandomParametersFactoryBean.getObject()</td>
+<td style='padding: 8px;'><pre style='background-color: #f8f8f8; padding: 5px; margin: 0; white-space: pre-wrap; font-size: 0.85em;'>    public SecureRandomParameters getObject() throws Exception {
+        if (this.isSingleton()) {
+            if (instance == null) {
+                instance = createInstance();
+            }
+
+            return instance;
+        } else {
+            return createInstance();
+        }
+    }</pre></td>
+</tr>
+</table>
+</body></html>

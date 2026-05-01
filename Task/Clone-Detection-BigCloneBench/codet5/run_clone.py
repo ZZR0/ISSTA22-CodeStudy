@@ -100,7 +100,10 @@ def evaluate(args, model, eval_examples, eval_data, write_to_pred=False):
     logger.info("  " + "*" * 20)
 
     if write_to_pred:
-        with open(os.path.join(args.output_dir, "predictions.txt"), 'w') as f:
+        # Add for future mutiple repos by Dream 02/05/206
+        pred_path = os.path.join(args.output_dir, args.predictions_file)
+        with open(pred_path, "w", encoding="utf-8") as f:
+        #with open(os.path.join(args.output_dir, "predictions.txt"), 'w') as f:
             for example, pred in zip(eval_examples, y_preds):
                 if pred:
                     f.write(example.url1 + '\t' + example.url2 + '\t' + '1' + '\n')

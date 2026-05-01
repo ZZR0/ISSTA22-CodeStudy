@@ -1,0 +1,38 @@
+ 
+=========================================
+== Generating Delta Charts
+=========================================
+Generating charts for codegpt...
+
+--- Statistical Test Results for CodeGPT ---
+Wilcoxon Statistic: 598391.500
+P-Value: 2.08e-88
+Result: Significant improvement (p < 0.05) ✅
+--> Saved Box Plot to: rcp_boxplot_codegpt.png
+
+Generating charts for codebert...
+
+--- Statistical Test Results for CodeBERT ---
+Wilcoxon Statistic: 364190.500
+P-Value: 6.02e-142
+Result: Significant improvement (p < 0.05) ✅
+--> Saved Box Plot to: rcp_boxplot_codebert.png
+
+Generating charts for codet5...
+
+--- Statistical Test Results for CodeT5 ---
+Wilcoxon Statistic: 677524.000
+P-Value: 1.02e-39
+Result: Significant improvement (p < 0.05) ✅
+--> Saved Box Plot to: rcp_boxplot_codet5.png
+
+Generating charts for graphcodebert...
+
+--- Statistical Test Results for graphCodeBERT ---
+Wilcoxon Statistic: 300033.000
+P-Value: 1.35e-191
+Result: Significant improvement (p < 0.05) ✅
+--> Saved Box Plot to: rcp_boxplot_graphcodebert.png
+
+ 
+** Pipeline finished! All reports and charts are in ./output-py

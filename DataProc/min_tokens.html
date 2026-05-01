@@ -1,0 +1,156 @@
+<html><body>
+<h3>Top 10 Functions with Minimum Tokens</h3>
+<table border='1' style='border-collapse: collapse; width: 100%; text-align: left; font-family: Arial, sans-serif;'>
+<tr style='background-color: #f2f2f2;'>
+<th style='padding: 8px;'>Rank</th>
+<th style='padding: 8px;'>Tokens</th>
+<th style='padding: 8px;'>Function Name / File</th>
+<th style='padding: 8px;'>Code Snippet</th>
+</tr>
+<tr>
+<td style='padding: 8px;'>1</td>
+<td style='padding: 8px;'>117</td>
+<td style='padding: 8px; font-size: 0.9em;'>org.apache.camel.model.TransactedDefinition.description()</td>
+<td style='padding: 8px;'><pre style='background-color: #f8f8f8; padding: 5px; margin: 0; white-space: pre-wrap; font-size: 0.85em;'>    protected String description() {
+        if (ref != null) {
+            return &quot;ref:&quot; + ref;
+        } else if (policy != null) {
+            return policy.toString();
+        } else {
+            return &quot;&quot;;
+        }
+    }</pre></td>
+</tr>
+<tr>
+<td style='padding: 8px;'>2</td>
+<td style='padding: 8px;'>120</td>
+<td style='padding: 8px; font-size: 0.9em;'>org.apache.camel.component.infinispan.embedded.InfinispanEmbeddedConsumer.doStart()</td>
+<td style='padding: 8px;'><pre style='background-color: #f8f8f8; padding: 5px; margin: 0; white-space: pre-wrap; font-size: 0.85em;'>    protected void doStart() throws Exception {
+        super.doStart();
+
+        if (getConfiguration().hasQueryBuilder()) {
+            handler = new ContinuousQueryHandler();
+        } else {
+            handler = new ConsumerHandler();
+        }
+
+        ServiceHelper.startService(handler);
+    }</pre></td>
+</tr>
+<tr>
+<td style='padding: 8px;'>3</td>
+<td style='padding: 8px;'>120</td>
+<td style='padding: 8px; font-size: 0.9em;'>org.apache.camel.component.infinispan.remote.InfinispanRemoteConsumer.doStart()</td>
+<td style='padding: 8px;'><pre style='background-color: #f8f8f8; padding: 5px; margin: 0; white-space: pre-wrap; font-size: 0.85em;'>    protected void doStart() throws Exception {
+        super.doStart();
+
+        if (getConfiguration().hasQueryBuilder()) {
+            handler = new ContinuousQueryHandler();
+        } else {
+            handler = new ConsumerHandler();
+        }
+
+        ServiceHelper.startService(handler);
+    }</pre></td>
+</tr>
+<tr>
+<td style='padding: 8px;'>4</td>
+<td style='padding: 8px;'>122</td>
+<td style='padding: 8px; font-size: 0.9em;'>org.apache.camel.dsl.jbang.core.commands.action.CamelTraceAction.getId(Row r)</td>
+<td style='padding: 8px;'><pre style='background-color: #f8f8f8; padding: 5px; margin: 0; white-space: pre-wrap; font-size: 0.85em;'>    private String getId(Row r) {
+        if (r.first) {
+            return &quot;*--&gt;&quot;;
+        } else if (r.last) {
+            return &quot;*&lt;--&quot;;
+        } else {
+            return r.nodeId;
+        }
+    }</pre></td>
+</tr>
+<tr>
+<td style='padding: 8px;'>5</td>
+<td style='padding: 8px;'>123</td>
+<td style='padding: 8px; font-size: 0.9em;'>org.apache.camel.component.jt400.Jt400MsgQueueConsumer.poll()</td>
+<td style='padding: 8px;'><pre style='background-color: #f8f8f8; padding: 5px; margin: 0; white-space: pre-wrap; font-size: 0.85em;'>    protected int poll() throws Exception {
+        Exchange exchange = receive(getEndpoint().getReadTimeout());
+        if (exchange != null) {
+            getProcessor().process(exchange);
+            return 1;
+        } else {
+            return 0;
+        }
+    }</pre></td>
+</tr>
+<tr>
+<td style='padding: 8px;'>6</td>
+<td style='padding: 8px;'>123</td>
+<td style='padding: 8px; font-size: 0.9em;'>org.apache.camel.component.jt400.Jt400DataQueueConsumer.poll()</td>
+<td style='padding: 8px;'><pre style='background-color: #f8f8f8; padding: 5px; margin: 0; white-space: pre-wrap; font-size: 0.85em;'>    protected int poll() throws Exception {
+        Exchange exchange = receive(getEndpoint().getReadTimeout());
+        if (exchange != null) {
+            getProcessor().process(exchange);
+            return 1;
+        } else {
+            return 0;
+        }
+    }</pre></td>
+</tr>
+<tr>
+<td style='padding: 8px;'>7</td>
+<td style='padding: 8px;'>124</td>
+<td style='padding: 8px; font-size: 0.9em;'>org.apache.camel.model.ThrowExceptionDefinition.description()</td>
+<td style='padding: 8px;'><pre style='background-color: #f8f8f8; padding: 5px; margin: 0; white-space: pre-wrap; font-size: 0.85em;'>    protected String description() {
+        if (exception != null) {
+            return exception.getClass().getCanonicalName();
+        } else if (ref != null) {
+            return &quot;ref:&quot; + ref;
+        } else {
+            return &quot;&quot;;
+        }
+    }</pre></td>
+</tr>
+<tr>
+<td style='padding: 8px;'>8</td>
+<td style='padding: 8px;'>125</td>
+<td style='padding: 8px; font-size: 0.9em;'>org.apache.camel.dsl.jbang.core.commands.Debug.getId(SuspendedRow r)</td>
+<td style='padding: 8px;'><pre style='background-color: #f8f8f8; padding: 5px; margin: 0; white-space: pre-wrap; font-size: 0.85em;'>    private String getId(SuspendedRow r) {
+        if (r.first) {
+            return &quot;*--&gt;&quot;;
+        } else if (r.last) {
+            return &quot;*&lt;--&quot;;
+        } else {
+            return r.nodeId;
+        }
+    }</pre></td>
+</tr>
+<tr>
+<td style='padding: 8px;'>9</td>
+<td style='padding: 8px;'>130</td>
+<td style='padding: 8px; font-size: 0.9em;'>org.apache.camel.component.olingo4.Olingo4Index.index(Object result)</td>
+<td style='padding: 8px;'><pre style='background-color: #f8f8f8; padding: 5px; margin: 0; white-space: pre-wrap; font-size: 0.85em;'>    public void index(Object result) {
+        if (result instanceof ClientEntitySet) {
+            index((ClientEntitySet) result);
+        } else if (result instanceof Iterable) {
+            index((Iterable&lt;?&gt;) result);
+        } else {
+            indexDefault(result);
+        }
+    }</pre></td>
+</tr>
+<tr>
+<td style='padding: 8px;'>10</td>
+<td style='padding: 8px;'>131</td>
+<td style='padding: 8px; font-size: 0.9em;'>org.apache.camel.util.OrderedLocationProperties.remove(Object key)</td>
+<td style='padding: 8px;'><pre style='background-color: #f8f8f8; padding: 5px; margin: 0; white-space: pre-wrap; font-size: 0.85em;'>    public Object remove(Object key) {
+        lock.lock();
+        try {
+            locations.remove(key);
+            defaultValues.remove(key);
+            return super.remove(key);
+        } finally {
+            lock.unlock();
+        }
+    }</pre></td>
+</tr>
+</table>
+</body></html>

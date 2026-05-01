@@ -1,0 +1,160 @@
+{
+  "name": "clone-visualizer",
+  "displayName": "clone-visualizer",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:clone-visualizer.show_code_clones",
+    "onCommand:clone-visualizer.summarizeSelection",
+    "onCommand:dragDropZone.addSnippet",
+    "onCommand:dragDropZone.removeSnippet",
+    "onCommand:dragDropZone.removeSelected",
+    "onCommand:dragDropZone.clearDropzone"
+  ],
+  "main": "./dist/extension_clone_viz.js",
+  "contributes": {
+    "configuration": {
+      "title": "Clone Visualizer",
+      "properties": {
+        "cloneVisualizer.pythonPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to the Python executable used for code summarization. Use the same env where you installed scripts/requirements-summarizer.txt (protobuf, transformers, torch). Leave empty to use code-summarizer/.venv when present, otherwise python3 / python."
+        },
+        "cloneVisualizer.summarizerScriptPath": {
+          "type": "string",
+          "default": "",
+          "description": "Optional absolute path to summarizer.py. When empty, the extension uses scripts/summarizer.py inside the extension, or ../code-summarizer/summarizer.py."
+        },
+        "cloneVisualizer.summarizerModelPython": {
+          "type": "string",
+          "default": "",
+          "description": "Hugging Face model id when summarization uses the Python path (.py / python language, or selection that looks like Python). Empty uses Dreamuno/llm-codeknowhow-python."
+        },
+        "cloneVisualizer.summarizerModelJava": {
+          "type": "string",
+          "default": "",
+          "description": "Hugging Face model id when not using the Python path (Java and all other languages). Empty uses Dreamuno/llm_codeknowhow_v1."
+        },
+        "cloneVisualizer.refactorResultsPath": {
+          "type": "string",
+          "default": "",
+          "description": "Clone / refactor dataset JSON (array of clone groups). Absolute path, or a file name under the extension media/ folder (e.g. all_refactor_results_py.json). When empty: if both Java and Python bundles exist under media/, Show Code Clones asks which to load; otherwise the single available bundle is used, else media/all_refactor_results.json."
+        },
+        "cloneVisualizer.serverUrl": {
+          "type": "string",
+          "default": "http://127.0.0.1:5000",
+          "description": "Base URL of the Clone Visualizer REST server (scripts/server.py). Used for code summarization (POST /summarize) and DnD refactoring (POST /refactor/direct). Falls back to local subprocess when the server is unreachable."
+        }
+      }
+    },
+    "views": {
+      "explorer": [
+        {
+          "id": "dragDropZone",
+          "name": "Refactoring Drop Zone"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "clone-visualizer.show_code_clones",
+        "title": "Show Code Clones"
+      },
+      {
+        "command": "dragDropZone.addSnippet",
+        "title": "Add to Dropzone"
+      },
+      {
+        "command": "dragDropZone.removeSnippet",
+        "title": "Remove from Dropzone",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "dragDropZone.removeSelected",
+        "title": "Remove Selected from Dropzone"
+      },
+      {
+        "command": "dragDropZone.clearDropzone",
+        "title": "Clear Dropzone",
+        "icon": "$(clear-all)"
+      },
+      {
+        "command": "clone-visualizer.summarizeSelection",
+        "title": "Summarize Selection (Code LLM)"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "dragDropZone.addSnippet",
+          "group": "navigation"
+        },
+        {
+          "command": "clone-visualizer.summarizeSelection",
+          "when": "editorHasSelection",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "dragDropZone.removeSnippet",
+          "when": "view == dragDropZone && viewItem == dropzoneSnippet",
+          "group": "1_modification"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "dragDropZone.clearDropzone",
+          "when": "view == dragDropZone",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "dragDropZone.addSnippet",
+        "key": "ctrl+shift+r",
+        "mac": "cmd+shift+r",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "dragDropZone.removeSelected",
+        "key": "delete",
+        "mac": "cmd+backspace",
+        "when": "view == dragDropZone && listFocus && !inputFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.90.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "eslint": "^9.25.1",
+    "typescript": "^5.8.3",
+    "ts-loader": "^9.5.2",
+    "webpack": "^5.99.7",
+    "webpack-cli": "^6.0.1",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}

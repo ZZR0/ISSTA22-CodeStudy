@@ -1,0 +1,619 @@
+<html><head><style>
+table { border-collapse: collapse; width: 100%; font-family: sans-serif; }
+th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+th { background-color: #f4f4f4; }
+pre { background-color: #f8f8f8; padding: 10px; white-space: pre-wrap; font-size: 0.9em; }
+.comment-highlight { color: #008000; font-weight: bold; }
+</style></head><body>
+<h2>Top 10 Samples with Comments (BigCloneBench)</h2>
+<table><tr><th>ID</th><th>Detected Comments</th><th>Full Code Snippet</th></tr>
+<tr>
+<td>10005674</td>
+<td><code>//pastebin.ca/quiet-paste.php&quot;);</code><br><code>//pastebin.ca/&quot; + line.substring(8);</code><br><code>//pastebin.ca/\nPlease check your internet connection&quot;;</code></td>
+<td><pre>    public String post() {
+        if (content == null || content.equals(&quot;&quot;)) return &quot;Type something to publish!!&quot;;
+        OutputStreamWriter wr = null;
+        BufferedReader rd = null;
+        try {
+            String data = URLEncoder.encode(&quot;api&quot;, &quot;UTF-8&quot;) + &quot;=&quot; + URLEncoder.encode(apiKey, &quot;UTF-8&quot;);
+            data += &quot;&amp;&quot; + URLEncoder.encode(&quot;content&quot;, &quot;UTF-8&quot;) + &quot;=&quot; + URLEncoder.encode(content, &quot;UTF-8&quot;);
+            data += &quot;&amp;&quot; + URLEncoder.encode(&quot;description&quot;, &quot;UTF-8&quot;) + &quot;=&quot; + URLEncoder.encode(descriptionTextArea.getText() + description_suffix, &quot;UTF-8&quot;);
+            data += &quot;&amp;&quot; + URLEncoder.encode(&quot;expiry&quot;, &quot;UTF-8&quot;) + &quot;=&quot; + URLEncoder.encode((String) expiryComboBox.getSelectedItem(), &quot;UTF-8&quot;);
+            data += &quot;&amp;&quot; + URLEncoder.encode(&quot;type&quot;, &quot;UTF-8&quot;) + &quot;=&quot; + URLEncoder.encode(type, &quot;UTF-8&quot;);
+            data += &quot;&amp;&quot; + URLEncoder.encode(&quot;name&quot;, &quot;UTF-8&quot;) + &quot;=&quot; + URLEncoder.encode(nameTextBox.getText(), &quot;UTF-8&quot;);
+            URL url = new URL(&quot;http://pastebin.ca/quiet-paste.php&quot;);
+            URLConnection conn = url.openConnection();
+            conn.setDoOutput(true);
+            wr = new OutputStreamWriter(conn.getOutputStream());
+            wr.write(data);
+            wr.flush();
+            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            String line;
+            line = rd.readLine();
+            if (line == null || line.length() &lt; 8 || !line.substring(0, 8).equals(&quot;SUCCESS:&quot;)) return &quot;Unknown error in publishing the post&quot;; else return &quot;*Publish successful.! The link to your post is.: &quot; + &quot;http://pastebin.ca/&quot; + line.substring(8);
+        } catch (IOException ex) {
+            return &quot;Unable to connect to http://pastebin.ca/\nPlease check your internet connection&quot;;
+        } finally {
+            try {
+                if (wr != null) wr.close();
+                if (rd != null) rd.close();
+            } catch (IOException ex) {
+            }
+        }
+    }
+</pre></td>
+</tr>
+<tr>
+<td>10005879</td>
+<td><code>//www.google.com/&quot;);</code></td>
+<td><pre>    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        TextView tv = new TextView(this);
+        HttpClient client = new DefaultHttpClient();
+        HttpGet httpGetRequest = new HttpGet(&quot;http://www.google.com/&quot;);
+        String line = &quot;&quot;, responseString = &quot;&quot;;
+        try {
+            HttpResponse response = client.execute(httpGetRequest);
+            if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+                BufferedReader br = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+                while ((line = br.readLine()) != null) {
+                    responseString += line;
+                }
+                br.close();
+            }
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        tv.setText(responseString);
+        setContentView(tv);
+    }
+</pre></td>
+</tr>
+<tr>
+<td>1005107</td>
+<td><code>//images.google.com/images?q=&quot; + currentTrack.getArtist() + &quot; - &quot; + currentTrack.getAlbum() + &quot;&amp;sa=N&amp;start=0&amp;ndsp=21&quot;;</code><br><code>//&quot;) || s.startsWith(&quot;https://&quot;) &amp;&amp; s.contains(&quot;&amp;amp;&quot;)) {</code></td>
+<td><pre>    public void googleImageSearch() {
+        if (artist.compareToIgnoreCase(previousArtist) != 0) {
+            MusicBoxView.googleImageLocation = 0;
+            try {
+                String u = &quot;http://images.google.com/images?q=&quot; + currentTrack.getArtist() + &quot; - &quot; + currentTrack.getAlbum() + &quot;&amp;sa=N&amp;start=0&amp;ndsp=21&quot;;
+                if (u.contains(&quot; &quot;)) {
+                    u = u.replace(&quot; &quot;, &quot;+&quot;);
+                }
+                URL url = new URL(u);
+                HttpURLConnection httpcon = (HttpURLConnection) url.openConnection();
+                httpcon.addRequestProperty(&quot;User-Agent&quot;, &quot;Mozilla/4.76&quot;);
+                BufferedReader readIn = new BufferedReader(new InputStreamReader(httpcon.getInputStream()));
+                String text = &quot;&quot;;
+                String lin = &quot;&quot;;
+                while ((lin = readIn.readLine()) != null) {
+                    text += lin;
+                }
+                readIn.close();
+                if (text.contains(&quot;\n&quot;)) {
+                    text = text.replace(&quot;\n&quot;, &quot;&quot;);
+                }
+                String[] array = text.split(&quot;\\Qhref=\&quot;/imgres?imgurl=\\E&quot;);
+                for (String s : array) {
+                    if (s.startsWith(&quot;http://&quot;) || s.startsWith(&quot;https://&quot;) &amp;&amp; s.contains(&quot;&amp;amp;&quot;)) {
+                        String s1 = s.substring(0, s.indexOf(&quot;&amp;amp;&quot;));
+                        googleImages.add(s1);
+                    }
+                }
+            } catch (Exception ex4) {
+                MusicBoxView.showErrorDialog(ex4);
+            }
+        }
+    }
+</pre></td>
+</tr>
+<tr>
+<td>1005108</td>
+<td><code>//images.google.com/images?q=&quot; + search + start;</code><br><code>//&quot;) || s.startsWith(&quot;https://&quot;) &amp;&amp; s.contains(&quot;&amp;amp;&quot;)) {</code></td>
+<td><pre>    public void googleImageSearch(String search, String start) {
+        try {
+            String u = &quot;http://images.google.com/images?q=&quot; + search + start;
+            if (u.contains(&quot; &quot;)) {
+                u = u.replace(&quot; &quot;, &quot;+&quot;);
+            }
+            URL url = new URL(u);
+            HttpURLConnection httpcon = (HttpURLConnection) url.openConnection();
+            httpcon.addRequestProperty(&quot;User-Agent&quot;, &quot;Mozilla/4.76&quot;);
+            BufferedReader readIn = new BufferedReader(new InputStreamReader(httpcon.getInputStream()));
+            googleImages.clear();
+            String text = &quot;&quot;;
+            String lin = &quot;&quot;;
+            while ((lin = readIn.readLine()) != null) {
+                text += lin;
+            }
+            readIn.close();
+            if (text.contains(&quot;\n&quot;)) {
+                text = text.replace(&quot;\n&quot;, &quot;&quot;);
+            }
+            String[] array = text.split(&quot;\\Qhref=\&quot;/imgres?imgurl=\\E&quot;);
+            for (String s : array) {
+                if (s.startsWith(&quot;http://&quot;) || s.startsWith(&quot;https://&quot;) &amp;&amp; s.contains(&quot;&amp;amp;&quot;)) {
+                    String s1 = s.substring(0, s.indexOf(&quot;&amp;amp;&quot;));
+                    googleImages.add(s1);
+                }
+            }
+        } catch (Exception ex4) {
+            MusicBoxView.showErrorDialog(ex4);
+        }
+        MusicBoxView.jButton7.setEnabled(true);
+        ImageIcon icon;
+        try {
+            icon = new ImageIcon(new URL(googleImages.elementAt(MusicBoxView.googleImageLocation)));
+            ImageIcon ico = new ImageIcon(icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
+            MusicBoxView.albumArtLabel.setIcon(ico);
+        } catch (MalformedURLException ex1) {
+            MusicBoxView.showErrorDialog(ex1);
+        }
+    }
+</pre></td>
+</tr>
+<tr>
+<td>10095821</td>
+<td><code>//&quot; + bucketName + &quot;/jonny.zip&quot;);</code></td>
+<td><pre>    @Test(dependsOnMethods = { &quot;getSize&quot; })
+    public void download() throws IOException {
+        FileObject typica = fsManager.resolveFile(&quot;s3://&quot; + bucketName + &quot;/jonny.zip&quot;);
+        File localCache = File.createTempFile(&quot;vfs.&quot;, &quot;.s3-test&quot;);
+        FileOutputStream out = new FileOutputStream(localCache);
+        IOUtils.copy(typica.getContent().getInputStream(), out);
+        Assert.assertEquals(localCache.length(), typica.getContent().getSize());
+        localCache.delete();
+    }
+</pre></td>
+</tr>
+<tr>
+<td>10151623</td>
+<td><code>//www.w3.org/2000/09/xmldsig#enveloped-signature&quot;, (TransformParameterSpec) null));</code><br><code>//www.w3.org/2001/10/xml-exc-c14n#&quot;, new ExcC14NParameterSpec(prefixlist)));</code><br><code>//www.w3.org/2000/09/xmldsig#&quot;, &quot;ds&quot;);</code><br>... and 1 more</td>
+<td><pre>    public void signAndSend() throws Exception {
+        SSLContext sslContext = null;
+        try {
+            sslContext = SSLContext.getInstance(&quot;TLS&quot;);
+            X509TrustManager[] xtmArray = new X509TrustManager[] { xtm };
+            sslContext.init(null, xtmArray, new java.security.SecureRandom());
+        } catch (GeneralSecurityException gse) {
+            this.addException(&quot;GeneralSecurityException&quot;, gse);
+        }
+        if (sslContext != null) {
+            HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());
+        }
+        HttpsURLConnection.setDefaultHostnameVerifier(hnv);
+        String providerName = System.getProperty(&quot;jsr105Provider&quot;, &quot;org.jcp.xml.dsig.internal.dom.XMLDSigRI&quot;);
+        XMLSignatureFactory fac = XMLSignatureFactory.getInstance(&quot;DOM&quot;, (Provider) Class.forName(providerName).newInstance());
+        DigestMethod dm = fac.newDigestMethod(DigestMethod.SHA1, null);
+        List transforms = new Vector(2);
+        transforms.add(fac.newTransform(&quot;http://www.w3.org/2000/09/xmldsig#enveloped-signature&quot;, (TransformParameterSpec) null));
+        List prefixlist = new Vector(1);
+        prefixlist.add(&quot;xsd&quot;);
+        transforms.add(fac.newTransform(&quot;http://www.w3.org/2001/10/xml-exc-c14n#&quot;, new ExcC14NParameterSpec(prefixlist)));
+        Random randgen = new Random();
+        byte[] rand_bytes = new byte[20];
+        randgen.nextBytes(rand_bytes);
+        String assertion_id_str = &quot;i&quot; + new String(Hex.encodeHex(rand_bytes));
+        Reference ref = fac.newReference(&quot;#&quot; + assertion_id_str, dm, transforms, null, null);
+        CanonicalizationMethod cm = fac.newCanonicalizationMethod(CanonicalizationMethod.EXCLUSIVE, (C14NMethodParameterSpec) null);
+        SignatureMethod sm = fac.newSignatureMethod(SignatureMethod.RSA_SHA1, null);
+        SignedInfo si = fac.newSignedInfo(cm, sm, Collections.singletonList(ref));
+        KeyStore ks = KeyStore.getInstance(&quot;JKS&quot;);
+        FileInputStream fis = null;
+        if (TEST_SIGNED_WITH_WRONG_CERT == testNumber) {
+            fis = new FileInputStream(resourceFolder + &quot;z-xtra-sign.jks&quot;);
+        } else {
+            fis = new FileInputStream(resourceFolder + &quot;z-idp-sign.jks&quot;);
+        }
+        ks.load(fis, &quot;changeit&quot;.toCharArray());
+        {
+            Enumeration aliases = ks.aliases();
+            for (; aliases.hasMoreElements(); ) {
+                String alias = (String) aliases.nextElement();
+                boolean b = ks.isKeyEntry(alias);
+                b = ks.isCertificateEntry(alias);
+                System.out.println(b + &quot; &quot; + alias);
+            }
+        }
+        PrivateKey privateKey = (PrivateKey) ks.getKey(&quot;tomcat&quot;, &quot;changeit&quot;.toCharArray());
+        XMLSignature signature = fac.newXMLSignature(si, null);
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        dbf.setNamespaceAware(true);
+        DocumentBuilder db = dbf.newDocumentBuilder();
+        File docFile = new File(resourceFolder + &quot;BaseRequest.xml&quot;);
+        Document doc = db.parse(docFile);
+        Element root = doc.getDocumentElement();
+        NamedNodeMap root_atts = root.getAttributes();
+        SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSS&#x27;Z&#x27;&quot;);
+        sdf.setTimeZone(TimeZone.getTimeZone(&quot;GMT&quot;));
+        GregorianCalendar right_now = new GregorianCalendar();
+        if (TEST_NOT_ON_OR_AFTER_EXPIRED == testNumber) {
+            right_now.add(Calendar.MINUTE, alterNowDateBy);
+        }
+        Date issue_date = right_now.getTime();
+        right_now.add(Calendar.MINUTE, -10);
+        Date auth_instant_date = right_now.getTime();
+        right_now.add(Calendar.MINUTE, 20);
+        Date not_on_or_after_date = right_now.getTime();
+        System.out.println(&quot;Not on or after 1: &quot; + sdf.format(right_now.getTime()));
+        Node response_id = root_atts.getNamedItem(&quot;ID&quot;);
+        randgen.nextBytes(rand_bytes);
+        response_id.setNodeValue(&quot;i&quot; + new String(Hex.encodeHex(rand_bytes)));
+        Node response_issue_instant = root_atts.getNamedItem(&quot;IssueInstant&quot;);
+        response_issue_instant.setNodeValue(sdf.format(issue_date));
+        NodeList tmp_nlist = root.getElementsByTagNameNS(&quot;urn:oasis:names:tc:SAML:2.0:assertion&quot;, &quot;Assertion&quot;);
+        Element assertion_node = (Element) tmp_nlist.item(0);
+        NamedNodeMap ass_node_atts = assertion_node.getAttributes();
+        Node assertion_id = ass_node_atts.getNamedItem(&quot;ID&quot;);
+        assertion_id.setNodeValue(assertion_id_str);
+        Node assertion_issue_instant = ass_node_atts.getNamedItem(&quot;IssueInstant&quot;);
+        assertion_issue_instant.setNodeValue(sdf.format(issue_date));
+        tmp_nlist = assertion_node.getElementsByTagNameNS(&quot;urn:oasis:names:tc:SAML:2.0:assertion&quot;, &quot;Subject&quot;);
+        Element subject_node = (Element) tmp_nlist.item(0);
+        if (TEST_UNKNOWN_CONFIRMATION == testNumber) {
+            tmp_nlist = subject_node.getElementsByTagNameNS(&quot;urn:oasis:names:tc:SAML:2.0:assertion&quot;, &quot;SubjectConfirmation&quot;);
+            Element subj_conf_node = (Element) tmp_nlist.item(0);
+            NamedNodeMap subj_conf_node_atts = subj_conf_node.getAttributes();
+            Node method_node = subj_conf_node_atts.getNamedItem(&quot;Method&quot;);
+            method_node.setNodeValue(badConfirmationMethod);
+        }
+        tmp_nlist = subject_node.getElementsByTagNameNS(&quot;urn:oasis:names:tc:SAML:2.0:assertion&quot;, &quot;NameID&quot;);
+        Element name_id_node = (Element) tmp_nlist.item(0);
+        NamedNodeMap name_id_node_atts = name_id_node.getAttributes();
+        Node sp_name_qualifier = name_id_node_atts.getNamedItem(&quot;SPNameQualifier&quot;);
+        sp_name_qualifier.setNodeValue(sPEntityId);
+        Node name_id_value = name_id_node.getFirstChild();
+        randgen.nextBytes(rand_bytes);
+        name_id_value.setNodeValue(new String(Hex.encodeHex(rand_bytes)));
+        tmp_nlist = subject_node.getElementsByTagNameNS(&quot;urn:oasis:names:tc:SAML:2.0:assertion&quot;, &quot;SubjectConfirmationData&quot;);
+        Element subj_conf_data_node = (Element) tmp_nlist.item(0);
+        NamedNodeMap subj_conf_data_node_atts = subj_conf_data_node.getAttributes();
+        Node not_on_or_after_node = subj_conf_data_node_atts.getNamedItem(&quot;NotOnOrAfter&quot;);
+        not_on_or_after_node.setNodeValue(sdf.format(not_on_or_after_date));
+        Node recipient_node = subj_conf_data_node_atts.getNamedItem(&quot;Recipient&quot;);
+        if (TEST_WRONG_RECIPIENT == testNumber) {
+            recipient_node.setNodeValue(badRecipientValue);
+        } else {
+            recipient_node.setNodeValue(sPAssertionConsumerService);
+        }
+        tmp_nlist = assertion_node.getElementsByTagNameNS(&quot;urn:oasis:names:tc:SAML:2.0:assertion&quot;, &quot;Audience&quot;);
+        Element audience_node = (Element) tmp_nlist.item(0);
+        Node audience_value = audience_node.getFirstChild();
+        if (TEST_WRONG_AUDIENCE == testNumber) {
+            audience_value.setNodeValue(badAudienceValue);
+        } else {
+            audience_value.setNodeValue(sPEntityId);
+        }
+        tmp_nlist = assertion_node.getElementsByTagNameNS(&quot;urn:oasis:names:tc:SAML:2.0:assertion&quot;, &quot;AuthnStatement&quot;);
+        Element authn_statement_node = (Element) tmp_nlist.item(0);
+        NamedNodeMap authn_statement_node_atts = authn_statement_node.getAttributes();
+        Node authn_instant_node = authn_statement_node_atts.getNamedItem(&quot;AuthnInstant&quot;);
+        authn_instant_node.setNodeValue(sdf.format(auth_instant_date));
+        Node sess_idx_node = authn_statement_node_atts.getNamedItem(&quot;SessionIndex&quot;);
+        sess_idx_node.setNodeValue(assertion_id_str);
+        DOMSignContext signContext = new DOMSignContext(privateKey, assertion_node, subject_node);
+        signContext.putNamespacePrefix(&quot;http://www.w3.org/2000/09/xmldsig#&quot;, &quot;ds&quot;);
+        signContext.putNamespacePrefix(&quot;http://www.w3.org/2001/10/xml-exc-c14n#&quot;, &quot;ec&quot;);
+        signature.sign(signContext);
+        TransformerFactory tf = TransformerFactory.newInstance();
+        Transformer trans;
+        if (TEST_DATA_ALTERED_AFTER_SIG == testNumber) {
+            right_now.add(Calendar.MINUTE, 10);
+            System.out.println(&quot;Not on or after: &quot; + sdf.format(right_now.getTime()));
+            not_on_or_after_node.setNodeValue(sdf.format(right_now.getTime()));
+        }
+        trans = tf.newTransformer();
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        trans.transform(new DOMSource(doc), new StreamResult(pw));
+        if (useJavaPOST) {
+            try {
+                URL url = new URL(sPAssertionConsumerService);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setDoOutput(true);
+                conn.setDoInput(true);
+                conn.setRequestMethod(&quot;POST&quot;);
+                conn.setRequestProperty(&quot;Content-Type&quot;, &quot;application/x-www-form-urlencoded&quot;);
+                conn.setInstanceFollowRedirects(false);
+                conn.setUseCaches(false);
+                String base64ofDoc = Base64.encode(sw.toString().getBytes());
+                DataOutputStream printout = new DataOutputStream(conn.getOutputStream());
+                String content = &quot;SAMLResponse=&quot; + URLEncoder.encode(base64ofDoc, &quot;UTF-8&quot;);
+                printout.writeBytes(content);
+                printout.flush();
+                printout.close();
+                if (TEST_GOOD_REPLAY == testNumber) {
+                    base64Assertion = Base64.encode(sw.toString().getBytes());
+                    replay = true;
+                }
+                BufferedReader input = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                String redirect = conn.getHeaderField(&quot;Location&quot;);
+                if (redirect != null) {
+                    input.close();
+                    URL url2 = new URL(redirect);
+                    URLConnection conn2 = url2.openConnection();
+                    String cookie = conn.getHeaderField(&quot;Set-Cookie&quot;);
+                    if (cookie != null) {
+                        int index = cookie.indexOf(&quot;;&quot;);
+                        if (index &gt;= 0) cookie = cookie.substring(0, index);
+                        conn2.setRequestProperty(&quot;Cookie&quot;, cookie);
+                    }
+                    input = new BufferedReader(new InputStreamReader(conn2.getInputStream()));
+                }
+                StringBuffer buff = new StringBuffer();
+                String str2;
+                while (null != ((str2 = input.readLine()))) {
+                    buff.append(str2);
+                }
+                input.close();
+                result = buff.toString();
+                success = true;
+            } catch (MalformedURLException me) {
+                this.addException(&quot;MalformedURLException&quot;, me);
+            } catch (IOException ioe) {
+                this.addException(&quot;IOException&quot;, ioe);
+            }
+        } else {
+            base64Assertion = Base64.encode(sw.toString().getBytes());
+            Transformer transPretty = tf.newTransformer(new StreamSource(resourceFolder + &quot;PrettyPrint.xslt&quot;));
+            StringWriter swPretty = new StringWriter();
+            PrintWriter pwPretty = new PrintWriter(sw);
+            trans.transform(new DOMSource(doc), new StreamResult(pwPretty));
+            prettyAssertion = sw.toString();
+            System.out.println(XMLHelper.prettyPrintXML(doc.getFirstChild()));
+            success = true;
+        }
+    }
+</pre></td>
+</tr>
+<tr>
+<td>10168255</td>
+<td><code>//www.&quot;)) {</code><br><code>//&quot; + mRequestURLWWW.substring(11);</code><br><code>//www.&quot; + mRequestURL.substring(7);</code></td>
+<td><pre>    private void extractByParsingHtml(String refererURL, String requestURL) throws MalformedURLException, IOException {
+        URL url = new URL(refererURL);
+        InputStream is = url.openStream();
+        mRefererURL = refererURL;
+        if (requestURL.startsWith(&quot;http://www.&quot;)) {
+            mRequestURLWWW = requestURL;
+            mRequestURL = &quot;http://&quot; + mRequestURLWWW.substring(11);
+        } else {
+            mRequestURL = requestURL;
+            mRequestURLWWW = &quot;http://www.&quot; + mRequestURL.substring(7);
+        }
+        Parser parser = (new HTMLEditorKit() {
+
+            public Parser getParser() {
+                return super.getParser();
+            }
+        }).getParser();
+        StringBuffer sb = new StringBuffer();
+        InputStreamReader isr = new InputStreamReader(is);
+        BufferedReader br = new BufferedReader(isr);
+        try {
+            String line = null;
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+        } finally {
+            br.close();
+        }
+        StringReader sr = new StringReader(sb.toString());
+        parser.parse(sr, new LinkbackCallback(), true);
+        if (mStart != 0 &amp;&amp; mEnd != 0 &amp;&amp; mEnd &gt; mStart) {
+            mExcerpt = sb.toString().substring(mStart, mEnd);
+            mExcerpt = Utilities.removeHTML(mExcerpt);
+            if (mExcerpt.length() &gt; mMaxExcerpt) {
+                mExcerpt = mExcerpt.substring(0, mMaxExcerpt) + &quot;...&quot;;
+            }
+        }
+        if (mTitle.startsWith(&quot;&gt;&quot;) &amp;&amp; mTitle.length() &gt; 1) {
+            mTitle = mTitle.substring(1);
+        }
+    }
+</pre></td>
+</tr>
+<tr>
+<td>10192340</td>
+<td><code>//simbad.u-strasbg.fr/simbad/sim-script?submit=submit+script&amp;script=&quot;;</code></td>
+<td><pre>    @SuppressWarnings(&quot;unchecked&quot;)
+    private void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        printAccess(request, false);
+        try {
+            response.setContentType(&quot;application/json&quot;);
+            String position = request.getParameter(&quot;pos&quot;);
+            if (position == null || position.length() == 0) {
+                reportJsonError(request, response, &quot;Missing position parameter&quot;);
+            } else {
+                PositionParser pp;
+                pp = new PositionParser(position);
+                String url = &quot;http://simbad.u-strasbg.fr/simbad/sim-script?submit=submit+script&amp;script=&quot;;
+                url += URLEncoder.encode(&quot;format object \&quot;%IDLIST[%-30*]|-%COO(A)|%COO(D)|%OTYPELIST(S)\&quot;\n&quot; + pp.getPosition() + &quot; radius=1m&quot;, &quot;ISO-8859-1&quot;);
+                System.out.println(url);
+                URL simurl = new URL(url);
+                BufferedReader in = new BufferedReader(new InputStreamReader(simurl.openStream()));
+                String boeuf;
+                boolean data_found = false;
+                JSONObject retour = new JSONObject();
+                JSONArray dataarray = new JSONArray();
+                JSONArray colarray = new JSONArray();
+                JSONObject jsloc = new JSONObject();
+                jsloc.put(&quot;sTitle&quot;, &quot;ID&quot;);
+                colarray.add(jsloc);
+                jsloc = new JSONObject();
+                jsloc.put(&quot;sTitle&quot;, &quot;Position&quot;);
+                colarray.add(jsloc);
+                jsloc = new JSONObject();
+                jsloc.put(&quot;sTitle&quot;, &quot;Type&quot;);
+                colarray.add(jsloc);
+                retour.put(&quot;aoColumns&quot;, colarray);
+                int datasize = 0;
+                while ((boeuf = in.readLine()) != null) {
+                    if (data_found) {
+                        String[] fields = boeuf.trim().split(&quot;\\|&quot;, -1);
+                        int pos = fields.length - 1;
+                        if (pos &gt;= 3) {
+                            String type = fields[pos];
+                            pos--;
+                            String dec = fields[pos];
+                            pos--;
+                            String ra = fields[pos];
+                            String id = fields[0].split(&quot;\\s{2,}&quot;)[0].trim();
+                            JSONArray darray = new JSONArray();
+                            darray.add(id.trim());
+                            darray.add(ra + &quot; &quot; + dec);
+                            darray.add(type.trim());
+                            dataarray.add(darray);
+                            datasize++;
+                            if (datasize &gt;= 15) {
+                                darray = new JSONArray();
+                                darray.add(&quot;truncated to 15&quot;);
+                                darray.add(&quot;&quot;);
+                                darray.add(&quot;&quot;);
+                                dataarray.add(darray);
+                                datasize++;
+                            }
+                        }
+                    } else if (boeuf.startsWith(&quot;::data&quot;)) {
+                        data_found = true;
+                    }
+                }
+                in.close();
+                retour.put(&quot;aaData&quot;, dataarray);
+                retour.put(&quot;iTotalRecords&quot;, datasize);
+                retour.put(&quot;iTotalDisplayRecords&quot;, datasize);
+                JsonUtils.teePrint(response.getOutputStream(), retour.toJSONString());
+            }
+        } catch (QueryException e) {
+            reportJsonError(request, response, e);
+        }
+    }
+</pre></td>
+</tr>
+<tr>
+<td>10192341</td>
+<td><code>//simbad.u-strasbg.fr/simbad/sim-script?submit=submit+script&amp;script=&quot;;</code></td>
+<td><pre>    @SuppressWarnings(&quot;unchecked&quot;)
+    public static void main(String[] args) throws Exception {
+        PositionParser pp;
+        Database.init(&quot;XIDResult&quot;);
+        pp = new PositionParser(&quot;01:33:50.904+30:39:35.79&quot;);
+        String url = &quot;http://simbad.u-strasbg.fr/simbad/sim-script?submit=submit+script&amp;script=&quot;;
+        String script = &quot;format object \&quot;%IDLIST[%-30*]|-%COO(A)|%COO(D)|%OTYPELIST(S)\&quot;\n&quot;;
+        String tmp = &quot;&quot;;
+        script += pp.getPosition() + &quot; radius=1m&quot;;
+        url += URLEncoder.encode(script, &quot;ISO-8859-1&quot;);
+        URL simurl = new URL(url);
+        BufferedReader in = new BufferedReader(new InputStreamReader(simurl.openStream()));
+        String boeuf;
+        boolean data_found = false;
+        JSONObject retour = new JSONObject();
+        JSONArray dataarray = new JSONArray();
+        JSONArray colarray = new JSONArray();
+        JSONObject jsloc = new JSONObject();
+        jsloc.put(&quot;sTitle&quot;, &quot;ID&quot;);
+        colarray.add(jsloc);
+        jsloc = new JSONObject();
+        jsloc.put(&quot;sTitle&quot;, &quot;Position&quot;);
+        colarray.add(jsloc);
+        jsloc = new JSONObject();
+        jsloc.put(&quot;sTitle&quot;, &quot;Type&quot;);
+        colarray.add(jsloc);
+        retour.put(&quot;aoColumns&quot;, colarray);
+        int datasize = 0;
+        while ((boeuf = in.readLine()) != null) {
+            if (data_found) {
+                String[] fields = boeuf.trim().split(&quot;\\|&quot;, -1);
+                int pos = fields.length - 1;
+                if (pos &gt;= 3) {
+                    String type = fields[pos];
+                    pos--;
+                    String dec = fields[pos];
+                    pos--;
+                    String ra = fields[pos];
+                    String id = &quot;&quot;;
+                    for (int i = 0; i &lt; pos; i++) {
+                        id += fields[i];
+                        if (i &lt; (pos - 1)) {
+                            id += &quot;|&quot;;
+                        }
+                    }
+                    if (id.length() &lt;= 30) {
+                        JSONArray darray = new JSONArray();
+                        darray.add(id.trim());
+                        darray.add(ra + &quot; &quot; + dec);
+                        darray.add(type.trim());
+                        dataarray.add(darray);
+                        datasize++;
+                    }
+                }
+            } else if (boeuf.startsWith(&quot;::data&quot;)) {
+                data_found = true;
+            }
+        }
+        retour.put(&quot;aaData&quot;, dataarray);
+        retour.put(&quot;iTotalRecords&quot;, datasize);
+        retour.put(&quot;iTotalDisplayRecords&quot;, datasize);
+        System.out.println(retour.toJSONString());
+        in.close();
+    }
+</pre></td>
+</tr>
+<tr>
+<td>10236283</td>
+<td><code>//dbpedia.org/resource/&quot;)) {</code><br><code>//dbpedia.org/resource/&quot; + resourceName + &quot;&gt; ?property ?hasValue  } FILTER (lang(?hasValue) = \&quot;&quot; + lang + &quot;\&quot; || !isLiteral(?hasValue))}&quot;;</code><br><code>//dbpedia.org/property/&quot;)) {</code><br>... and 1 more</td>
+<td><pre>    public MultiValueMap&lt;String&gt; queryResource(String resourceName) {
+        if (resourceName.startsWith(&quot;http://dbpedia.org/resource/&quot;)) {
+            resourceName = resourceName.substring(28);
+        }
+        try {
+            resourceName = resourceName.replace(&#x27; &#x27;, &#x27;_&#x27;);
+            resourceName = URLEncoder.encode(resourceName, &quot;UTF-8&quot;);
+        } catch (UnsupportedEncodingException exc) {
+        }
+        String select = prefix + &quot; SELECT ?property ?hasValue WHERE { { &quot; + &quot;&lt;http://dbpedia.org/resource/&quot; + resourceName + &quot;&gt; ?property ?hasValue  } FILTER (lang(?hasValue) = \&quot;&quot; + lang + &quot;\&quot; || !isLiteral(?hasValue))}&quot;;
+        System.out.println(select);
+        MultiValueMap&lt;String&gt; resourceMap = new MultiValueMap&lt;String&gt;();
+        try {
+            URL url = new URL(queryBase + URLEncoder.encode(select, &quot;UTF-8&quot;));
+            InputStream inStream = url.openStream();
+            Document doc = docBuild.parse(inStream);
+            Element table = doc.getDocumentElement();
+            NodeList rows = table.getElementsByTagName(&quot;tr&quot;);
+            for (int i = 0; i &lt; rows.getLength(); i++) {
+                Element row = (Element) rows.item(i);
+                NodeList cols = row.getElementsByTagName(&quot;td&quot;);
+                if (cols.getLength() &gt; 1) {
+                    Element propElem = (Element) cols.item(0);
+                    Element valElem = (Element) cols.item(1);
+                    String property = ((Text) propElem.getFirstChild()).getData();
+                    if (property.startsWith(&quot;http://dbpedia.org/property/&quot;)) {
+                        property = property.substring(28);
+                    } else {
+                        int inx = property.indexOf(&#x27;#&#x27;);
+                        if (inx == -1) {
+                            inx = property.lastIndexOf(&#x27;/&#x27;);
+                        }
+                        property = property.substring(inx + 1);
+                    }
+                    String value = ((Text) valElem.getFirstChild()).getData();
+                    if (value.startsWith(&quot;http://dbpedia.org/resource/&quot;)) {
+                        value = value.substring(28).replaceAll(&quot;_&quot;, &quot; &quot;);
+                    }
+                    resourceMap.addFieldValue(property, value);
+                }
+            }
+        } catch (UnsupportedEncodingException exc) {
+            exc.printStackTrace();
+        } catch (IOException exc) {
+            System.err.println(&quot;Cannot retrieve record for &quot; + resourceName);
+        } catch (SAXException exc) {
+            System.err.println(&quot;Cannot parse record for &quot; + resourceName);
+        }
+        return resourceMap;
+    }
+</pre></td>
+</tr>
+</table></body></html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Camel Clone Visualization</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f4f4f9; padding: 20px; }
+        h1 { text-align: center; }
+        .clone-class { background: #fff; border: 1px solid #ddd; margin-bottom: 30px; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .clone-instance { margin-top: 15px; border-top: 2px dashed #eee; padding-top: 15px; }
+        .meta-info { font-size: 0.9em; color: #555; margin-bottom: 10px; }
+        pre { background-color: #fafafa; border: 1px solid #ccc; padding: 15px; overflow-x: auto; border-radius: 4px; line-height: 1.4; }
+        
+        /* Coloring rules */
+        .method-signature { color: #8b008b; font-weight: bold; } /* Dark Magenta */
+        .before-clone { color: blue; }
+        .in-clone { color: red; font-weight: bold; }
+        .after-clone { color: black; }
+        .line-number {
+            display: inline-block;
+            width: 45px;
+            color: #aaa;
+            border-right: 1px solid #ddd;
+            padding-right: 10px;
+            margin-right: 10px;
+            text-align: right;
+            user-select: none; /* Prevents copying line numbers */
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Clone Block Visualization</h1><div class="clone-class">
+    <h2>Clone Class ID: 110 (Instances: 2)</h2><div class="clone-instance">
+    <div class="meta-info">
+        <strong>Func ID:</strong> camel_110_91 <br>
+        <strong>File:</strong> systems/camel-java/components/camel-keycloak/src/main/java/org/apache/camel/component/keycloak/security/KeycloakSecurityHelper.java <br>
+        <strong>Clone Range:</strong> 179-188 <br>
+        <strong>Enclosing Method:</strong> KeycloakSecurityHelper.extractRolesFromIntrospection (Lines 172-209) <br>
+
+        <div style="background-color: #e8f4f8; border: 1px solid #b3d4fc; padding: 8px; margin-top: 10px; border-radius: 4px; font-family: monospace;">
+            <strong>Extracted Signature:</strong> <br>
+            <span style="color: #0066cc;">public void</span> <span style="color: #6f42c1;">extractedClone</span>(Object realmAccess, Set&lt;String&gt; roles)
+            
+            <div style="margin-top: 8px; font-size: 0.9em; color: #444; border-top: 1px dashed #b3d4fc; padding-top: 5px;">
+                <strong>Parameters Derivation:</strong> <br>
+                In(i) = Use(i) &cap; Def<sub>before</sub>(i) <br>
+                In(i) = {realmAccess, roles} &cap; {clientId, introspectionResult, realm, realmAccess, roles} = <strong>{realmAccess, roles}</strong>
+            </div>
+
+            <div style="margin-top: 8px; font-size: 0.9em; color: #444; border-top: 1px dashed #b3d4fc; padding-top: 5px;">
+                <strong>Return Derivation:</strong> <br>
+                Out(i) = Def<sub>within</sub>(i) &cap; Use<sub>after</sub>(i) <br>
+                Out(i) = {realmAccessMap, realmRoles, realmRolesCollection} &cap; {clientAccess, clientAccessMap, clientRoles, clientRolesCollection, resourceAccess, resourceAccessMap, roles} = <strong>{}</strong>
+            </div>
+        </div>        
+
+        <div style="margin-top: 10px; display: flex; gap: 20px;">
+            <div style="border-left: 3px solid #4CAF50; padding-left: 10px;">
+                <strong>Variables Read (V_r):</strong><br>
+                <span style="font-size: 0.9em;">
+                    <strong>Pre:</strong> <span style='color:#aaa'>None</span> <br>
+                    <strong>Within (Inputs!):</strong> realmAccess (Line 179), realmAccess (Line 181), roles (Line 186) <br>
+                    <strong>Post:</strong> clientAccess (Line 196), clientAccess (Line 198), clientAccessMap (Line 199), clientRoles (Line 200), clientRoles (Line 202), clientRolesCollection (Line 203), resourceAccess (Line 192), resourceAccess (Line 194), resourceAccessMap (Line 195), roles (Line 203), roles (Line 208)
+                </span>
+            </div>
+            
+            <div style="border-left: 3px solid #F44336; padding-left: 10px;">
+                <strong>Variables Written (V_w):</strong><br>
+                <span style="font-size: 0.9em;">
+                    <strong>Pre:</strong> realmAccess (Line 178), roles (Line 175) <br>
+                    <strong>Within:</strong> realmAccessMap (Line 181), realmRoles (Line 182), realmRolesCollection (Line 185) <br>
+                    <strong>Post:</strong> clientAccess (Line 195), clientAccessMap (Line 198), clientRoles (Line 199), clientRolesCollection (Line 202), resourceAccess (Line 191), resourceAccessMap (Line 194)
+                </span>
+            </div>
+        </div>
+    </div>
+    <pre><code><span class="line-number">172</span><span class="method-signature">public static Set&lt;String&gt; extractRolesFromIntrospection(</span>
+<span class="line-number">173</span><span class="method-signature">            KeycloakTokenIntrospector.IntrospectionResult introspectionResult,</span>
+<span class="line-number">174</span><span class="method-signature">            String realm, String clientId) {</span>
+<span class="line-number">175</span><span class="before-clone">        Set&lt;String&gt; roles = new HashSet&lt;&gt;();</span>
+<span class="line-number">176</span><span class="before-clone"></span>
+<span class="line-number">177</span><span class="before-clone">        // Extract roles from realm_access claim</span>
+<span class="line-number">178</span><span class="before-clone">        Object realmAccess = introspectionResult.getClaim(&quot;realm_access&quot;);</span>
+<span class="line-number">179</span><span class="in-clone">        if (<span style="background-color: #ffeb3b; color: #b30000; border-radius: 2px; padding: 0 2px;">realmAccess</span> instanceof Map) {</span>
+<span class="line-number">180</span><span class="in-clone">            @SuppressWarnings(&quot;unchecked&quot;)</span>
+<span class="line-number">181</span><span class="in-clone">            Map&lt;String, Object&gt; realmAccessMap = (Map&lt;String, Object&gt;) <span style="background-color: #ffeb3b; color: #b30000; border-radius: 2px; padding: 0 2px;">realmAccess</span>;</span>
+<span class="line-number">182</span><span class="in-clone">            Object realmRoles = realmAccessMap.get(&quot;<span style="background-color: #ffeb3b; color: #b30000; border-radius: 2px; padding: 0 2px;">roles</span>&quot;);</span>
+<span class="line-number">183</span><span class="in-clone">            if (realmRoles instanceof Collection) {</span>
+<span class="line-number">184</span><span class="in-clone">                @SuppressWarnings(&quot;unchecked&quot;)</span>
+<span class="line-number">185</span><span class="in-clone">                Collection&lt;String&gt; realmRolesCollection = (Collection&lt;String&gt;) realmRoles;</span>
+<span class="line-number">186</span><span class="in-clone">                <span style="background-color: #ffeb3b; color: #b30000; border-radius: 2px; padding: 0 2px;">roles</span>.addAll(realmRolesCollection);</span>
+<span class="line-number">187</span><span class="in-clone">            }</span>
+<span class="line-number">188</span><span class="in-clone">        }</span>
+<span class="line-number">189</span><span class="after-clone"></span>
+<span class="line-number">190</span><span class="after-clone">        // Extract client roles from resource_access claim</span>
+<span class="line-number">191</span><span class="after-clone">        Object resourceAccess = introspectionResult.getClaim(&quot;resource_access&quot;);</span>
+<span class="line-number">192</span><span class="after-clone">        if (resourceAccess instanceof Map) {</span>
+<span class="line-number">193</span><span class="after-clone">            @SuppressWarnings(&quot;unchecked&quot;)</span>
+<span class="line-number">194</span><span class="after-clone">            Map&lt;String, Object&gt; resourceAccessMap = (Map&lt;String, Object&gt;) resourceAccess;</span>
+<span class="line-number">195</span><span class="after-clone">            Object clientAccess = resourceAccessMap.get(clientId);</span>
+<span class="line-number">196</span><span class="after-clone">            if (clientAccess instanceof Map) {</span>
+<span class="line-number">197</span><span class="after-clone">                @SuppressWarnings(&quot;unchecked&quot;)</span>
+<span class="line-number">198</span><span class="after-clone">                Map&lt;String, Object&gt; clientAccessMap = (Map&lt;String, Object&gt;) clientAccess;</span>
+<span class="line-number">199</span><span class="after-clone">                Object clientRoles = clientAccessMap.get(&quot;roles&quot;);</span>
+<span class="line-number">200</span><span class="after-clone">                if (clientRoles instanceof Collection) {</span>
+<span class="line-number">201</span><span class="after-clone">                    @SuppressWarnings(&quot;unchecked&quot;)</span>
+<span class="line-number">202</span><span class="after-clone">                    Collection&lt;String&gt; clientRolesCollection = (Collection&lt;String&gt;) clientRoles;</span>
+<span class="line-number">203</span><span class="after-clone">                    roles.addAll(clientRolesCollection);</span>
+<span class="line-number">204</span><span class="after-clone">                }</span>
+<span class="line-number">205</span><span class="after-clone">            }</span>
+<span class="line-number">206</span><span class="after-clone">        }</span>
+<span class="line-number">207</span><span class="after-clone"></span>
+<span class="line-number">208</span><span class="after-clone">        return roles;</span>
+<span class="line-number">209</span><span class="after-clone">    }</span>
+</code></pre>
+</div>
+<div class="clone-instance">
+    <div class="meta-info">
+        <strong>Func ID:</strong> camel_110_92 <br>
+        <strong>File:</strong> systems/camel-java/components/camel-keycloak/src/main/java/org/apache/camel/component/keycloak/security/KeycloakSecurityHelper.java <br>
+        <strong>Clone Range:</strong> 196-205 <br>
+        <strong>Enclosing Method:</strong> KeycloakSecurityHelper.extractRolesFromIntrospection (Lines 172-209) <br>
+
+        <div style="background-color: #e8f4f8; border: 1px solid #b3d4fc; padding: 8px; margin-top: 10px; border-radius: 4px; font-family: monospace;">
+            <strong>Extracted Signature:</strong> <br>
+            <span style="color: #0066cc;">public void</span> <span style="color: #6f42c1;">extractedClone</span>(Object clientAccess, Set&lt;String&gt; roles)
+            
+            <div style="margin-top: 8px; font-size: 0.9em; color: #444; border-top: 1px dashed #b3d4fc; padding-top: 5px;">
+                <strong>Parameters Derivation:</strong> <br>
+                In(i) = Use(i) &cap; Def<sub>before</sub>(i) <br>
+                In(i) = {clientAccess, roles} &cap; {clientAccess, clientId, introspectionResult, realm, realmAccess, realmAccessMap, realmRoles, realmRolesCollection, resourceAccess, resourceAccessMap, roles} = <strong>{clientAccess, roles}</strong>
+            </div>
+
+            <div style="margin-top: 8px; font-size: 0.9em; color: #444; border-top: 1px dashed #b3d4fc; padding-top: 5px;">
+                <strong>Return Derivation:</strong> <br>
+                Out(i) = Def<sub>within</sub>(i) &cap; Use<sub>after</sub>(i) <br>
+                Out(i) = {clientAccessMap, clientRoles, clientRolesCollection} &cap; {roles} = <strong>{}</strong>
+            </div>
+        </div>        
+
+        <div style="margin-top: 10px; display: flex; gap: 20px;">
+            <div style="border-left: 3px solid #4CAF50; padding-left: 10px;">
+                <strong>Variables Read (V_r):</strong><br>
+                <span style="font-size: 0.9em;">
+                    <strong>Pre:</strong> realmAccess (Line 179), realmAccess (Line 181), realmAccessMap (Line 182), realmRoles (Line 183), realmRoles (Line 185), realmRolesCollection (Line 186), resourceAccess (Line 192), resourceAccess (Line 194), resourceAccessMap (Line 195), roles (Line 186) <br>
+                    <strong>Within (Inputs!):</strong> clientAccess (Line 196), clientAccess (Line 198), roles (Line 203) <br>
+                    <strong>Post:</strong> roles (Line 208)
+                </span>
+            </div>
+            
+            <div style="border-left: 3px solid #F44336; padding-left: 10px;">
+                <strong>Variables Written (V_w):</strong><br>
+                <span style="font-size: 0.9em;">
+                    <strong>Pre:</strong> clientAccess (Line 195), realmAccess (Line 178), realmAccessMap (Line 181), realmRoles (Line 182), realmRolesCollection (Line 185), resourceAccess (Line 191), resourceAccessMap (Line 194), roles (Line 175) <br>
+                    <strong>Within:</strong> clientAccessMap (Line 198), clientRoles (Line 199), clientRolesCollection (Line 202) <br>
+                    <strong>Post:</strong> <span style='color:#aaa'>None</span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <pre><code><span class="line-number">172</span><span class="method-signature">public static Set&lt;String&gt; extractRolesFromIntrospection(</span>
+<span class="line-number">173</span><span class="method-signature">            KeycloakTokenIntrospector.IntrospectionResult introspectionResult,</span>
+<span class="line-number">174</span><span class="method-signature">            String realm, String clientId) {</span>
+<span class="line-number">175</span><span class="before-clone">        Set&lt;String&gt; roles = new HashSet&lt;&gt;();</span>
+<span class="line-number">176</span><span class="before-clone"></span>
+<span class="line-number">177</span><span class="before-clone">        // Extract roles from realm_access claim</span>
+<span class="line-number">178</span><span class="before-clone">        Object realmAccess = introspectionResult.getClaim(&quot;realm_access&quot;);</span>
+<span class="line-number">179</span><span class="before-clone">        if (realmAccess instanceof Map) {</span>
+<span class="line-number">180</span><span class="before-clone">            @SuppressWarnings(&quot;unchecked&quot;)</span>
+<span class="line-number">181</span><span class="before-clone">            Map&lt;String, Object&gt; realmAccessMap = (Map&lt;String, Object&gt;) realmAccess;</span>
+<span class="line-number">182</span><span class="before-clone">            Object realmRoles = realmAccessMap.get(&quot;roles&quot;);</span>
+<span class="line-number">183</span><span class="before-clone">            if (realmRoles instanceof Collection) {</span>
+<span class="line-number">184</span><span class="before-clone">                @SuppressWarnings(&quot;unchecked&quot;)</span>
+<span class="line-number">185</span><span class="before-clone">                Collection&lt;String&gt; realmRolesCollection = (Collection&lt;String&gt;) realmRoles;</span>
+<span class="line-number">186</span><span class="before-clone">                roles.addAll(realmRolesCollection);</span>
+<span class="line-number">187</span><span class="before-clone">            }</span>
+<span class="line-number">188</span><span class="before-clone">        }</span>
+<span class="line-number">189</span><span class="before-clone"></span>
+<span class="line-number">190</span><span class="before-clone">        // Extract client roles from resource_access claim</span>
+<span class="line-number">191</span><span class="before-clone">        Object resourceAccess = introspectionResult.getClaim(&quot;resource_access&quot;);</span>
+<span class="line-number">192</span><span class="before-clone">        if (resourceAccess instanceof Map) {</span>
+<span class="line-number">193</span><span class="before-clone">            @SuppressWarnings(&quot;unchecked&quot;)</span>
+<span class="line-number">194</span><span class="before-clone">            Map&lt;String, Object&gt; resourceAccessMap = (Map&lt;String, Object&gt;) resourceAccess;</span>
+<span class="line-number">195</span><span class="before-clone">            Object clientAccess = resourceAccessMap.get(clientId);</span>
+<span class="line-number">196</span><span class="in-clone">            if (<span style="background-color: #ffeb3b; color: #b30000; border-radius: 2px; padding: 0 2px;">clientAccess</span> instanceof Map) {</span>
+<span class="line-number">197</span><span class="in-clone">                @SuppressWarnings(&quot;unchecked&quot;)</span>
+<span class="line-number">198</span><span class="in-clone">                Map&lt;String, Object&gt; clientAccessMap = (Map&lt;String, Object&gt;) <span style="background-color: #ffeb3b; color: #b30000; border-radius: 2px; padding: 0 2px;">clientAccess</span>;</span>
+<span class="line-number">199</span><span class="in-clone">                Object clientRoles = clientAccessMap.get(&quot;<span style="background-color: #ffeb3b; color: #b30000; border-radius: 2px; padding: 0 2px;">roles</span>&quot;);</span>
+<span class="line-number">200</span><span class="in-clone">                if (clientRoles instanceof Collection) {</span>
+<span class="line-number">201</span><span class="in-clone">                    @SuppressWarnings(&quot;unchecked&quot;)</span>
+<span class="line-number">202</span><span class="in-clone">                    Collection&lt;String&gt; clientRolesCollection = (Collection&lt;String&gt;) clientRoles;</span>
+<span class="line-number">203</span><span class="in-clone">                    <span style="background-color: #ffeb3b; color: #b30000; border-radius: 2px; padding: 0 2px;">roles</span>.addAll(clientRolesCollection);</span>
+<span class="line-number">204</span><span class="in-clone">                }</span>
+<span class="line-number">205</span><span class="in-clone">            }</span>
+<span class="line-number">206</span><span class="after-clone">        }</span>
+<span class="line-number">207</span><span class="after-clone"></span>
+<span class="line-number">208</span><span class="after-clone">        return roles;</span>
+<span class="line-number">209</span><span class="after-clone">    }</span>
+</code></pre>
+</div>
+</div>
+</body>
+</html>

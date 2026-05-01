@@ -1,0 +1,45 @@
+<div class="clone-instance">
+    <div class="meta-info">
+        <strong>Func ID:</strong> {func_id} <br>
+        <strong>File:</strong> {rel_file} <br>
+        <strong>Clone Range:</strong> {range_str} <br>
+        <strong>Enclosing Method:</strong> {method_qualified} (Lines {m_start}-{m_end}) <br>
+
+        <div style="background-color: #e8f4f8; border: 1px solid #b3d4fc; padding: 8px; margin-top: 10px; border-radius: 4px; font-family: monospace;">
+            <strong>Extracted Signature:</strong> <br>
+            <span style="color: #0066cc;">public {return_type}</span> <span style="color: #6f42c1;">extractedClone</span>({extracted_params})
+            
+            <div style="margin-top: 8px; font-size: 0.9em; color: #444; border-top: 1px dashed #b3d4fc; padding-top: 5px;">
+                <strong>Parameters Derivation:</strong> <br>
+                In(i) = Use(i) &cap; Def<sub>before</sub>(i) <br>
+                In(i) = {use_set_str} &cap; {def_set_str} = <strong>{in_set_str}</strong>
+            </div>
+
+            <div style="margin-top: 8px; font-size: 0.9em; color: #444; border-top: 1px dashed #b3d4fc; padding-top: 5px;">
+                <strong>Return Derivation:</strong> <br>
+                Out(i) = Def<sub>within</sub>(i) &cap; Use<sub>after</sub>(i) <br>
+                Out(i) = {def_within_str} &cap; {use_after_str} = <strong>{out_set_str}</strong>
+            </div>
+        </div>        
+
+        <div style="margin-top: 10px; display: flex; gap: 20px;">
+            <div style="border-left: 3px solid #4CAF50; padding-left: 10px;">
+                <strong>Variables Read (V_r):</strong><br>
+                <span style="font-size: 0.9em;">
+                    <strong>Pre:</strong> {vr_pre} <br>
+                    <strong>Within (Inputs!):</strong> {vr_within} <br>
+                    <strong>Post:</strong> {vr_post}
+                </span>
+            </div>
+            
+            <div style="border-left: 3px solid #F44336; padding-left: 10px;">
+                <strong>Variables Written (V_w):</strong><br>
+                <span style="font-size: 0.9em;">
+                    <strong>Pre:</strong> {vw_pre} <br>
+                    <strong>Within:</strong> {vw_within} <br>
+                    <strong>Post:</strong> {vw_post}
+                </span>
+            </div>
+        </div>
+    </div>
+    <pre><code>

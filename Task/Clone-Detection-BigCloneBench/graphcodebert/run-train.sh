@@ -1,0 +1,22 @@
+mkdir ./saved_models_combined_py/
+python run.py \
+    --output_dir=./saved_models_combined_py/ \
+    --subsample_ratio 1.0 \
+    --model_type=roberta \
+    --config_name=microsoft/graphcodebert-base \
+    --model_name_or_path=microsoft/graphcodebert-base \
+    --tokenizer_name=microsoft/graphcodebert-base \
+    --do_train \
+    --do_test \
+    --train_data_file=../dataset/combined_py_plus_org10/train_mix.txt \
+    --eval_data_file=../dataset/combined_py_plus_org10/valid_mix.txt \
+    --test_data_file=../dataset/org/test.txt \
+    --epoch 2 \
+    --code_length 384 \
+    --data_flow_length 128 \
+    --train_batch_size 16 \
+    --eval_batch_size 32 \
+    --learning_rate 5e-5 \
+    --max_grad_norm 1.0 \
+    --evaluate_during_training \
+    --seed 3 2>&1| tee ./saved_models_combined_py/train_combined_py_plus_org10.log

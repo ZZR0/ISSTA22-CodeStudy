@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nicad Block-level Clone Visualization</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f4f4f9; padding: 20px; }
+        h1 { text-align: center; }
+        .clone-class { background: #fff; border: 1px solid #ddd; margin-bottom: 30px; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .clone-instance { margin-top: 15px; border-top: 2px dashed #eee; padding-top: 15px; }
+        .meta-info { font-size: 0.9em; color: #555; margin-bottom: 10px; }
+        pre { background-color: #fafafa; border: 1px solid #ccc; padding: 15px; overflow-x: auto; border-radius: 4px; line-height: 1.4; }
+        
+        /* Coloring rules */
+        .method-signature { color: #8b008b; font-weight: bold; } /* Dark Magenta */
+        .before-clone { color: blue; }
+        .in-clone { color: red; font-weight: bold; }
+        .after-clone { color: black; }
+        .line-number {
+            display: inline-block;
+            width: 45px;
+            color: #aaa;
+            border-right: 1px solid #ddd;
+            padding-right: 10px;
+            margin-right: 10px;
+            text-align: right;
+            user-select: none; /* Prevents copying line numbers */
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Clone Block Visualization</h1>

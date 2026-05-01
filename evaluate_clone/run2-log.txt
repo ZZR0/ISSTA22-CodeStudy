@@ -1,0 +1,42 @@
+ 
+=========================================
+== Generating Delta Charts
+=========================================
+Generating charts for codegpt...
+--> Successfully saved CodeGPT Delta Chart (Palette: flare) to: rcp_delta_chart_codegpt.png
+
+--- Statistical Test Results for CodeGPT ---
+Wilcoxon Statistic: 0.000
+P-Value: 3.52e-09
+Result: Significant improvement (p < 0.05) ✅
+--> Saved Box Plot to: rcp_boxplot_codegpt.png
+
+Generating charts for codebert...
+--> Successfully saved CodeBERT Delta Chart (Palette: cividis) to: rcp_delta_chart_codebert.png
+
+--- Statistical Test Results for CodeBERT ---
+Wilcoxon Statistic: 0.000
+P-Value: 2.40e-09
+Result: Significant improvement (p < 0.05) ✅
+--> Saved Box Plot to: rcp_boxplot_codebert.png
+
+Generating charts for codet5...
+--> Successfully saved CodeT5 Delta Chart (Palette: inferno) to: rcp_delta_chart_codet5.png
+
+--- Statistical Test Results for CodeT5 ---
+Wilcoxon Statistic: 25.500
+P-Value: 1.21e-08
+Result: Significant improvement (p < 0.05) ✅
+--> Saved Box Plot to: rcp_boxplot_codet5.png
+
+Generating charts for graphcodebert...
+--> Successfully saved graphCodeBERT Delta Chart (Palette: mako) to: rcp_delta_chart_graphcodebert.png
+
+--- Statistical Test Results for graphCodeBERT ---
+Wilcoxon Statistic: 15.000
+P-Value: 6.25e-09
+Result: Significant improvement (p < 0.05) ✅
+--> Saved Box Plot to: rcp_boxplot_graphcodebert.png
+
+ 
+** Pipeline finished! All reports and charts are in ./output

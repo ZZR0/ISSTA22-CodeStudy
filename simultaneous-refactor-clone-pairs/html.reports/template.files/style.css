@@ -1,0 +1,474 @@
+body {
+	font: 10pt tahoma;
+}
+#centeralize {
+	margin: auto;
+	width: 99%;
+	text-align: center
+}
+
+a:link, a:visited:link {
+	text-decoration: none;
+	color: #33F
+}
+
+a:hover, a:visited:hover {
+	color: #88F;
+}
+
+table {
+	margin: auto;
+	text-align: left;
+}
+img {
+	vertical-align: middle;
+	border: none;
+	margin: 1px;
+}
+
+div.autoscroll {
+	overflow: auto
+}
+
+.deleted {
+	background-color: #faa;
+}
+
+.inserted {
+	background-color: #afa;
+}
+table {
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+pre, #mappedstatements > tr  td {
+	font-family: consolas;
+	margin: 0;
+	padding: 0
+}
+
+#textualdiff table {
+	border-spacing: 0px;
+    border-collapse: separate;
+	max-width: 99%;
+	min-width: 1000px;
+	margin-top: 20px;
+}
+
+#preconditionviolations, #mappedstatements {
+	border-spacing: 0px;
+    border-collapse: separate;
+    width: 100%;
+    margin-top: 20px;
+	min-width: 1000px;
+}
+
+img.copy {
+	width:16px;
+	height:16px;
+}
+
+span.bold {
+	font-weight: bold;
+}
+
+caption, .caption {
+	font: bold 17pt Sans, Tahoma;
+	text-align: center;
+	padding: 10px;
+	margin-bottom: 5px;
+	border-bottom: solid 3px #ccc
+	
+}
+
+.code td {
+	vertical-align: top;
+	padding: 0px 5px;
+}
+.gap {
+	background-color: #eee;
+}
+.separator {
+	width:10px;
+	background-color: white
+}
+.lines {
+	width: 20px;
+	text-align: right;
+	border-right: solid 1px #ccc
+}
+
+.second {
+		padding-left: 5px
+}
+
+.first {
+		padding-right: 5px
+}
+.changed {
+	background-color: #fff5ff;
+}
+.coderow:hover td {
+	background-color: #efffff;
+}
+
+#firstCode, #secondCode {
+	display: none
+}
+.copylinks {
+	font: 10pt tahoma
+}
+.carr {
+	color: #aaa
+}
+
+td.mappedimage {
+	width: 32px;
+	background: url('arrow.png') no-repeat center center;
+	background-size: 16px 16px;
+}
+
+#mappedstatements td, #preconditionviolations td {
+	padding: 0px 5px;
+	
+}
+
+#mappedstatements > tbody tr:hover td, #preconditionviolations > tbody tr:hover  td {
+	background-color: #efffff; 
+}
+
+#mappedstatements > tbody tr:nth-child(even), #preconditionviolations > tbody tr:nth-child(even) {
+	background-color: #fdfdfd;
+}
+
+td.id , th.id{
+	text-align: right;
+	padding: 0px 10px;
+	width: 20px
+}
+
+th {
+	background-color: #eee;
+	border-bottom: solid 1px #ccc;
+	padding: 10px 5px;
+	font: bold 10pt tahoma
+}
+
+tr.sectionsdivider td {
+	border-bottom: dotted 1px #ccc;
+}
+
+.smaller {
+	font-size: smaller;
+}
+
+#refactorablelist, #notrefactorablelist  { 
+    counter-reset: item;
+    list-style-type: none;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	display: inline-block;
+}
+#refactorablelist li.listnumber, #notrefactorablelist li.listnumber {
+	display: block;
+	border: solid 1px #ccc;
+	background-color: #fefefe;
+	margin: 30px 22px;
+	padding: 5px;
+	float: left;
+}
+
+#refactorablelist li.listnumber:before, #notrefactorablelist li.listnumber:before { 
+    content: counter(item) "  "; 
+    counter-increment: item;
+	font: bold 18pt tahoma;
+	border-radius: 50%;
+	display: block;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	margin-top: -28px;
+	margin-left: -27px;
+} 
+#refactorablelist li.listnumber:before {
+	background: rgba(200, 255, 200, 0.5);
+	border: solid 1px green;
+}
+#notrefactorablelist li.listnumber:before { 
+	background: rgba(255, 200, 200, 0.90);
+	border: solid 1px red;
+}
+
+.unmatched {
+	background: rgb(255, 156, 156);
+}
+.gapped {
+	background: rgb(255, 224, 224);
+}
+.advancedmatch {
+	background: rgb(156, 255, 156);
+}
+.advancedmatchgapped {
+	background: rgb(224, 255, 224);	
+}
+
+.tree {
+	display: inline-block;
+	float: left;
+	padding-left: 25px;
+	margin-right: 2px;
+	margin-left: 6px;
+	border-left: dotted 1px #ccc;
+}
+
+.codeview {
+	/*text-indent:-25px;
+	margin-left:25px*/
+}
+
+.codeview span {
+	float: left
+}
+
+.tree .span {
+	border-top: dotted 1px #ccc;
+	font-size: 1px;
+	width: 15px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+td.codeline:hover  {
+	background-color: #eee !important
+}
+
+.expand {
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	margin: 0 3px -2px 1px;
+	background: url('expand.png') no-repeat center center;
+	background-size: 10px 12px;
+	cursor: pointer;
+	-webkit-animation: cssAnimation2 0.5s 1 ease forwards;
+	-moz-animation: cssAnimation2 0.5s 1 ease forwards;
+	-o-animation: cssAnimation2 0.5s 1 ease forwards;
+	animation: cssAnimation2 0.5s 1 ease forwards;	
+	float: left
+}
+
+.rotate {
+	-ms-transform: rotate(0deg); /* IE 9 */
+	-webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+	transform: rotate(0deg);
+	-webkit-animation: cssAnimation 0.5s 1 ease forwards;
+	-moz-animation: cssAnimation 0.5s 1 ease forwards;
+	-o-animation: cssAnimation 0.5s 1 ease forwards;
+	animation: cssAnimation 0.5s 1 ease forwards;
+}
+
+@-webkit-keyframes cssAnimation {
+	from {
+		-webkit-transform: rotate(90deg);
+	}
+	to {
+		-webkit-transform: rotate(0deg);
+	}
+}
+
+@-moz-keyframes cssAnimation {
+	from {
+		-moz-transform: rotate(90deg);
+	}
+	to {
+		-moz-transform: rotate(0deg);
+	}
+}
+
+@-o-keyframes cssAnimation {
+	from {
+		-o-transform: rotate(90deg);
+	}
+	to {
+		-o-transform: rotate(0deg);
+	}
+}
+
+@keyframes cssAnimation {
+	from {
+		transform: rotate(90deg);
+	}
+	to {
+		transform: rotate(0deg);
+	}
+}
+
+@-webkit-keyframes cssAnimation2 {
+	from {
+		-webkit-transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(90deg);
+	}
+}
+
+@-moz-keyframes cssAnimation2 {
+	from {
+		-moz-transform: rotate(0deg);
+	}
+	to {
+		-moz-transform: rotate(90deg);
+	}
+}
+
+@-o-keyframes cssAnimation2 {
+	from {
+		-o-transform: rotate(0deg);
+	}
+	to {
+		-o-transform: rotate(90deg);
+	}
+}
+
+@keyframes cssAnimation2 {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(90deg);
+	}
+}
+ 
+.informationdialog {
+	display: none;
+	position: absolute;
+	background: #fff;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=98)";
+	filter: alpha(opacity=98);
+	-moz-opacity: 0.98;
+	-khtml-opacity: 0.98;
+	opacity: 0.98;
+	top: 0px;
+	left: 0px;
+	min-width: 100px;
+	border-radius: 5px;
+	border: solid 3px #eee;
+	padding: 10px;
+	z-index: 998;
+}
+
+.informationdialog table td {
+	background: white !important;
+	word-wrap: break-word
+}
+
+.informationdialog table {
+	margin-bottom: 10px;
+	width: 100%;
+}
+.informationdialog caption {
+	font-size: 12pt
+}
+
+.nodeid {
+	background-color: #efefef;
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	font-weight: bold;
+}
+.statement {
+	
+}
+
+#textualdiff, #mappingsummary {
+	border: solid 3px #ccc;
+	border-radius: 5px;
+	display: inline-block;
+	padding: 5px;
+}
+#mappingsummary {
+	font-size: 150%;
+}
+#mappingsummarycenterer {
+	text-align: center;
+	
+}
+#summary {
+	font-size: 150%;
+	border: solid 3px #ccc;
+	border-radius: 5px;
+	display: inline-block;
+	padding: 10px;
+	margin-top: 30px;
+}
+.right {
+	text-align: right;
+}
+
+#summary .right {
+	padding-left: 10px;
+}
+.refactorabletitle {
+	top: -35px;
+	display: inline-block;
+	background-color: white;
+	left: 18px;
+	position: relative;
+	padding: 0px 3px 0 0;
+	text-align: left;
+	font-size: 160%;
+	font-weight: bold;
+	z-index: 1
+		
+}
+.refactorabletitle .refactorable {
+	color: green
+}
+.refactorabletitle .nonrefactorable {
+	color: red
+}
+
+#invisible {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: black;
+	top: 0px;
+	left: 0px;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+	filter: alpha(opacity=90);
+	-moz-opacity: 0.90;
+	-khtml-opacity: 0.90;
+	opacity: 0.90;
+	display: none;
+	z-index: 999;
+}
+#sourcecode {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	text-align: center;
+	display: none;
+	z-index: 1000
+}
+
+#sourcecode textarea {
+	width: 700px;
+	height: 500px;
+	margin: 100px auto 0;
+	text-align: left;
+	font: 12pt consolas, monospace;
+	border-radius: 5px;
+	border: solid 1px #ccc
+}
+#closecode {
+	margin: 20px auto;
+}

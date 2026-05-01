@@ -1,0 +1,25 @@
+Changes from NiCad 6.1 to 6.2
+
+1. Modified NiCad process to treat source directories as read-only.
+   NiCad 6.2 does not write any files into original source directories.
+
+2. Added validated language plugin for the Rust programming language.
+   Special thanks to Huawei Technologies for contributing their Rust grammar!
+
+3. Added validated language plugin for the Solidity language.
+   Thanks to TXL user Faizan Khan for contributing his Solidity grammar!
+
+4. Added support for Python 3.8 type hints and format strings.
+
+5. Improved handling of Python indentation rules.
+
+6. Improved Java size filtering and nominal number of lines.
+
+7. Updated and refined C 2018 grammar.
+
+8. Updated BOM handling and added support for UTF-16 BOM headers. 
+
+9. Fixed mysterious intermittent Linux crash on zero hashed lines.
+
+10. Fixed to remove spurious /tmp files
+

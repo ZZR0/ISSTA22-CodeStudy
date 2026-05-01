@@ -1,0 +1,158 @@
+{
+  "name": "code-refactor-visualizer",
+  "displayName": "Code Refactor Visualizer",
+  "description": "A visualizer for code refactoring operations.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.102.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:codeSummarizer.summarizeSelection",
+    "onView:codeSummarizer.results",
+    "onLanguage:java",
+    "onLanguage:python"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "pythonRefactor.extractMethod",
+        "title": "Refactor: Extract Method (Python)"
+      },
+      {
+        "command": "pythonRefactor.dropzone.addSelection",
+        "title": "Dropzone: Add Selection"
+      },
+      {
+        "command": "pythonRefactor.dropzone.clear",
+        "title": "Dropzone: Clear"
+      },
+      {
+        "command": "pythonRefactor.dropzone.removeItem",
+        "title": "Dropzone: Remove Item"
+      },
+      {
+        "command": "pythonRefactor.dropzone.refactorSelected",
+        "title": "Dropzone: Refactor Selected Clone Groups"
+      },
+      {
+        "command": "clone-visualizer.show_code_clones",
+        "title": "Clone Visualizer: Show Code Clones"
+      },
+      {
+        "command": "codeSummarizer.summarizeSelection",
+        "title": "Code Summarizer: Summarize Selection"
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "pythonRefactor.dropzone",
+          "name": "Dropzone"
+        },
+        {
+          "id": "codeSummarizer.results",
+          "name": "Code Summary",
+          "type": "webview"
+        }
+      ]
+    },
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorHasSelection && resourceLangId == python",
+          "command": "pythonRefactor.extractMethod",
+          "group": "1_modification@1"
+        },
+        {
+          "when": "editorHasSelection",
+          "command": "pythonRefactor.dropzone.addSelection",
+          "group": "1_modification@2"
+        },
+        {
+          "when": "editorHasSelection",
+          "command": "codeSummarizer.summarizeSelection",
+          "group": "1_modification@3"
+        }
+      ],
+      "view/title": [
+        {
+          "when": "view == pythonRefactor.dropzone",
+          "command": "pythonRefactor.dropzone.refactorSelected",
+          "group": "navigation@1"
+        },
+        {
+          "when": "view == pythonRefactor.dropzone",
+          "command": "pythonRefactor.dropzone.clear",
+          "group": "navigation@2"
+        }
+      ],
+      "view/item/context": [
+        {
+          "when": "view == pythonRefactor.dropzone && viewItem == dropzoneItem",
+          "command": "pythonRefactor.dropzone.removeItem",
+          "group": "inline@1"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Python Refactor",
+      "properties": {
+        "pythonRefactor.debug": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable verbose tracing for the Python Extract Method refactor."
+        },
+        "cloneVisualizer.serverUrl": {
+          "type": "string",
+          "default": "http://localhost:8000",
+          "description": "Base URL for the clone/refactor analysis REST server."
+        },
+        "codeSummarizer.pythonPath": {
+          "type": "string",
+          "default": "/opt/anaconda3/envs/code-sum311/bin/python",
+          "description": "Python interpreter used to run summarizer.py."
+        },
+        "codeSummarizer.scriptPath": {
+          "type": "string",
+          "default": "",
+          "description": "Optional path to summarizer.py. Empty uses the summarizer.py bundled with this extension."
+        },
+        "codeSummarizer.model": {
+          "type": "string",
+          "default": "",
+          "description": "Optional Hugging Face model id. Empty auto-selects the Python checkpoint for Python files and the general checkpoint otherwise."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "node ./node_modules/typescript/bin/tsc -p ./",
+    "clean": "rm -fr out",
+    "watch": "node ./node_modules/typescript/bin/tsc -watch -p ./",
+    "clone-api": "node scripts/clone-api-server.js",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.102.0",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.25.1",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "tree-sitter": "^0.21.1",
+    "tree-sitter-java": "^0.23.5",
+    "tree-sitter-python": "^0.21.0"
+  }
+}

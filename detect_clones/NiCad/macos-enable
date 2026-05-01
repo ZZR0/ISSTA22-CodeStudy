@@ -1,0 +1,17 @@
+#!/bin/bash 
+# NiCad enabler for MacOS
+# J.R. Cordy, Queen"s University, May 2020
+
+# Directory where NiCad has been installed
+NICADHOME=.
+
+# Now run the appropriate version
+echo "Enabling NiCad commands and tools in MacOS"
+spctl --remove --label "NICAD" >& /dev/null
+spctl --add --label "NICAD" $NICADHOME/nicad6 $NICADHOME/nicad6cross
+spctl --add --label "NICAD" $NICADHOME/cleanall $NICADHOME/fixfilenames $NICADHOME/splitclasses
+spctl --add --label "NICAD" $NICADHOME/scripts/*
+spctl --add --label "NICAD" $NICADHOME/tools/*.x
+spctl --add --label "NICAD" $NICADHOME/txl/*.x
+spctl --enable --label "NICAD"
+

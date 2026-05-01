@@ -1,0 +1,38 @@
+ 
+=========================================
+== Generating Delta Charts
+=========================================
+Generating charts for codegpt...
+
+--- Statistical Test Results for CodeGPT ---
+Wilcoxon Statistic: 12455355.500
+P-Value: 0.00e+00
+Result: Significant improvement (p < 0.05) ✅
+--> Saved Box Plot to: rcp_boxplot_codegpt.png
+
+Generating charts for codebert...
+
+--- Statistical Test Results for CodeBERT ---
+Wilcoxon Statistic: 14736451.500
+P-Value: 0.00e+00
+Result: Significant improvement (p < 0.05) ✅
+--> Saved Box Plot to: rcp_boxplot_codebert.png
+
+Generating charts for codet5...
+
+--- Statistical Test Results for CodeT5 ---
+Wilcoxon Statistic: 13631446.500
+P-Value: 0.00e+00
+Result: Significant improvement (p < 0.05) ✅
+--> Saved Box Plot to: rcp_boxplot_codet5.png
+
+Generating charts for graphcodebert...
+
+--- Statistical Test Results for graphCodeBERT ---
+Wilcoxon Statistic: 17526631.500
+P-Value: 0.00e+00
+Result: Significant improvement (p < 0.05) ✅
+--> Saved Box Plot to: rcp_boxplot_graphcodebert.png
+
+ 
+** Pipeline finished! All reports and charts are in ./output-java

@@ -1,0 +1,18 @@
+# Transformer & LLM Libraries
+transformers==4.36.2
+datasets
+evaluate
+accelerate
+scikit-learn
+
+# Code & Database Handling
+jaydebeapi
+jpype1
+pandas
+nltk
+tree-sitter
+
+# Utilities
+tqdm
+packaging
+tensorboard
